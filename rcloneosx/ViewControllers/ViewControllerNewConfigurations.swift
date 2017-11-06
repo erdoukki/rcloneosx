@@ -15,13 +15,13 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     var storageapi: PersistentStorageAPI?
     var newconfigurations: NewConfigurations?
     var tabledata: [NSMutableDictionary]?
-    let archive: String = "--archive"
-    let verbose: String = "--verbose"
-    let compress: String = "--compress"
-    let delete: String = "--delete"
-    let eparam: String = "-e"
-    let ssh: String = "ssh"
-    let dryrun: String = "--dry-run"
+    let copy: String = "copy"
+    // let verbose: String = "--verbose"
+    // let compress: String = "--compress"
+    // let delete: String = "--delete"
+    // let eparam: String = "-e"
+    // let ssh: String = "ssh"
+    // let dryrun: String = "--dry-run"
 
     @IBOutlet weak var newTableView: NSTableView!
     @IBOutlet weak var viewParameter1: NSTextField!
@@ -87,11 +87,11 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     }
 
     private func setFields() {
-        self.viewParameter1.stringValue = archive
-        self.viewParameter2.stringValue = verbose
-        self.viewParameter3.stringValue = compress
-        self.viewParameter4.stringValue = delete
-        self.viewParameter5.stringValue = eparam + " " + ssh
+        self.viewParameter1.stringValue = copy
+        // self.viewParameter2.stringValue = verbose
+        // self.viewParameter3.stringValue = compress
+        // self.viewParameter4.stringValue = delete
+        // self.viewParameter5.stringValue = eparam + " " + ssh
         self.localCatalog.stringValue = ""
         self.offsiteCatalog.stringValue = ""
         self.offsiteUsername.stringValue = ""
@@ -110,13 +110,13 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             "offsiteCatalog": offsiteCatalog.stringValue,
             "offsiteServer": offsiteServer.stringValue,
             "offsiteUsername": offsiteUsername.stringValue,
-            "parameter1": self.archive,
-            "parameter2": self.verbose,
-            "parameter3": self.compress,
-            "parameter4": self.delete,
-            "parameter5": self.eparam,
-            "parameter6": self.ssh,
-            "dryrun": self.dryrun,
+            "parameter1": self.copy,
+            // "parameter2": self.verbose,
+            // "parameter3": self.compress,
+            // "parameter4": self.delete,
+            // "parameter5": self.eparam,
+            // "parameter6": self.ssh,
+            // "dryrun": self.dryrun,
             "dateRun": "",
             "singleFile": 0]
         dict.setValue("no", forKey: "batch")
@@ -136,6 +136,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             }
         }
         // If add button is selected without any values
+        /*
         guard self.localCatalog.stringValue != "/" else {
             self.offsiteCatalog.stringValue = ""
             self.localCatalog.stringValue = ""
@@ -146,6 +147,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.localCatalog.stringValue = ""
             return
         }
+        */
         guard self.offsiteCatalog.stringValue != self.localCatalog.stringValue else {
             self.equal.isHidden = false
             return
