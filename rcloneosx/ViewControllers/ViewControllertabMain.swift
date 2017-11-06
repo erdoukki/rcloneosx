@@ -150,14 +150,6 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         self.singletask = nil
     }
 
-    @IBOutlet weak var TCPButton: NSButton!
-    @IBAction func TCP(_ sender: NSButton) {
-        self.TCPButton.isEnabled = false
-        self.loadProfileMenu = false
-        self.displayProfile()
-        self.tools!.testAllremoteserverConnections()
-    }
-
     // Presenting Information from Rsync
     @IBAction func information(_ sender: NSButton) {
         globalMainQueue.async(execute: { () -> Void in
@@ -338,7 +330,6 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         localprofileinfo2 = ViewControllerReference.shared.getvcref(viewcontroller: .vcnewconfigurations ) as? ViewControllerNewConfigurations
         localprofileinfo?.setprofile(profile: self.profilInfo.stringValue, color: self.profilInfo.textColor!)
         localprofileinfo2?.setprofile(profile: self.profilInfo.stringValue, color: self.profilInfo.textColor!)
-        self.TCPButton.isEnabled = true
         self.setRsyncCommandDisplay()
     }
 
@@ -610,22 +601,6 @@ extension ViewControllertabMain: RsyncChanged {
         // Update rsync command in display
         self.setRsyncCommandDisplay()
         self.verifyrsync()
-    }
-}
-
-// Check for remote connections, reload table when completed.
-extension ViewControllertabMain: Connections {
-    // Remote servers offline are marked with red line in mainTableView
-    func displayConnections() {
-        // Only do a reload if we are in the main view
-        guard self.configurations!.allowNotifyinMain == true else {
-            return
-        }
-        self.loadProfileMenu = true
-        self.serverOff = self.tools!.gettestAllremoteserverConnections()
-        globalMainQueue.async(execute: { () -> Void in
-            self.mainTableView.reloadData()
-        })
     }
 }
 
