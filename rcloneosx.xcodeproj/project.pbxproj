@@ -200,6 +200,7 @@
 		E9482D231FB0AEF600AFBB0D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E960CAB51FB091D20008D12E /* rcloneosx-Bridging-Header.h */,
 				E960CADF1FB091D90008D12E /* Alerts.swift */,
 				E960CAE71FB091DA0008D12E /* Checkfornewversion.swift */,
 				E960CACD1FB091D60008D12E /* FileDialog.swift */,
@@ -378,7 +379,6 @@
 				E960CB531FB092E70008D12E /* Model */,
 				E99AA38B1FAFA28900C1E86A /* Info.plist */,
 				E99AA38C1FAFA28900C1E86A /* rcloneosx.entitlements */,
-				E960CAB51FB091D20008D12E /* rcloneosx-Bridging-Header.h */,
 			);
 			path = rcloneosx;
 			sourceTree = "<group>";
