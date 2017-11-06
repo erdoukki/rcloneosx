@@ -50,10 +50,10 @@ class ViewControllerReference {
     // Reference is set in when Scheduled task is executed
     var completeoperation: CompleteScheduledOperation?
     // rsync command
-    var rsync: String = "rsync"
-    var usrbinrsync: String = "/usr/bin/rsync"
-    var usrlocalbinrsync: String = "/usr/local/bin/rsync"
-    var configpath: String = "/Rsync/"
+    var rsync: String = "rclone"
+    var usrbinrsync: String = "/usr/bin/rclone"
+    var usrlocalbinrsync: String = "/usr/local/bin/rclone"
+    var configpath: String = "/Rclone/"
 
     // Reference to main View
     private var viewControllertabMain: NSViewController?

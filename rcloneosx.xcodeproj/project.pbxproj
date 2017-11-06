@@ -189,6 +189,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E960CB521FB092D40008D12E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E960CAC71FB091D50008D12E /* ViewControllerAbout.swift */,
+				E960CAFC1FB091DD0008D12E /* ViewControllerBatch.swift */,
+				E960CAD21FB091D70008D12E /* ViewControllerCopyFiles.swift */,
+				E960CAED1FB091DB0008D12E /* ViewControllerCopyFilesSource.swift */,
+				E960CAEE1FB091DB0008D12E /* ViewControllerEdit.swift */,
+				E960CAC11FB091D40008D12E /* ViewControllerExtensions.swift */,
+				E960CAD01FB091D60008D12E /* ViewControllerHelp.swift */,
+				E960CAD71FB091D80008D12E /* ViewControllerInformation.swift */,
+				E960CAC81FB091D50008D12E /* ViewControllerInformationCopyFiles.swift */,
+				E960CAEF1FB091DB0008D12E /* ViewControllerLoggData.swift */,
+				E960CAE61FB091DA0008D12E /* ViewControllerNewConfigurations.swift */,
+				E960CAD51FB091D70008D12E /* ViewControllerNewVersion.swift */,
+				E960CAD81FB091D80008D12E /* ViewControllerProfile.swift */,
+				E960CABB1FB091D30008D12E /* ViewControllerProgressProcess.swift */,
+				E960CAE31FB091DA0008D12E /* ViewControllerReference.swift */,
+				E960CAF21FB091DC0008D12E /* ViewControllerRsyncParameters.swift */,
+				E960CABC1FB091D30008D12E /* ViewControllerScheduledBackupInWork.swift */,
+				E960CAE41FB091DA0008D12E /* ViewControllerScheduleDetails.swift */,
+				E960CAD61FB091D80008D12E /* ViewControllerSsh.swift */,
+				E960CAFE1FB091DD0008D12E /* ViewControllertabMain.swift */,
+				E960CACE1FB091D60008D12E /* ViewControllertabSchedule.swift */,
+				E960CACF1FB091D60008D12E /* ViewControllerUserconfiguration.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E960CB531FB092E70008D12E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E99AA3761FAFA28900C1E86A = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +247,8 @@
 				E99AA3821FAFA28900C1E86A /* AppDelegate.swift */,
 				E99AA3861FAFA28900C1E86A /* Assets.xcassets */,
 				E99AA3881FAFA28900C1E86A /* Main.storyboard */,
+				E960CB531FB092E70008D12E /* Model */,
+				E960CB521FB092D40008D12E /* ViewControllers */,
 				E960CADF1FB091D90008D12E /* Alerts.swift */,
 				E960CADA1FB091D80008D12E /* ArgumentsOneConfiguration.swift */,
 				E960CADB1FB091D80008D12E /* BatchTask.swift */,
@@ -262,28 +300,6 @@
 				E960CAD41FB091D70008D12E /* Ssh.swift */,
 				E960CADC1FB091D80008D12E /* Tools.swift */,
 				E960CADE1FB091D90008D12E /* Userconfiguration.swift */,
-				E960CAC71FB091D50008D12E /* ViewControllerAbout.swift */,
-				E960CAFC1FB091DD0008D12E /* ViewControllerBatch.swift */,
-				E960CAD21FB091D70008D12E /* ViewControllerCopyFiles.swift */,
-				E960CAED1FB091DB0008D12E /* ViewControllerCopyFilesSource.swift */,
-				E960CAEE1FB091DB0008D12E /* ViewControllerEdit.swift */,
-				E960CAC11FB091D40008D12E /* ViewControllerExtensions.swift */,
-				E960CAD01FB091D60008D12E /* ViewControllerHelp.swift */,
-				E960CAD71FB091D80008D12E /* ViewControllerInformation.swift */,
-				E960CAC81FB091D50008D12E /* ViewControllerInformationCopyFiles.swift */,
-				E960CAEF1FB091DB0008D12E /* ViewControllerLoggData.swift */,
-				E960CAE61FB091DA0008D12E /* ViewControllerNewConfigurations.swift */,
-				E960CAD51FB091D70008D12E /* ViewControllerNewVersion.swift */,
-				E960CAD81FB091D80008D12E /* ViewControllerProfile.swift */,
-				E960CABB1FB091D30008D12E /* ViewControllerProgressProcess.swift */,
-				E960CAE31FB091DA0008D12E /* ViewControllerReference.swift */,
-				E960CAF21FB091DC0008D12E /* ViewControllerRsyncParameters.swift */,
-				E960CABC1FB091D30008D12E /* ViewControllerScheduledBackupInWork.swift */,
-				E960CAE41FB091DA0008D12E /* ViewControllerScheduleDetails.swift */,
-				E960CAD61FB091D80008D12E /* ViewControllerSsh.swift */,
-				E960CAFE1FB091DD0008D12E /* ViewControllertabMain.swift */,
-				E960CACE1FB091D60008D12E /* ViewControllertabSchedule.swift */,
-				E960CACF1FB091D60008D12E /* ViewControllerUserconfiguration.swift */,
 				E960CAC21FB091D40008D12E /* ysocket.swift */,
 				E960CAC91FB091D50008D12E /* ytcpsocket.c */,
 				E960CACA1FB091D50008D12E /* ytcpsocket.swift */,
