@@ -173,9 +173,7 @@ protocol DismissViewController: class {
 protocol SetDismisser {
     weak var dismissDelegateMain: DismissViewController? {get}
     weak var dismissDelegateSchedule: DismissViewController? {get}
-    weak var dismissDelegateCopyFiles: DismissViewController? {get}
     weak var dismissDelegateNewConfigurations: DismissViewController? {get}
-    weak var dismissDelegateSsh: DismissViewController? {get}
     func dismissview(viewcontroller: NSViewController, vcontroller: ViewController)
 }
 
@@ -186,14 +184,8 @@ extension SetDismisser {
     weak var dismissDelegateSchedule: DismissViewController? {
         return ViewControllerReference.shared.getvcref(viewcontroller: .vctabschedule) as? ViewControllertabSchedule
     }
-    weak var dismissDelegateCopyFiles: DismissViewController? {
-        return ViewControllerReference.shared.getvcref(viewcontroller: .vccopyfiles) as? ViewControllerCopyFiles
-    }
     weak var dismissDelegateNewConfigurations: DismissViewController? {
         return ViewControllerReference.shared.getvcref(viewcontroller: .vcnewconfigurations) as? ViewControllerNewConfigurations
-    }
-    weak var dismissDelegateSsh: DismissViewController? {
-        return ViewControllerReference.shared.getvcref(viewcontroller: .vcssh) as? ViewControllerSsh
     }
 
     func dismissview(viewcontroller: NSViewController, vcontroller: ViewController) {
@@ -201,12 +193,8 @@ extension SetDismisser {
             self.dismissDelegateMain?.dismiss_view(viewcontroller: (self as? NSViewController)!)
         } else if vcontroller == .vctabschedule {
             self.dismissDelegateSchedule?.dismiss_view(viewcontroller: (self as? NSViewController)!)
-        } else if vcontroller == .vccopyfiles {
-            self.dismissDelegateCopyFiles?.dismiss_view(viewcontroller: (self as? NSViewController)!)
         } else if vcontroller == .vcnewconfigurations {
             self.dismissDelegateNewConfigurations?.dismiss_view(viewcontroller: (self as? NSViewController)!)
-        } else {
-            self.dismissDelegateSsh?.dismiss_view(viewcontroller: (self as? NSViewController)!)
         }
     }
 }
@@ -318,23 +306,15 @@ protocol Information: class {
 
 protocol GetInformation {
     weak var informationDelegateMain: Information? {get}
-    weak var informationDelegateCopyFiles: Information? {get}
 }
 
 extension GetInformation {
     weak var informationDelegateMain: Information? {
         return ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
     }
-    weak var informationDelegateCopyFiles: Information? {
-        return ViewControllerReference.shared.getvcref(viewcontroller: .vccopyfiles) as? ViewControllerCopyFiles
-    }
 
     func getinfo(viewcontroller: ViewController) -> [String] {
-        if viewcontroller == .vctabmain {
-            return (self.informationDelegateMain?.getInformation())!
-        } else {
-            return (self.informationDelegateCopyFiles?.getInformation())!
-        }
+        return (self.informationDelegateMain?.getInformation())!
     }
 }
 // Protocol for doing updates when optional path for rsync is changed
