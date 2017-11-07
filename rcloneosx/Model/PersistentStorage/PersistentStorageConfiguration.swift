@@ -87,16 +87,34 @@ final class PersistentStorageConfiguration: Readwritefiles, SetConfigurations {
             "batch": config.batch,
             "offsiteServer": config.offsiteServer,
             "offsiteUsername": config.offsiteUsername,
-            "parameter1": config.parameter1,
-            "parameter2": config.parameter2,
-            "parameter3": config.parameter3,
-            "parameter4": config.parameter4,
-            "parameter5": config.parameter5,
-            "parameter6": config.parameter6,
             "dryrun": config.dryrun,
             "dateRun": config.dateRun!,
             "hiddenID": config.hiddenID]
         // All parameters parameter8 - parameter14 are set
+        config.parameter1 = self.checkparameter(param: config.parameter1)
+        if config.parameter1 != nil {
+            dict.setObject(config.parameter1!, forKey: "parameter1" as NSCopying)
+        }
+        config.parameter2 = self.checkparameter(param: config.parameter2)
+        if config.parameter2 != nil {
+            dict.setObject(config.parameter2!, forKey: "parameter2" as NSCopying)
+        }
+        config.parameter3 = self.checkparameter(param: config.parameter3)
+        if config.parameter3 != nil {
+            dict.setObject(config.parameter3!, forKey: "parameter3" as NSCopying)
+        }
+        config.parameter4 = self.checkparameter(param: config.parameter4)
+        if config.parameter4 != nil {
+            dict.setObject(config.parameter4!, forKey: "parameter4" as NSCopying)
+        }
+        config.parameter5 = self.checkparameter(param: config.parameter5)
+        if config.parameter5 != nil {
+            dict.setObject(config.parameter5!, forKey: "parameter5" as NSCopying)
+        }
+        config.parameter6 = self.checkparameter(param: config.parameter6)
+        if config.parameter6 != nil {
+            dict.setObject(config.parameter6!, forKey: "parameter6" as NSCopying)
+        }
         config.parameter8 = self.checkparameter(param: config.parameter8)
         if config.parameter8 != nil {
             dict.setObject(config.parameter8!, forKey: "parameter8" as NSCopying)
