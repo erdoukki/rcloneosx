@@ -106,11 +106,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             "offsiteServer": offsiteServer.stringValue,
             "offsiteUsername": offsiteUsername.stringValue,
             "parameter1": self.copy,
-            // "parameter2": self.verbose,
-            // "parameter3": self.compress,
-            // "parameter4": self.delete,
-            // "parameter5": self.eparam,
-            // "parameter6": self.ssh,
             "dryrun": self.dryrun,
             "dateRun": ""]
         dict.setValue("no", forKey: "batch")

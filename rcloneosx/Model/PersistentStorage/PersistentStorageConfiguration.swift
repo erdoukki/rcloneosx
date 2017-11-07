@@ -68,9 +68,7 @@ final class PersistentStorageConfiguration: Readwritefiles, SetConfigurations {
             for i in 0 ..< configs.count {
                 array.append(self.dictionaryFromconfig(index: i))
             }
-            // backup part
             dict.setObject(self.maxhiddenID + 1, forKey: "hiddenID" as NSCopying)
-            dict.removeObject(forKey: "singleFile")
             array.append(dict)
             self.configurations!.appendconfigurationstomemory(dict: array[array.count - 1])
         }
