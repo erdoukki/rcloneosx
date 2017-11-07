@@ -32,8 +32,6 @@ struct Configuration {
     var parameter12: String?
     var parameter13: String?
     var parameter14: String?
-    var rsyncdaemon: Int?
-    var sshport: Int?
 
     init(dictionary: NSDictionary) {
         // Parameters 1 - 6 is mandatory, set by RsyncOSX.
@@ -90,13 +88,6 @@ struct Configuration {
         }
         if let parameter14 = dictionary.object(forKey: "parameter14") {
             self.parameter14 = parameter14 as? String
-        }
-
-        if let rsyncdaemon = dictionary.object(forKey: "rsyncdaemon") {
-            self.rsyncdaemon = rsyncdaemon as? Int
-        }
-        if let sshport = dictionary.object(forKey: "sshport") {
-            self.sshport = sshport as? Int
         }
     }
 }

@@ -175,14 +175,7 @@ class ViewControllerRsyncParameters: NSViewController, SetConfigurations, SetDis
             self.viewParameter13.stringValue = self.parameters!.getParameter(rsyncparameternumber: 13).1
             self.setValueComboBox(combobox: self.parameter14, index: self.parameters!.getParameter(rsyncparameternumber: 14).0)
             self.viewParameter14.stringValue = self.parameters!.getParameter(rsyncparameternumber: 14).1
-            if configurations[index].rsyncdaemon != nil {
-                self.rsyncdaemon.state = NSControl.StateValue(rawValue: configurations[index].rsyncdaemon!)
-            } else {
-                self.rsyncdaemon.state = .off
-            }
-            if configurations[index].sshport != nil {
-                self.sshport.stringValue = String(configurations[index].sshport!)
-            }
+
         }
     }
 
@@ -213,10 +206,6 @@ class ViewControllerRsyncParameters: NSViewController, SetConfigurations, SetDis
                 self.parameter13.indexOfSelectedItem, value: getValue(value: self.viewParameter13.stringValue))
             configurations[index].parameter14 = self.parameters!.getRsyncParameter(indexComboBox:
                 self.parameter14.indexOfSelectedItem, value: getValue(value: self.viewParameter14.stringValue))
-            configurations[index].rsyncdaemon = self.rsyncdaemon.state.rawValue
-            if let port = self.sshport {
-                configurations[index].sshport = Int(port.stringValue)
-            }
             // Update configuration in memory before saving
             self.configurations!.updateConfigurations(configurations[index], index: index)
             // notify an update

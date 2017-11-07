@@ -41,15 +41,6 @@ class ViewControllerEdit: NSViewController, SetConfigurations, SetDismisser, Get
         config[self.index!].offsiteServer = self.offsiteServer.stringValue
         config[self.index!].offsiteUsername = self.offsiteUsername.stringValue
         config[self.index!].backupID = self.backupID.stringValue
-        let port = self.sshport.stringValue
-        if port.isEmpty == false {
-            if let port = Int(port) {
-                config[self.index!].sshport = port
-            }
-        } else {
-            config[self.index!].sshport = nil
-        }
-        config[self.index!].rsyncdaemon = self.rsyncdaemon.state.rawValue
         self.configurations!.updateConfigurations(config[self.index!], index: self.index!)
         self.dismissview(viewcontroller: self, vcontroller: .vctabmain)
     }
@@ -80,12 +71,6 @@ class ViewControllerEdit: NSViewController, SetConfigurations, SetDismisser, Get
         self.offsiteUsername.stringValue = config.offsiteUsername
         self.offsiteServer.stringValue = config.offsiteServer
         self.backupID.stringValue = config.backupID
-        if let port = config.sshport {
-            self.sshport.stringValue = String(port)
-        }
-        if let rsyncdaemon = config.rsyncdaemon {
-            self.rsyncdaemon.state = NSControl.StateValue(rawValue: rsyncdaemon)
-        }
     }
 
 }

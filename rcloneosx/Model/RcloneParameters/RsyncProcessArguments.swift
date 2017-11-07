@@ -40,29 +40,6 @@ class RsyncProcessArguments {
         }
         self.arguments!.append(parameter4)
         if forDisplay {self.arguments!.append(" ")}
-        if offsiteServer.isEmpty {
-            // nothing
-        } else {
-            self.sshportparameter(config, forDisplay: forDisplay)
-        }
-    }
-
-    private func sshportparameter(_ config: Configuration, forDisplay: Bool) {
-        let parameter5: String = config.parameter5!
-        let parameter6: String = config.parameter6!
-        // -e
-        self.arguments!.append(parameter5)
-        if forDisplay {self.arguments!.append(" ")}
-        if let sshport = config.sshport {
-            // "ssh -p xxx"
-            if forDisplay {self.arguments!.append(" \"")}
-            self.arguments!.append("ssh -p " + String(sshport))
-            if forDisplay {self.arguments!.append("\" ")}
-        } else {
-            // ssh
-            self.arguments!.append(parameter6)
-        }
-        if forDisplay {self.arguments!.append(" ")}
     }
 
     // Compute user selected parameters parameter8 ... parameter14
@@ -141,15 +118,7 @@ class RsyncProcessArguments {
         self.offsiteUsername = config.offsiteUsername
         self.offsiteServer = config.offsiteServer
         if self.offsiteServer!.isEmpty == false {
-            if config.rsyncdaemon != nil {
-                if config.rsyncdaemon == 1 {
-                    self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + "::" + self.offsiteCatalog!
-                } else {
-                    self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + ":" + self.offsiteCatalog!
-                }
-            } else {
-                self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + ":" + self.offsiteCatalog!
-            }
+            self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + ":" + self.offsiteCatalog!
         }
         self.setParameters1To6(config, dryRun: dryRun, forDisplay: forDisplay)
         self.setParameters8To14(config, dryRun: dryRun, forDisplay: forDisplay)

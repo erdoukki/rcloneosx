@@ -129,25 +129,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.offsiteCatalog.stringValue += "/"
             dict.setValue(self.offsiteCatalog.stringValue, forKey: "offsiteCatalog")
         }
-        dict.setObject(self.rsyncdaemon.state, forKey: "rsyncdaemon" as NSCopying)
-        if sshport.stringValue != "" {
-            if let port: Int = Int(self.sshport.stringValue) {
-                dict.setObject(port, forKey: "sshport" as NSCopying)
-            }
-        }
-        // If add button is selected without any values
-        /*
-        guard self.localCatalog.stringValue != "/" else {
-            self.offsiteCatalog.stringValue = ""
-            self.localCatalog.stringValue = ""
-            return
-        }
-        guard self.offsiteCatalog.stringValue != "/" else {
-            self.offsiteCatalog.stringValue = ""
-            self.localCatalog.stringValue = ""
-            return
-        }
-        */
         guard self.offsiteCatalog.stringValue != self.localCatalog.stringValue else {
             self.equal.isHidden = false
             return
