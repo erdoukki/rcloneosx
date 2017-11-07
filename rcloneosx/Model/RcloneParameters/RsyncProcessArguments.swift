@@ -20,33 +20,28 @@ class RsyncProcessArguments {
     var offsiteServer: String?
     var remoteargs: String?
 
-    // Set initial parameter1 .. paramater6, parameters are computed by RsyncOSX
-
-    private func setParameters1To6(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
-        let parameter1: String = config.parameter1!
-        let parameter2: String = config.parameter2!
-        let parameter3: String = config.parameter3!
-        let parameter4: String = config.parameter4!
-        let offsiteServer: String = config.offsiteServer
-        self.arguments!.append(parameter1)
-        if forDisplay {self.arguments!.append(" ")}
-        self.arguments!.append(parameter2)
-        if forDisplay {self.arguments!.append(" ")}
-        if offsiteServer.isEmpty {
-            // nothing
-        } else {
-            self.arguments!.append(parameter3)
-            if forDisplay {self.arguments!.append(" ")}
-        }
-        self.arguments!.append(parameter4)
-        if forDisplay {self.arguments!.append(" ")}
-    }
-
-    // Compute user selected parameters parameter8 ... parameter14
     // Brute force, check every parameter, not special elegant, but it works
 
-    private func setParameters8To14(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
+    private func setParameters1To14(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
         self.stats = false
+        if config.parameter1 != nil {
+            self.appendParameter(parameter: config.parameter1!, forDisplay: forDisplay)
+        }
+        if config.parameter2 != nil {
+            self.appendParameter(parameter: config.parameter2!, forDisplay: forDisplay)
+        }
+        if config.parameter3 != nil {
+            self.appendParameter(parameter: config.parameter3!, forDisplay: forDisplay)
+        }
+        if config.parameter4 != nil {
+            self.appendParameter(parameter: config.parameter4!, forDisplay: forDisplay)
+        }
+        if config.parameter5 != nil {
+            self.appendParameter(parameter: config.parameter5!, forDisplay: forDisplay)
+        }
+        if config.parameter6 != nil {
+            self.appendParameter(parameter: config.parameter6!, forDisplay: forDisplay)
+        }
         if config.parameter8 != nil {
             self.appendParameter(parameter: config.parameter8!, forDisplay: forDisplay)
         }
@@ -120,8 +115,7 @@ class RsyncProcessArguments {
         if self.offsiteServer!.isEmpty == false {
             self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + ":" + self.offsiteCatalog!
         }
-        self.setParameters1To6(config, dryRun: dryRun, forDisplay: forDisplay)
-        self.setParameters8To14(config, dryRun: dryRun, forDisplay: forDisplay)
+        self.setParameters1To14(config, dryRun: dryRun, forDisplay: forDisplay)
         switch config.task {
         case "backup":
             self.argumentsforbackup(dryRun: dryRun, forDisplay: forDisplay)
