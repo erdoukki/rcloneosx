@@ -34,7 +34,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     @IBOutlet weak var offsiteUsername: NSTextField!
     @IBOutlet weak var offsiteServer: NSTextField!
     @IBOutlet weak var backupID: NSTextField!
-    @IBOutlet weak var singleFile: NSButton!
     @IBOutlet weak var profilInfo: NSTextField!
     @IBOutlet weak var equal: NSTextField!
 
@@ -95,7 +94,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.offsiteUsername.stringValue = ""
         self.offsiteServer.stringValue = ""
         self.backupID.stringValue = ""
-        self.singleFile.state = .off
         self.equal.isHidden = true
     }
 
@@ -114,22 +112,10 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             // "parameter5": self.eparam,
             // "parameter6": self.ssh,
             "dryrun": self.dryrun,
-            "dateRun": "",
-            "singleFile": 0]
+            "dateRun": ""]
         dict.setValue("no", forKey: "batch")
-        if self.singleFile.state == .on { dict.setValue(1, forKey: "singleFile")}
-        if !self.localCatalog.stringValue.hasSuffix("/") && self.singleFile.state == .off {
-            self.localCatalog.stringValue += "/"
-            dict.setValue(self.localCatalog.stringValue, forKey: "localCatalog")
-        }
-        if !self.offsiteCatalog.stringValue.hasSuffix("/") {
-            self.offsiteCatalog.stringValue += "/"
-            dict.setValue(self.offsiteCatalog.stringValue, forKey: "offsiteCatalog")
-        }
-        guard self.offsiteCatalog.stringValue != self.localCatalog.stringValue else {
-            self.equal.isHidden = false
-            return
-        }
+        dict.setValue(self.localCatalog.stringValue, forKey: "localCatalog")
+        dict.setValue(self.offsiteCatalog.stringValue, forKey: "offsiteCatalog")
         self.configurations!.addNewConfigurations(dict)
         self.newconfigurations?.appendnewConfigurations(dict: dict)
         self.tabledata = self.newconfigurations!.getnewConfigurations()

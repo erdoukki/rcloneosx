@@ -59,7 +59,6 @@ final class PersistentStorageConfiguration: Readwritefiles, SetConfigurations {
     func newConfigurations (_ dict: NSMutableDictionary) {
         let localCatalog = dict.value(forKey: "localCatalog") as? String
         let offsiteCatalog = dict.value(forKey: "offsiteCatalog") as? String
-        let singleFile = dict.value(forKey: "singleFile") as? Int
         // If localCatalog == offsiteCataog do NOT append
         if localCatalog != offsiteCatalog {
             var array = Array<NSDictionary>()
@@ -73,15 +72,7 @@ final class PersistentStorageConfiguration: Readwritefiles, SetConfigurations {
             dict.setObject(self.maxhiddenID + 1, forKey: "hiddenID" as NSCopying)
             dict.removeObject(forKey: "singleFile")
             array.append(dict)
-            if singleFile == 0 {
-                array.append(self.setRestorePart(dict: dict))
-                // Append the two records to Configuration i memory
-                self.configurations!.appendconfigurationstomemory(dict: array[array.count - 2])
-                self.configurations!.appendconfigurationstomemory(dict: array[array.count - 1])
-            } else {
-                // Singlefile Configuration - only adds the copy part
-                self.configurations!.appendconfigurationstomemory(dict: array[array.count - 1])
-            }
+            self.configurations!.appendconfigurationstomemory(dict: array[array.count - 1])
         }
     }
 
