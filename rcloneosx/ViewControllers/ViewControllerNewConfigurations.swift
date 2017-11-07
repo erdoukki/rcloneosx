@@ -15,12 +15,12 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     var storageapi: PersistentStorageAPI?
     var newconfigurations: NewConfigurations?
     var tabledata: [NSMutableDictionary]?
-    let archive: String = "--archive"
-    let verbose: String = "--verbose"
-    let compress: String = "--compress"
-    let delete: String = "--delete"
-    let eparam: String = "-e"
-    let ssh: String = "ssh"
+    let copy: String = "copy"
+    // let verbose: String = "--verbose"
+    // let compress: String = "--compress"
+    // let delete: String = "--delete"
+    // let eparam: String = "-e"
+    // let ssh: String = "ssh"
     let dryrun: String = "--dry-run"
 
     @IBOutlet weak var newTableView: NSTableView!
@@ -34,9 +34,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     @IBOutlet weak var offsiteUsername: NSTextField!
     @IBOutlet weak var offsiteServer: NSTextField!
     @IBOutlet weak var backupID: NSTextField!
-    @IBOutlet weak var sshport: NSTextField!
-    @IBOutlet weak var rsyncdaemon: NSButton!
-    @IBOutlet weak var singleFile: NSButton!
     @IBOutlet weak var profilInfo: NSTextField!
     @IBOutlet weak var equal: NSTextField!
 
@@ -87,18 +84,16 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     }
 
     private func setFields() {
-        self.viewParameter1.stringValue = archive
-        self.viewParameter2.stringValue = verbose
-        self.viewParameter3.stringValue = compress
-        self.viewParameter4.stringValue = delete
-        self.viewParameter5.stringValue = eparam + " " + ssh
+        self.viewParameter1.stringValue = copy
+        // self.viewParameter2.stringValue = verbose
+        // self.viewParameter3.stringValue = compress
+        // self.viewParameter4.stringValue = delete
+        // self.viewParameter5.stringValue = eparam + " " + ssh
         self.localCatalog.stringValue = ""
         self.offsiteCatalog.stringValue = ""
         self.offsiteUsername.stringValue = ""
         self.offsiteServer.stringValue = ""
         self.backupID.stringValue = ""
-        self.rsyncdaemon.state = .off
-        self.singleFile.state = .off
         self.equal.isHidden = true
     }
 
@@ -110,46 +105,12 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             "offsiteCatalog": offsiteCatalog.stringValue,
             "offsiteServer": offsiteServer.stringValue,
             "offsiteUsername": offsiteUsername.stringValue,
-            "parameter1": self.archive,
-            "parameter2": self.verbose,
-            "parameter3": self.compress,
-            "parameter4": self.delete,
-            "parameter5": self.eparam,
-            "parameter6": self.ssh,
+            "parameter1": self.copy,
             "dryrun": self.dryrun,
-            "dateRun": "",
-            "singleFile": 0]
+            "dateRun": ""]
         dict.setValue("no", forKey: "batch")
-        if self.singleFile.state == .on { dict.setValue(1, forKey: "singleFile")}
-        if !self.localCatalog.stringValue.hasSuffix("/") && self.singleFile.state == .off {
-            self.localCatalog.stringValue += "/"
-            dict.setValue(self.localCatalog.stringValue, forKey: "localCatalog")
-        }
-        if !self.offsiteCatalog.stringValue.hasSuffix("/") {
-            self.offsiteCatalog.stringValue += "/"
-            dict.setValue(self.offsiteCatalog.stringValue, forKey: "offsiteCatalog")
-        }
-        dict.setObject(self.rsyncdaemon.state, forKey: "rsyncdaemon" as NSCopying)
-        if sshport.stringValue != "" {
-            if let port: Int = Int(self.sshport.stringValue) {
-                dict.setObject(port, forKey: "sshport" as NSCopying)
-            }
-        }
-        // If add button is selected without any values
-        guard self.localCatalog.stringValue != "/" else {
-            self.offsiteCatalog.stringValue = ""
-            self.localCatalog.stringValue = ""
-            return
-        }
-        guard self.offsiteCatalog.stringValue != "/" else {
-            self.offsiteCatalog.stringValue = ""
-            self.localCatalog.stringValue = ""
-            return
-        }
-        guard self.offsiteCatalog.stringValue != self.localCatalog.stringValue else {
-            self.equal.isHidden = false
-            return
-        }
+        dict.setValue(self.localCatalog.stringValue, forKey: "localCatalog")
+        dict.setValue(self.offsiteCatalog.stringValue, forKey: "offsiteCatalog")
         self.configurations!.addNewConfigurations(dict)
         self.newconfigurations?.appendnewConfigurations(dict: dict)
         self.tabledata = self.newconfigurations!.getnewConfigurations()
