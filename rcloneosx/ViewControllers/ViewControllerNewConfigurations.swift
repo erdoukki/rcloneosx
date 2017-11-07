@@ -16,7 +16,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     var newconfigurations: NewConfigurations?
     var tabledata: [NSMutableDictionary]?
     let copy: String = "copy"
-    // let verbose: String = "--verbose"
+    let verbose: String = "--verbose"
     // let compress: String = "--compress"
     // let delete: String = "--delete"
     // let eparam: String = "-e"
@@ -84,8 +84,8 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     }
 
     private func setFields() {
-        self.viewParameter1.stringValue = copy
-        // self.viewParameter2.stringValue = verbose
+        self.viewParameter1.stringValue = self.copy
+        self.viewParameter2.stringValue = self.verbose
         // self.viewParameter3.stringValue = compress
         // self.viewParameter4.stringValue = delete
         // self.viewParameter5.stringValue = eparam + " " + ssh
@@ -106,6 +106,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             "offsiteServer": offsiteServer.stringValue,
             "offsiteUsername": offsiteUsername.stringValue,
             "parameter1": self.copy,
+            "parameter2": self.verbose,
             "dryrun": self.dryrun,
             "dateRun": ""]
         dict.setValue("no", forKey: "batch")

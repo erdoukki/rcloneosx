@@ -20,11 +20,13 @@ class RsyncProcessArguments {
     var remoteargs: String?
 
     // Brute force, check every parameter, not special elegant, but it works
-
-    private func setParameters1To14(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
+    private func rclonecommand(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
         if config.parameter1 != nil {
             self.appendParameter(parameter: config.parameter1!, forDisplay: forDisplay)
         }
+    }
+
+    private func setParameters2To14(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
         if config.parameter2 != nil {
             self.appendParameter(parameter: config.parameter2!, forDisplay: forDisplay)
         }
@@ -69,10 +71,6 @@ class RsyncProcessArguments {
         if forDisplay {self.arguments!.append(" ")}
     }
 
-    // Check userselected parameter and append it
-    // to arguments array passed to rsync or displayed
-    // on screen.
-
     private func appendParameter (parameter: String, forDisplay: Bool) {
         if parameter.count > 1 {
             self.arguments!.append(parameter)
@@ -98,17 +96,7 @@ class RsyncProcessArguments {
         if self.offsiteServer!.isEmpty == false {
             self.remoteargs = self.offsiteServer! + ":" + self.offsiteCatalog!
         }
-        self.setParameters1To14(config, dryRun: dryRun, forDisplay: forDisplay)
-        self.argumentsforbackup(dryRun: dryRun, forDisplay: forDisplay)
-        // Append --stats parameter to collect info about run
-        if dryRun {
-            self.dryrunparameter(config, forDisplay: forDisplay)
-        }
-        return self.arguments!
-    }
-
-    private func argumentsforbackup(dryRun: Bool, forDisplay: Bool) {
-        // Backup
+        self.rclonecommand(config, dryRun: dryRun, forDisplay: forDisplay)
         self.arguments!.append(self.localCatalog!)
         if self.offsiteServer!.isEmpty {
             if forDisplay {self.arguments!.append(" ")}
@@ -119,6 +107,11 @@ class RsyncProcessArguments {
             self.arguments!.append(remoteargs!)
             if forDisplay {self.arguments!.append(" ")}
         }
+        if dryRun {
+            self.dryrunparameter(config, forDisplay: forDisplay)
+        }
+        self.setParameters2To14(config, dryRun: dryRun, forDisplay: forDisplay)
+        return self.arguments!
     }
 
     init () {
