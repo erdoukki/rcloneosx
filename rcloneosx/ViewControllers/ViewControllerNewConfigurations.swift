@@ -34,8 +34,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     @IBOutlet weak var offsiteUsername: NSTextField!
     @IBOutlet weak var offsiteServer: NSTextField!
     @IBOutlet weak var backupID: NSTextField!
-    @IBOutlet weak var sshport: NSTextField!
-    @IBOutlet weak var rsyncdaemon: NSButton!
     @IBOutlet weak var singleFile: NSButton!
     @IBOutlet weak var profilInfo: NSTextField!
     @IBOutlet weak var equal: NSTextField!
@@ -97,7 +95,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.offsiteUsername.stringValue = ""
         self.offsiteServer.stringValue = ""
         self.backupID.stringValue = ""
-        self.rsyncdaemon.state = .off
         self.singleFile.state = .off
         self.equal.isHidden = true
     }
