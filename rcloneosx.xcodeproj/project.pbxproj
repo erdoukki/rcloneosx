@@ -649,6 +649,7 @@
 				DEVELOPMENT_TEAM = 93M47F4H9T;
 				INFOPLIST_FILE = rcloneosx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.rcloneosx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "rcloneosx/rcloneosx-Bridging-Header.h";
@@ -668,6 +669,7 @@
 				DEVELOPMENT_TEAM = 93M47F4H9T;
 				INFOPLIST_FILE = rcloneosx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.rcloneosx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "rcloneosx/rcloneosx-Bridging-Header.h";

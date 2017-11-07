@@ -23,10 +23,10 @@ class RsyncProcessArguments {
     // Set initial parameter1 .. paramater6, parameters are computed by RsyncOSX
 
     private func setParameters1To6(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
-        let parameter1: String = config.parameter1
-        let parameter2: String = config.parameter2
-        let parameter3: String = config.parameter3
-        let parameter4: String = config.parameter4
+        let parameter1: String = config.parameter1!
+        let parameter2: String = config.parameter2!
+        let parameter3: String = config.parameter3!
+        let parameter4: String = config.parameter4!
         let offsiteServer: String = config.offsiteServer
         self.arguments!.append(parameter1)
         if forDisplay {self.arguments!.append(" ")}
@@ -48,8 +48,8 @@ class RsyncProcessArguments {
     }
 
     private func sshportparameter(_ config: Configuration, forDisplay: Bool) {
-        let parameter5: String = config.parameter5
-        let parameter6: String = config.parameter6
+        let parameter5: String = config.parameter5!
+        let parameter6: String = config.parameter6!
         // -e
         self.arguments!.append(parameter5)
         if forDisplay {self.arguments!.append(" ")}

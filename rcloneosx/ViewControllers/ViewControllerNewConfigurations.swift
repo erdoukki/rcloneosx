@@ -21,7 +21,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     // let delete: String = "--delete"
     // let eparam: String = "-e"
     // let ssh: String = "ssh"
-    // let dryrun: String = "--dry-run"
+    let dryrun: String = "--dry-run"
 
     @IBOutlet weak var newTableView: NSTableView!
     @IBOutlet weak var viewParameter1: NSTextField!
@@ -116,7 +116,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             // "parameter4": self.delete,
             // "parameter5": self.eparam,
             // "parameter6": self.ssh,
-            // "dryrun": self.dryrun,
+            "dryrun": self.dryrun,
             "dateRun": "",
             "singleFile": 0]
         dict.setValue("no", forKey: "batch")

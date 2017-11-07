@@ -162,15 +162,27 @@ final class PersistentStorageConfiguration: Readwritefiles, SetConfigurations {
             "batch": dict.value(forKey: "batch")!,
             "offsiteServer": dict.value(forKey: "offsiteServer")!,
             "offsiteUsername": dict.value(forKey: "offsiteUsername")!,
-            "parameter1": dict.value(forKey: "parameter1")!,
-            "parameter2": dict.value(forKey: "parameter2")!,
-            "parameter3": dict.value(forKey: "parameter3")!,
-            "parameter4": dict.value(forKey: "parameter4")!,
-            "parameter5": dict.value(forKey: "parameter5")!,
-            "parameter6": dict.value(forKey: "parameter6")!,
             "dryrun": dict.value(forKey: "dryrun")!,
             "dateRun": "",
             "hiddenID": self.maxhiddenID + 2]
+        if dict.value(forKey: "parameter1") != nil {
+            restore.setObject(dict.value(forKey: "parameter1")!, forKey: "parameter1" as NSCopying)
+        }
+        if dict.value(forKey: "parameter2") != nil {
+            restore.setObject(dict.value(forKey: "parameter2")!, forKey: "parameter2" as NSCopying)
+        }
+        if dict.value(forKey: "parameter3") != nil {
+            restore.setObject(dict.value(forKey: "parameter3")!, forKey: "parameter3" as NSCopying)
+        }
+        if dict.value(forKey: "parameter4") != nil {
+            restore.setObject(dict.value(forKey: "parameter4")!, forKey: "parameter4" as NSCopying)
+        }
+        if dict.value(forKey: "parameter5") != nil {
+            restore.setObject(dict.value(forKey: "parameter5")!, forKey: "parameter5" as NSCopying)
+        }
+        if dict.value(forKey: "parameter6") != nil {
+            restore.setObject(dict.value(forKey: "parameter6")!, forKey: "parameter6" as NSCopying)
+        }
         if dict.value(forKey: "parameter8") != nil {
             restore.setObject(dict.value(forKey: "parameter8")!, forKey: "parameter8" as NSCopying)
         }

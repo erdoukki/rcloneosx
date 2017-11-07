@@ -155,11 +155,11 @@ class ViewControllerRsyncParameters: NSViewController, SetConfigurations, SetDis
             self.suffixButton.state = .off
             self.suffixButton2.state = .off
             self.donotdeletebutton.state = .off
-            self.viewParameter1.stringValue = configurations[index].parameter1
-            self.viewParameter2.stringValue = configurations[index].parameter2
-            self.viewParameter3.stringValue = configurations[index].parameter3
-            self.viewParameter4.stringValue = configurations[index].parameter4
-            self.viewParameter5.stringValue = configurations[index].parameter5 + " " + configurations[index].parameter6
+            self.viewParameter1.stringValue = configurations[index].parameter1!
+            self.viewParameter2.stringValue = configurations[index].parameter2!
+            self.viewParameter3.stringValue = configurations[index].parameter3!
+            self.viewParameter4.stringValue = configurations[index].parameter4!
+            self.viewParameter5.stringValue = configurations[index].parameter5! + " " + configurations[index].parameter6!
             // There are seven user seleected rsync parameters
             self.setValueComboBox(combobox: self.parameter8, index: self.parameters!.getParameter(rsyncparameternumber: 8).0)
             self.viewParameter8.stringValue = self.parameters!.getParameter(rsyncparameternumber: 8).1
