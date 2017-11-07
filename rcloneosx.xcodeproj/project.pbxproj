@@ -137,7 +137,6 @@
 		E99AA3861FAFA28900C1E86A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E99AA3891FAFA28900C1E86A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E99AA38B1FAFA28900C1E86A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E99AA38C1FAFA28900C1E86A /* rcloneosx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rcloneosx.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,7 +377,6 @@
 				E960CB531FB092E70008D12E /* Model */,
 				E99AA38B1FAFA28900C1E86A /* Info.plist */,
 				E960CAB51FB091D20008D12E /* rcloneosx-Bridging-Header.h */,
-				E99AA38C1FAFA28900C1E86A /* rcloneosx.entitlements */,
 			);
 			path = rcloneosx;
 			sourceTree = "<group>";
@@ -643,7 +641,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = rcloneosx/rcloneosx.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 93M47F4H9T;
@@ -663,7 +660,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = rcloneosx/rcloneosx.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 93M47F4H9T;
