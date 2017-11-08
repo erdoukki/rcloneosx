@@ -18,6 +18,7 @@ Adding cloud services is done by using the command line interface `rclone config
 * logging tasks (only date, no numbers)
 * profile, storing tasks in profiles
 * change and delete configurations
+* some parameters are working (just a few tests)
 
 ### What is not working
 
@@ -50,7 +51,12 @@ And batch work is working "out of the box"
 ![](Screenshots/rclone9.png)
 ![](Screenshots/rclone10.png)
 
-### Mircosoft Onedrive
+#### Parameters to rclone
+Some parameters are working...
+![](Screenshots/parameters1.png)
+![](Screenshots/parameters2.png)
+
+### Microsoft Onedrive
 
 Adding a configuration...
 ![](Screenshots/onedrive1.png)
