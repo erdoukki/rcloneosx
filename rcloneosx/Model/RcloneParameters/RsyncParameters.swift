@@ -18,52 +18,19 @@ final class RsyncParameters {
     private let rsyncArguments: Array<Argument> = [
         ("user", 1),
         ("delete", 0),
-        ("--backup", 0),
-        ("--backup-dir", 1),
-        ("--exclude-from", 1),
-        ("--include-from", 1),
-        ("--files-from", 1),
-        ("--max-size", 1),
-        ("--suffix", 1),
-        ("--max-delete", 1)]
+        ("--bwlimit", 1),
+        ("--transfers", 1),
+        ("--exclude", 1),
+        ("--backup-dir", 1)]
 
     // Array storing combobox values
     private var comboBoxValues: Array<String>?
 
     // Preselected parameters for storing a backup of deleted or changed files before
     // rsync synchronises the directories
-    private let backupString = ["--backup", "--backup-dir=../backup"]
-    private let suffixString = ["--suffix=_`date +'%Y-%m-%d.%H.%M'`"]
-    private let suffixString2 = ["--suffix=_$(date +%Y-%m-%d.%H.%M)"]
-    private let donotdeletefiles = ["--max-delete=-1"]
 
     // Reference to config
     private var config: Configuration?
-
-    /// Function for getting string for backup parameters
-    /// - parameter none: none
-    /// - return : array of String
-    func getBackupString() -> Array<String> {
-        return self.backupString
-    }
-
-    /// Function for getting string for suffix parameter
-    /// - parameter none: none
-    /// - return : array of String
-    func getSuffixString() -> Array<String> {
-        return self.suffixString
-    }
-
-    /// Function for getting string for alternative suffix parameter
-    /// - parameter none: none
-    /// - return : array of String
-    func getSuffixString2() -> Array<String> {
-        return self.suffixString2
-    }
-
-    func getdonotdeletefilesString() -> Array<String> {
-        return self.donotdeletefiles
-    }
 
     /// Function for getting for rsync arguments to use in ComboBoxes in ViewControllerRsyncParameters
     /// - parameter none: none
