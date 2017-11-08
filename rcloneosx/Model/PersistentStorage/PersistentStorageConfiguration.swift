@@ -84,7 +84,6 @@ final class PersistentStorageConfiguration: Readwritefiles, SetConfigurations {
             "offsiteCatalog": config.offsiteCatalog,
             "batch": config.batch,
             "offsiteServer": config.offsiteServer,
-            "offsiteUsername": config.offsiteUsername,
             "dryrun": config.dryrun,
             "dateRun": config.dateRun!,
             "hiddenID": config.hiddenID]

@@ -13,7 +13,6 @@ struct Configuration {
     var task: String
     var localCatalog: String
     var offsiteCatalog: String
-    var offsiteUsername: String
     var offsiteServer: String
     var backupID: String
     var batch: String
@@ -39,7 +38,6 @@ struct Configuration {
         self.task = (dictionary.object(forKey: "task") as? String)!
         self.localCatalog = (dictionary.object(forKey: "localCatalog") as? String)!
         self.offsiteCatalog = (dictionary.object(forKey: "offsiteCatalog") as? String)!
-        self.offsiteUsername = (dictionary.object(forKey: "offsiteUsername") as? String)!
         self.batch = (dictionary.object(forKey: "batch") as? String)!
         self.dryrun = (dictionary.object(forKey: "dryrun") as? String)!
         self.offsiteServer = (dictionary.object(forKey: "offsiteServer") as? String)!

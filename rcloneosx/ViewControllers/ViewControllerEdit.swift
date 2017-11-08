@@ -32,7 +32,6 @@ class ViewControllerEdit: NSViewController, SetConfigurations, SetDismisser, Get
         config[self.index!].localCatalog = self.localCatalog.stringValue
         config[self.index!].offsiteCatalog = self.offsiteCatalog.stringValue
         config[self.index!].offsiteServer = self.offsiteServer.stringValue
-        config[self.index!].offsiteUsername = self.offsiteUsername.stringValue
         config[self.index!].backupID = self.backupID.stringValue
         self.configurations!.updateConfigurations(config[self.index!], index: self.index!)
         self.dismissview(viewcontroller: self, vcontroller: .vctabmain)
@@ -56,7 +55,6 @@ class ViewControllerEdit: NSViewController, SetConfigurations, SetDismisser, Get
         let config: Configuration = self.configurations!.getConfigurations()[self.index!]
         self.localCatalog.stringValue = config.localCatalog
         self.offsiteCatalog.stringValue = config.offsiteCatalog
-        self.offsiteUsername.stringValue = config.offsiteUsername
         self.offsiteServer.stringValue = config.offsiteServer
         self.backupID.stringValue = config.backupID
     }

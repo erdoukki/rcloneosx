@@ -91,7 +91,6 @@ class RsyncProcessArguments {
     func argumentsRsync (_ config: Configuration, dryRun: Bool, forDisplay: Bool) -> Array<String> {
         self.localCatalog = config.localCatalog
         self.offsiteCatalog = config.offsiteCatalog
-        self.offsiteUsername = config.offsiteUsername
         self.offsiteServer = config.offsiteServer
         if self.offsiteServer!.isEmpty == false {
             self.remoteargs = self.offsiteServer! + ":" + self.offsiteCatalog!
