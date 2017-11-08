@@ -98,6 +98,14 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     }
 
     @IBAction func addConfig(_ sender: NSButton) {
+        guard self.offsiteCatalog.stringValue != self.localCatalog.stringValue else {
+            self.equal.isHidden = false
+            return
+        }
+        guard self.offsiteServer.stringValue.isEmpty == false else {
+            self.empty.isHidden = false
+            return
+        }
         let dict: NSMutableDictionary = [
             "task": "backup",
             "backupID": backupID.stringValue,
