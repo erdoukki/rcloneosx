@@ -21,7 +21,9 @@ final class RsyncParameters {
         ("--bwlimit", 1),
         ("--transfers", 1),
         ("--exclude", 1),
-        ("--backup-dir", 1)]
+        ("--backup-dir", 1),
+        ("--no-traverse", 0),
+        ("--no-gzip-encoding", 0)]
 
     // Array storing combobox values
     private var comboBoxValues: Array<String>?
