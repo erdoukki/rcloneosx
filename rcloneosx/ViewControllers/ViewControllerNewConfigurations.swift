@@ -31,12 +31,12 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     @IBOutlet weak var viewParameter5: NSTextField!
     @IBOutlet weak var localCatalog: NSTextField!
     @IBOutlet weak var offsiteCatalog: NSTextField!
-    @IBOutlet weak var offsiteUsername: NSTextField!
     @IBOutlet weak var offsiteServer: NSTextField!
     @IBOutlet weak var backupID: NSTextField!
     @IBOutlet weak var profilInfo: NSTextField!
     @IBOutlet weak var equal: NSTextField!
-
+    @IBOutlet weak var empty: NSTextField!
+    
     @IBAction func cleartable(_ sender: NSButton) {
         self.newconfigurations = nil
         self.newconfigurations = NewConfigurations()
@@ -91,10 +91,10 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         // self.viewParameter5.stringValue = eparam + " " + ssh
         self.localCatalog.stringValue = ""
         self.offsiteCatalog.stringValue = ""
-        self.offsiteUsername.stringValue = ""
         self.offsiteServer.stringValue = ""
         self.backupID.stringValue = ""
         self.equal.isHidden = true
+        self.empty.isHidden = true
     }
 
     @IBAction func addConfig(_ sender: NSButton) {
@@ -104,7 +104,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             "localCatalog": localCatalog.stringValue,
             "offsiteCatalog": offsiteCatalog.stringValue,
             "offsiteServer": offsiteServer.stringValue,
-            "offsiteUsername": offsiteUsername.stringValue,
             "parameter1": self.copy,
             "parameter2": self.verbose,
             "dryrun": self.dryrun,
