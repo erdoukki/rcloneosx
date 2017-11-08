@@ -174,7 +174,6 @@ protocol SetDismisser {
     weak var dismissDelegateMain: DismissViewController? {get}
     weak var dismissDelegateSchedule: DismissViewController? {get}
     weak var dismissDelegateNewConfigurations: DismissViewController? {get}
-    func dismissview(viewcontroller: NSViewController, vcontroller: ViewController)
 }
 
 extension SetDismisser {
@@ -191,6 +190,8 @@ extension SetDismisser {
     func dismissview(viewcontroller: NSViewController, vcontroller: ViewController) {
         if vcontroller == .vctabmain {
             self.dismissDelegateMain?.dismiss_view(viewcontroller: (self as? NSViewController)!)
+        } else if vcontroller == .vctabschedule {
+            self.dismissDelegateSchedule?.dismiss_view(viewcontroller: (self as? NSViewController)!)
         } else {
             self.dismissDelegateNewConfigurations?.dismiss_view(viewcontroller: (self as? NSViewController)!)
         }

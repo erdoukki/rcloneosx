@@ -21,7 +21,6 @@
 		E960CB111FB091DE0008D12E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAC31FB091D40008D12E /* Configuration.swift */; };
 		E960CB141FB091DE0008D12E /* Readwritefiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAC61FB091D50008D12E /* Readwritefiles.swift */; };
 		E960CB151FB091DE0008D12E /* ViewControllerAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAC71FB091D50008D12E /* ViewControllerAbout.swift */; };
-		E960CB161FB091DE0008D12E /* ViewControllerInformationCopyFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAC81FB091D50008D12E /* ViewControllerInformationCopyFiles.swift */; };
 		E960CB191FB091DE0008D12E /* ProcessCmd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CACB1FB091D50008D12E /* ProcessCmd.swift */; };
 		E960CB1A1FB091DE0008D12E /* RsyncProcessArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CACC1FB091D50008D12E /* RsyncProcessArguments.swift */; };
 		E960CB1B1FB091DE0008D12E /* FileDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CACD1FB091D60008D12E /* FileDialog.swift */; };
@@ -87,7 +86,6 @@
 		E960CAC31FB091D40008D12E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E960CAC61FB091D50008D12E /* Readwritefiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Readwritefiles.swift; sourceTree = "<group>"; };
 		E960CAC71FB091D50008D12E /* ViewControllerAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAbout.swift; sourceTree = "<group>"; };
-		E960CAC81FB091D50008D12E /* ViewControllerInformationCopyFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerInformationCopyFiles.swift; sourceTree = "<group>"; };
 		E960CACB1FB091D50008D12E /* ProcessCmd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessCmd.swift; sourceTree = "<group>"; };
 		E960CACC1FB091D50008D12E /* RsyncProcessArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncProcessArguments.swift; sourceTree = "<group>"; };
 		E960CACD1FB091D60008D12E /* FileDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDialog.swift; sourceTree = "<group>"; };
@@ -245,6 +243,7 @@
 		E9482D271FB0B1A000AFBB0D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E9B528C51FB2CE740075CF4D /* ViewControllerReferences */,
 				E9482D2A1FB0B1E100AFBB0D /* Configurations */,
 				E9482D291FB0B1D000AFBB0D /* Schedules */,
 				E9482D281FB0B1C500AFBB0D /* Loggdata */,
@@ -314,15 +313,12 @@
 				E960CAC71FB091D50008D12E /* ViewControllerAbout.swift */,
 				E960CAFC1FB091DD0008D12E /* ViewControllerBatch.swift */,
 				E960CAEE1FB091DB0008D12E /* ViewControllerEdit.swift */,
-				E960CAC11FB091D40008D12E /* ViewControllerExtensions.swift */,
 				E960CAD71FB091D80008D12E /* ViewControllerInformation.swift */,
-				E960CAC81FB091D50008D12E /* ViewControllerInformationCopyFiles.swift */,
 				E960CAEF1FB091DB0008D12E /* ViewControllerLoggData.swift */,
 				E960CAE61FB091DA0008D12E /* ViewControllerNewConfigurations.swift */,
 				E960CAD51FB091D70008D12E /* ViewControllerNewVersion.swift */,
 				E960CAD81FB091D80008D12E /* ViewControllerProfile.swift */,
 				E960CABB1FB091D30008D12E /* ViewControllerProgressProcess.swift */,
-				E960CAE31FB091DA0008D12E /* ViewControllerReference.swift */,
 				E960CAF21FB091DC0008D12E /* ViewControllerRsyncParameters.swift */,
 				E960CABC1FB091D30008D12E /* ViewControllerScheduledBackupInWork.swift */,
 				E960CAE41FB091DA0008D12E /* ViewControllerScheduleDetails.swift */,
@@ -379,6 +375,15 @@
 				E960CAB51FB091D20008D12E /* rcloneosx-Bridging-Header.h */,
 			);
 			path = rcloneosx;
+			sourceTree = "<group>";
+		};
+		E9B528C51FB2CE740075CF4D /* ViewControllerReferences */ = {
+			isa = PBXGroup;
+			children = (
+				E960CAC11FB091D40008D12E /* ViewControllerExtensions.swift */,
+				E960CAE31FB091DA0008D12E /* ViewControllerReference.swift */,
+			);
+			path = ViewControllerReferences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,7 +485,6 @@
 				E960CB0A1FB091DE0008D12E /* ViewControllerScheduledBackupInWork.swift in Sources */,
 				E960CB151FB091DE0008D12E /* ViewControllerAbout.swift in Sources */,
 				E960CB451FB091DE0008D12E /* CompleteScheduledOperation.swift in Sources */,
-				E960CB161FB091DE0008D12E /* ViewControllerInformationCopyFiles.swift in Sources */,
 				E960CB3F1FB091DE0008D12E /* ExecuteTaskDispatch.swift in Sources */,
 				E960CB141FB091DE0008D12E /* Readwritefiles.swift in Sources */,
 				E960CB261FB091DE0008D12E /* ViewControllerProfile.swift in Sources */,

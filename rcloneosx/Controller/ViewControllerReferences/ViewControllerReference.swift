@@ -13,8 +13,6 @@ enum ViewController {
     case vcloggdata
     case vcnewconfigurations
     case vctabschedule
-    case vccopyfiles
-    case vcssh
     case vcabout
     case vcbatch
     case vcprogressview
@@ -84,10 +82,6 @@ class ViewControllerReference {
             return self.viewControllerNewConfigurations
         case .vctabschedule:
             return self.viewControllertabSchedule
-        case .vccopyfiles:
-            return self.viewControllerCopyFiles
-        case .vcssh:
-            return self.viewControllerSsh
         case .vcabout:
             return self.viewControllerAbout
         case .vcbatch:
@@ -107,10 +101,6 @@ class ViewControllerReference {
             self.viewControllerNewConfigurations = nsviewcontroller
         case .vctabschedule:
             self.viewControllertabSchedule = nsviewcontroller
-        case .vccopyfiles:
-            self.viewControllerCopyFiles = nsviewcontroller
-        case .vcssh:
-            self.viewControllerSsh = nsviewcontroller
         case .vcabout:
             self.viewControllerAbout = nsviewcontroller
         case .vcbatch:
