@@ -8,7 +8,28 @@ By a couple of hours work with RcloneOSX I managed to do a `rclone copy` of a lo
 
 Adding cloud services is done by using the command line interface `rclone config`.
 
-### Test for Dropbox
+### What is working
+
+* only `rclone copy`
+  - verified with Dropbox and Microsoft Onedrive, expect others to work as well
+* adding and executing single tasks
+* batch tasks
+* scheduled tasks
+* logging tasks (only date, no numbers)
+* profile, storing tasks in profiles
+* change and delete configurations
+
+### What is not working
+
+* numbers and statistics of transferred data
+* for the moment only `rclone copy`
+  - my knowlegde about rclone and its use is growing every day...
+* other parameters to rclone (only `--dry-run` and `--verbose` for the moment)
+* no gui for `rclone config`
+  - don't know if is possible to make a GUI for setting up rclone
+  - for the moment investigating this issue is put on hold
+
+### Dropbox
 
 Adding a configuration...
 ![](Screenshots/rclone1.png)
@@ -29,7 +50,7 @@ And batch work is working "out of the box"
 ![](Screenshots/rclone9.png)
 ![](Screenshots/rclone10.png)
 
-### Test for Onedrive
+### Mircosoft Onedrive
 
 Adding a configuration...
 ![](Screenshots/onedrive1.png)
