@@ -32,12 +32,10 @@ Adding cloud services is done by using the command line interface `rclone config
 ### Sample transferring data to Dropbox
 
 Below are some screenshots for transferring (`rclone copy`) my local GitHub repository to Dropbox. The actual command executed is shown in right corner.
-
-![](Screenshots/DropBoxGitHub.png)
+![](Screenshots/DropboxGitHub4.png)
+![](Screenshots/DropboxGitHub.png)
 ![](Screenshots/DropBoxGitHub2.png)
 ![](Screenshots/DropBoxGitHub3.png)
-
-### Dropbox
 
 ### Microsoft Onedrive
 Adding a configuration...
