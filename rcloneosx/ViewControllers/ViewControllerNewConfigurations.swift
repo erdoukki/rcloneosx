@@ -16,6 +16,8 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     var newconfigurations: NewConfigurations?
     var tabledata: [NSMutableDictionary]?
     let copy: String = "copy"
+    let move: String = "move"
+    let sync: String = "sync"
     let verbose: String = "--verbose"
     let dryrun: String = "--dry-run"
     var output: OutputProcess?
@@ -85,7 +87,9 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
 
     private func setFields() {
         self.viewParameter1.stringValue = self.copy
-        self.viewParameter2.stringValue = self.verbose
+        self.viewParameter2.stringValue = self.sync
+        self.viewParameter3.stringValue = self.move
+        self.viewParameter4.stringValue = self.verbose
         self.localCatalog.stringValue = ""
         self.offsiteCatalog.stringValue = ""
         self.cloudService.stringValue = ""
