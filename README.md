@@ -2,7 +2,7 @@
 
 The project is a port of RsyncOSX to adapt [rclone](https://rclone.org/). It compiles, it executes and it does a `rclone copy` command but there is still much work to do. See [Changelog](docs/RcloneOSX/Changelog.md).
 
-RcloneOSX will be compiled with support for macOS version 10.11 - 10.13. The application is implemented in **Swift 4** by using **Xcode 9**.
+RcloneOSX will is compiled with support for macOS version 10.11 - 10.13. The application is implemented in **Swift 4** by using **Xcode 9**.
 
 #### SwiftLint
 
