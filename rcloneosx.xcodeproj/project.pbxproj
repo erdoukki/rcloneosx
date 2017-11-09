@@ -68,6 +68,8 @@
 		E99AA3831FAFA28900C1E86A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99AA3821FAFA28900C1E86A /* AppDelegate.swift */; };
 		E99AA3871FAFA28900C1E86A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99AA3861FAFA28900C1E86A /* Assets.xcassets */; };
 		E99AA38A1FAFA28900C1E86A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99AA3881FAFA28900C1E86A /* Main.storyboard */; };
+		E9D1F19F1FB49C3B0099D25C /* CloudServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D1F19E1FB49C3B0099D25C /* CloudServices.swift */; };
+		E9D1F1A21FB49DB60099D25C /* GetCloudServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D1F1A11FB49DB60099D25C /* GetCloudServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +137,8 @@
 		E99AA3861FAFA28900C1E86A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E99AA3891FAFA28900C1E86A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E99AA38B1FAFA28900C1E86A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9D1F19E1FB49C3B0099D25C /* CloudServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudServices.swift; sourceTree = "<group>"; };
+		E9D1F1A11FB49DB60099D25C /* GetCloudServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCloudServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +231,7 @@
 				E960CACB1FB091D50008D12E /* ProcessCmd.swift */,
 				E960CAE91FB091DA0008D12E /* OutputBatch.swift */,
 				E960CAB61FB091D30008D12E /* OutputProcess.swift */,
+				E9D1F19E1FB49C3B0099D25C /* CloudServices.swift */,
 			);
 			path = Process;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 		E960CB531FB092E70008D12E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9D1F1A01FB49D870099D25C /* CloudServices */,
 				E9482D2D1FB0B37500AFBB0D /* Schedule */,
 				E9482D2C1FB0B36B00AFBB0D /* Configuration */,
 				E9482D2B1FB0B2EA00AFBB0D /* PersistentStorage */,
@@ -384,6 +390,14 @@
 				E960CAE31FB091DA0008D12E /* ViewControllerReference.swift */,
 			);
 			path = ViewControllerReferences;
+			sourceTree = "<group>";
+		};
+		E9D1F1A01FB49D870099D25C /* CloudServices */ = {
+			isa = PBXGroup;
+			children = (
+				E9D1F1A11FB49DB60099D25C /* GetCloudServices.swift */,
+			);
+			path = CloudServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,6 +481,7 @@
 				E960CB3C1FB091DE0008D12E /* ViewControllerEdit.swift in Sources */,
 				E960CB0D1FB091DE0008D12E /* Files.swift in Sources */,
 				E960CB091FB091DE0008D12E /* ViewControllerProgressProcess.swift in Sources */,
+				E9D1F19F1FB49C3B0099D25C /* CloudServices.swift in Sources */,
 				E960CB0F1FB091DE0008D12E /* ViewControllerExtensions.swift in Sources */,
 				E960CB1F1FB091DE0008D12E /* BatchTaskWorkQueu.swift in Sources */,
 				E960CB481FB091DE0008D12E /* PersistentStorageAPI.swift in Sources */,
@@ -491,6 +506,7 @@
 				E960CB371FB091DE0008D12E /* OutputBatch.swift in Sources */,
 				E960CB211FB091DE0008D12E /* Resources.swift in Sources */,
 				E960CB311FB091DE0008D12E /* ViewControllerReference.swift in Sources */,
+				E9D1F1A21FB49DB60099D25C /* GetCloudServices.swift in Sources */,
 				E960CB0C1FB091DE0008D12E /* ScheduleWriteLoggData.swift in Sources */,
 				E960CB3A1FB091DE0008D12E /* ScheduleLoggData.swift in Sources */,
 				E960CB0E1FB091DE0008D12E /* RsyncParameters.swift in Sources */,

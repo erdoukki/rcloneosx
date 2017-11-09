@@ -17,11 +17,8 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     var tabledata: [NSMutableDictionary]?
     let copy: String = "copy"
     let verbose: String = "--verbose"
-    // let compress: String = "--compress"
-    // let delete: String = "--delete"
-    // let eparam: String = "-e"
-    // let ssh: String = "ssh"
     let dryrun: String = "--dry-run"
+    var output: OutputProcess?
 
     @IBOutlet weak var newTableView: NSTableView!
     @IBOutlet weak var viewParameter1: NSTextField!
@@ -62,13 +59,13 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
-        // Set the delegates
         self.newTableView.delegate = self
         self.newTableView.dataSource = self
         self.localCatalog.toolTip = "By using Finder drag and drop filepaths."
         self.offsiteCatalog.toolTip = "By using Finder drag and drop filepaths."
         ViewControllerReference.shared.setvcref(viewcontroller: .vcnewconfigurations, nsviewcontroller: self)
+        self.output = OutputProcess()
+        _ = GetCloudServices(output: self.output)
     }
 
     override func viewDidAppear() {
@@ -81,14 +78,12 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.storageapi = PersistentStorageAPI(profile: nil)
         }
         self.setFields()
+        print(self.output!.trimoutput(trim: .three))
     }
 
     private func setFields() {
         self.viewParameter1.stringValue = self.copy
         self.viewParameter2.stringValue = self.verbose
-        // self.viewParameter3.stringValue = compress
-        // self.viewParameter4.stringValue = delete
-        // self.viewParameter5.stringValue = eparam + " " + ssh
         self.localCatalog.stringValue = ""
         self.offsiteCatalog.stringValue = ""
         self.offsiteServer.stringValue = ""
