@@ -704,7 +704,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qkq-x4-Af5">
-                                            <rect key="frame" x="9" y="2" width="66" height="17"/>
+                                            <rect key="frame" x="9" y="4" width="64" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="status" id="Dl6-i6-oA7">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -712,21 +712,22 @@
                                             </textFieldCell>
                                         </textField>
                                         <colorWell bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kkf-ns-DmF">
-                                            <rect key="frame" x="79" y="7" width="13" height="9"/>
+                                            <rect key="frame" x="79" y="4" width="13" height="14"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="13" id="sLb-dB-XxU"/>
+                                                <constraint firstAttribute="width" constant="13" id="xpW-za-54k"/>
                                             </constraints>
                                             <color key="color" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                                         </colorWell>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Kkf-ns-DmF" firstAttribute="leading" secondItem="qkq-x4-Af5" secondAttribute="trailing" constant="6" id="2tC-lb-OWH"/>
-                                        <constraint firstItem="qkq-x4-Af5" firstAttribute="top" secondItem="fU2-rA-tMU" secondAttribute="top" constant="2" id="5yt-XC-Ckz"/>
-                                        <constraint firstItem="qkq-x4-Af5" firstAttribute="centerY" secondItem="fU2-rA-tMU" secondAttribute="centerY" id="EIS-h5-hqP"/>
-                                        <constraint firstAttribute="bottom" secondItem="Kkf-ns-DmF" secondAttribute="bottom" constant="7" id="I9I-qN-Q2k"/>
-                                        <constraint firstAttribute="trailing" secondItem="Kkf-ns-DmF" secondAttribute="trailing" constant="34" id="Ymf-Da-byV"/>
+                                        <constraint firstItem="qkq-x4-Af5" firstAttribute="top" secondItem="fU2-rA-tMU" secondAttribute="top" id="5yt-XC-Ckz"/>
+                                        <constraint firstItem="qkq-x4-Af5" firstAttribute="centerY" secondItem="fU2-rA-tMU" secondAttribute="centerY" constant="-2" id="EIS-h5-hqP"/>
+                                        <constraint firstItem="Kkf-ns-DmF" firstAttribute="leading" secondItem="qkq-x4-Af5" secondAttribute="trailing" constant="8" symbolic="YES" id="ETD-xL-Qh9"/>
+                                        <constraint firstItem="Kkf-ns-DmF" firstAttribute="bottom" secondItem="qkq-x4-Af5" secondAttribute="bottom" id="HY7-yM-vhd"/>
+                                        <constraint firstItem="Kkf-ns-DmF" firstAttribute="centerY" secondItem="fU2-rA-tMU" secondAttribute="centerY" id="Xlm-e9-7dv"/>
                                         <constraint firstItem="qkq-x4-Af5" firstAttribute="leading" secondItem="fU2-rA-tMU" secondAttribute="leading" constant="11" id="vN5-GU-vH0"/>
-                                        <constraint firstItem="Kkf-ns-DmF" firstAttribute="top" secondItem="fU2-rA-tMU" secondAttribute="top" constant="5" id="yQj-4e-zRf"/>
+                                        <constraint firstAttribute="trailing" secondItem="Kkf-ns-DmF" secondAttribute="trailing" constant="34" id="yya-eY-s2J"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qkq-x4-Af5" secondAttribute="trailing" constant="20" symbolic="YES" id="zR7-ca-43S"/>
                                     </constraints>
                                 </view>
                             </box>
