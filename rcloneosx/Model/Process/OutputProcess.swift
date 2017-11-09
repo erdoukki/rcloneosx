@@ -87,7 +87,7 @@ final class OutputProcess {
         case .three:
             let services = self.output!.filter({$0.contains("[") && $0.contains("]")})
             guard services.count > 0 else {
-                return nil
+                return [""]
             }
             for i in 0  ..< services.count {
                 let service = String(services[i].dropLast().dropFirst())
