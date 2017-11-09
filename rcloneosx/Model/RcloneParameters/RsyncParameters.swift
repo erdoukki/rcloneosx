@@ -21,16 +21,13 @@ final class RsyncParameters {
         ("--bwlimit", 1),
         ("--transfers", 1),
         ("--exclude", 1),
+        ("--exclude-from", 1),
         ("--backup-dir", 1),
         ("--no-traverse", 0),
         ("--no-gzip-encoding", 0)]
 
     // Array storing combobox values
     private var comboBoxValues: Array<String>?
-
-    // Preselected parameters for storing a backup of deleted or changed files before
-    // rsync synchronises the directories
-
     // Reference to config
     private var config: Configuration?
 
@@ -38,10 +35,7 @@ final class RsyncParameters {
     /// - parameter none: none
     /// - return : array of String
     func getComboBoxValues() -> Array<String> {
-        guard self.comboBoxValues != nil else {
-            return [""]
-        }
-        return self.comboBoxValues!
+        return self.comboBoxValues ?? [""]
     }
 
     // Computes the raw argument for rsync to save in configuration
