@@ -16,6 +16,7 @@ protocol RsyncError: class {
 enum Trim {
     case one
     case two
+    case three
 }
 
 final class OutputProcess {
@@ -83,6 +84,15 @@ final class OutputProcess {
             }
             self.endIndex = out.count
             self.maxNumber = self.endIndex!
+        case .three:
+            let services = self.output!.filter({$0.contains("[") && $0.contains("]")})
+            guard services.count > 0 else {
+                return [""]
+            }
+            for i in 0  ..< services.count {
+                let service = String(services[i].dropLast().dropFirst())
+                out.append(service)
+            }
         }
         self.trimmedoutput = out
         return out

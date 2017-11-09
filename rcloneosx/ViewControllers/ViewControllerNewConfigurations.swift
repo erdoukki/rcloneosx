@@ -17,13 +17,9 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     var tabledata: [NSMutableDictionary]?
     let copy: String = "copy"
     let verbose: String = "--verbose"
-    // let compress: String = "--compress"
-    // let delete: String = "--delete"
-    // let eparam: String = "-e"
-    // let ssh: String = "ssh"
     let dryrun: String = "--dry-run"
+    var output: OutputProcess?
 
-    @IBOutlet weak var newTableView: NSTableView!
     @IBOutlet weak var viewParameter1: NSTextField!
     @IBOutlet weak var viewParameter2: NSTextField!
     @IBOutlet weak var viewParameter3: NSTextField!
@@ -31,11 +27,12 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     @IBOutlet weak var viewParameter5: NSTextField!
     @IBOutlet weak var localCatalog: NSTextField!
     @IBOutlet weak var offsiteCatalog: NSTextField!
-    @IBOutlet weak var offsiteServer: NSTextField!
     @IBOutlet weak var backupID: NSTextField!
-    @IBOutlet weak var profilInfo: NSTextField!
     @IBOutlet weak var equal: NSTextField!
     @IBOutlet weak var empty: NSTextField!
+    @IBOutlet weak var profilInfo: NSTextField!
+    @IBOutlet weak var newTableView: NSTableView!
+    @IBOutlet weak var cloudService: NSComboBox!
     
     @IBAction func cleartable(_ sender: NSButton) {
         self.newconfigurations = nil
@@ -45,10 +42,11 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.setFields()
         })
     }
+   
     @IBAction func copyLocalCatalog(_ sender: NSButton) {
-        _ = FileDialog(requester: .addLocalCatalog)
+         _ = FileDialog(requester: .addLocalCatalog)
     }
-
+    
     @IBAction func copyRemoteCatalog(_ sender: NSButton) {
         _ = FileDialog(requester: .addRemoteCatalog)
     }
@@ -62,13 +60,13 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
-        // Set the delegates
         self.newTableView.delegate = self
         self.newTableView.dataSource = self
         self.localCatalog.toolTip = "By using Finder drag and drop filepaths."
         self.offsiteCatalog.toolTip = "By using Finder drag and drop filepaths."
         ViewControllerReference.shared.setvcref(viewcontroller: .vcnewconfigurations, nsviewcontroller: self)
+        self.output = OutputProcess()
+        _ = GetCloudServices(output: self.output)
     }
 
     override func viewDidAppear() {
@@ -81,37 +79,36 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.storageapi = PersistentStorageAPI(profile: nil)
         }
         self.setFields()
+        self.cloudService.removeAllItems()
+        self.cloudService.addItems(withObjectValues: self.output!.trimoutput(trim: .three)!)
     }
 
     private func setFields() {
         self.viewParameter1.stringValue = self.copy
         self.viewParameter2.stringValue = self.verbose
-        // self.viewParameter3.stringValue = compress
-        // self.viewParameter4.stringValue = delete
-        // self.viewParameter5.stringValue = eparam + " " + ssh
         self.localCatalog.stringValue = ""
         self.offsiteCatalog.stringValue = ""
-        self.offsiteServer.stringValue = ""
+        self.cloudService.stringValue = ""
         self.backupID.stringValue = ""
         self.equal.isHidden = true
         self.empty.isHidden = true
     }
-
+    
     @IBAction func addConfig(_ sender: NSButton) {
         guard self.offsiteCatalog.stringValue != self.localCatalog.stringValue else {
             self.equal.isHidden = false
             return
         }
-        guard self.offsiteServer.stringValue.isEmpty == false else {
+        guard self.cloudService.stringValue.isEmpty == false else {
             self.empty.isHidden = false
             return
         }
         let dict: NSMutableDictionary = [
             "task": "backup",
-            "backupID": backupID.stringValue,
-            "localCatalog": localCatalog.stringValue,
-            "offsiteCatalog": offsiteCatalog.stringValue,
-            "offsiteServer": offsiteServer.stringValue,
+            "backupID": self.backupID.stringValue,
+            "localCatalog": self.localCatalog.stringValue,
+            "offsiteCatalog": self.offsiteCatalog.stringValue,
+            "offsiteServer": self.cloudService.stringValue,
             "parameter1": self.copy,
             "parameter2": self.verbose,
             "dryrun": self.dryrun,

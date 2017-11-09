@@ -1182,6 +1182,13 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="3xI-3C-guU" name="displayPatternValue1" keyPath="self.newTableView" id="aV4-98-oVF">
+                                        <dictionary key="options">
+                                            <string key="NSDisplayPattern">%{value1}@</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQV-4j-jAW">
                                 <rect key="frame" x="216" y="264" width="111" height="22"/>
@@ -1354,18 +1361,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dd9-ZY-ewa">
-                                            <rect key="frame" x="130" y="86" width="131" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" bezelStyle="round" id="nEF-Q7-UBF">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <outlet property="nextKeyView" destination="9T4-S6-awV" id="0RE-3Y-HLw"/>
-                                            </connections>
-                                        </textField>
                                         <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l37-ra-Fe2">
                                             <rect key="frame" x="-2" y="41" width="565" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1375,14 +1370,23 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Gj-sC-cyY">
+                                            <rect key="frame" x="131" y="83" width="133" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="wnB-1X-nUW">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </comboBoxCell>
+                                        </comboBox>
                                     </subviews>
                                 </view>
                             </box>
                             <box fixedFrame="YES" title="Default parameters" translatesAutoresizingMaskIntoConstraints="NO" id="Qc4-06-mOR">
-                                <rect key="frame" x="201" y="226" width="142" height="161"/>
+                                <rect key="frame" x="201" y="359" width="142" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="LYt-vh-cql">
-                                    <rect key="frame" x="2" y="2" width="138" height="144"/>
+                                    <rect key="frame" x="2" y="2" width="138" height="11"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </box>
@@ -1449,7 +1453,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="copyRemoteCatalog:" target="3xI-3C-guU" id="Ee9-9K-sp1"/>
+                                    <action selector="copyRemoteCatalog:" target="3xI-3C-guU" id="uFc-YZ-hZ9"/>
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXe-mf-3l9">
@@ -1460,7 +1464,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="copyLocalCatalog:" target="3xI-3C-guU" id="gOf-VG-z0z"/>
+                                    <action selector="copyLocalCatalog:" target="3xI-3C-guU" id="1bl-wX-OcV"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NDH-vD-wXh">
@@ -1480,7 +1484,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="addConfig:" target="3xI-3C-guU" id="xxb-cs-R2L"/>
+                                    <action selector="addConfig:" target="3xI-3C-guU" id="urB-OP-gMo"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XWf-df-fJ6">
@@ -1491,7 +1495,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="cleartable:" target="3xI-3C-guU" id="EJG-mS-Xbv"/>
+                                    <action selector="cleartable:" target="3xI-3C-guU" id="JzW-dM-Adc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1502,19 +1506,19 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backupID" destination="9T4-S6-awV" id="9jO-LC-qeB"/>
-                        <outlet property="empty" destination="l37-ra-Fe2" id="eJ7-gG-V7A"/>
-                        <outlet property="equal" destination="XA5-51-CaU" id="QJ3-RM-uxU"/>
-                        <outlet property="localCatalog" destination="0F6-hc-3TR" id="up8-NP-Gtr"/>
-                        <outlet property="newTableView" destination="ytY-cn-Iq7" id="SRE-zL-BlG"/>
-                        <outlet property="offsiteCatalog" destination="PLj-9a-6li" id="TJS-U0-E82"/>
-                        <outlet property="offsiteServer" destination="Dd9-ZY-ewa" id="UxA-aT-Viu"/>
-                        <outlet property="profilInfo" destination="NDH-vD-wXh" id="x1r-3x-xGE"/>
-                        <outlet property="viewParameter1" destination="UAM-7e-uQ9" id="GBv-Cl-bn7"/>
-                        <outlet property="viewParameter2" destination="804-O7-xTM" id="O9x-cn-kJY"/>
-                        <outlet property="viewParameter3" destination="lPj-jv-4I2" id="Qrr-nh-Yak"/>
-                        <outlet property="viewParameter4" destination="OQV-4j-jAW" id="2Gl-xl-rEH"/>
-                        <outlet property="viewParameter5" destination="hWK-Iu-Vyz" id="aPM-hQ-6Wh"/>
+                        <outlet property="backupID" destination="9T4-S6-awV" id="ENU-hn-hw2"/>
+                        <outlet property="cloudService" destination="7Gj-sC-cyY" id="chM-m4-SWv"/>
+                        <outlet property="empty" destination="l37-ra-Fe2" id="ipd-6I-y0f"/>
+                        <outlet property="equal" destination="XA5-51-CaU" id="661-mi-qL3"/>
+                        <outlet property="localCatalog" destination="0F6-hc-3TR" id="qId-en-pzV"/>
+                        <outlet property="newTableView" destination="ytY-cn-Iq7" id="ceZ-O6-WEd"/>
+                        <outlet property="offsiteCatalog" destination="PLj-9a-6li" id="pcC-a2-xzn"/>
+                        <outlet property="profilInfo" destination="NDH-vD-wXh" id="dEE-VC-Qu1"/>
+                        <outlet property="viewParameter1" destination="UAM-7e-uQ9" id="8JI-rq-BCU"/>
+                        <outlet property="viewParameter2" destination="804-O7-xTM" id="H8v-YX-frh"/>
+                        <outlet property="viewParameter3" destination="lPj-jv-4I2" id="vss-zg-Deo"/>
+                        <outlet property="viewParameter4" destination="OQV-4j-jAW" id="9MC-gQ-PP1"/>
+                        <outlet property="viewParameter5" destination="hWK-Iu-Vyz" id="FvG-hg-RMN"/>
                     </connections>
                 </viewController>
                 <customObject id="eib-cb-pn8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
