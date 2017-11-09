@@ -20,7 +20,7 @@ Please see [Changelog](docs/RcloneOSX/Changelog.md)
 
 Below are some screenshots for transferring (`rclone copy`) my local GitHub repository to Dropbox. The actual command executed is shown in right corner.
 
-![](docs/RcloneOSX/Screenshots/DropboxGitHub4.png)
+![](docs/RcloneOSX/Screenshots/DropBoxGitHub4.png)
 ![](docs/RcloneOSX/Screenshots/DropboxGitHub.png)
 ![](docs/RcloneOSX/Screenshots/DropBoxGitHub2.png)
 ![](docs/RcloneOSX/Screenshots/DropBoxGitHub3.png)
