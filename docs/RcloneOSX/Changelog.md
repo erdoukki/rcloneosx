@@ -29,27 +29,13 @@ Adding cloud services is done by using the command line interface `rclone config
   - don't know if is possible to make a GUI for setting up rclone
   - for the moment investigating this issue is put on hold
 
-### Dropbox
+### Sample transferring data to Dropbox
 
-Adding a configuration...
-![](Screenshots/rclone1.png)
-![](Screenshots/rclone2.png)
-Executing a `--dry-run` and executing the real run. Some files are not copied.
-![](Screenshots/rclone3.png)
-![](Screenshots/rclone4.png)
-The progress bar is working.
-![](Screenshots/rclone5.png)
-Logging the run, the numbers not yet working.
-![](Screenshots/rclone7.png)
-The transferred files at Dropbox.
-![](Screenshots/rclone8.png)
-And batch work is working "out of the box"
-![](Screenshots/rclone10.png)
-
-#### Parameters to rclone
-Some parameters are working...
-![](Screenshots/parameters1.png)
-![](Screenshots/parameters2.png)
+Below are some screenshots for transferring (`rclone copy`) my local GitHub repository to Dropbox. The actual command executed is shown in right corner.
+![](Screenshots/DropBoxGitHub4.png)
+![](Screenshots/DropboxGitHub.png)
+![](Screenshots/DropBoxGitHub2.png)
+![](Screenshots/DropBoxGitHub3.png)
 
 ### Microsoft Onedrive
 Adding a configuration...
