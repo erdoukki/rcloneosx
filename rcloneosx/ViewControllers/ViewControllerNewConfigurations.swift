@@ -10,7 +10,7 @@
 import Foundation
 import Cocoa
 
-class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSchedule {
+class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSchedule, Delay {
 
     var storageapi: PersistentStorageAPI?
     var newconfigurations: NewConfigurations?
@@ -67,8 +67,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.localCatalog.toolTip = "By using Finder drag and drop filepaths."
         self.offsiteCatalog.toolTip = "By using Finder drag and drop filepaths."
         ViewControllerReference.shared.setvcref(viewcontroller: .vcnewconfigurations, nsviewcontroller: self)
-        self.output = OutputProcess()
-        _ = GetCloudServices(output: self.output)
     }
 
     override func viewDidAppear() {
@@ -81,8 +79,20 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.storageapi = PersistentStorageAPI(profile: nil)
         }
         self.setFields()
+        self.loadCloudServices()
+    }
+    
+    private func loadCloudServices() {
+        guard ViewControllerReference.shared.norsync == false else {
+            return
+        }
+        self.output = nil
+        self.output = OutputProcess()
+        _ = GetCloudServices(output: self.output)
         self.cloudService.removeAllItems()
-        self.cloudService.addItems(withObjectValues: self.output!.trimoutput(trim: .three)!)
+        self.delayWithSeconds(0.5) {
+            self.cloudService.addItems(withObjectValues: self.output!.trimoutput(trim: .three)!)
+        }
     }
 
     private func setFields() {
@@ -107,6 +117,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.empty.isHidden = false
             return
         }
+        self.backupID.stringValue = self.copy
         let dict: NSMutableDictionary = [
             "task": "backup",
             "backupID": self.backupID.stringValue,
