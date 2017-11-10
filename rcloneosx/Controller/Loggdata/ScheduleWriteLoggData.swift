@@ -52,39 +52,36 @@ class ScheduleWriteLoggData: SetConfigurations, ReloadTable, Deselect {
 
     private func addloggtaskmanualexisting(_ hiddenID: Int, result: String, date: String) -> Bool {
         var loggadded: Bool = false
-        for i in 0 ..< self.schedules!.count where
-            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == "backup" {
-                if self.schedules![i].hiddenID == hiddenID  &&
-                    self.schedules![i].schedule == "manuel" &&
-                    self.schedules![i].dateStop == nil {
-                    let dict = NSMutableDictionary()
-                    dict.setObject(date, forKey: "dateExecuted" as NSCopying)
-                    dict.setObject(result, forKey: "resultExecuted" as NSCopying)
-                    self.schedules![i].logrecords.append(dict)
-                    loggadded = true
-                }
+        for i in 0 ..< self.schedules!.count {
+            if self.schedules![i].hiddenID == hiddenID  &&
+                self.schedules![i].schedule == "manuel" &&
+                self.schedules![i].dateStop == nil {
+                let dict = NSMutableDictionary()
+                dict.setObject(date, forKey: "dateExecuted" as NSCopying)
+                dict.setObject(result, forKey: "resultExecuted" as NSCopying)
+                self.schedules![i].logrecords.append(dict)
+                loggadded = true
             }
-        return loggadded
-    }
-
-    private func addloggtaskmanulnew(_ hiddenID: Int, result: String, date: String) -> Bool {
-        var loggadded: Bool = false
-        if (self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == "backup") {
-            let masterdict = NSMutableDictionary()
-            masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
-            masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
-            masterdict.setObject("manuel", forKey: "schedule" as NSCopying)
-            let dict = NSMutableDictionary()
-            dict.setObject(date, forKey: "dateExecuted" as NSCopying)
-            dict.setObject(result, forKey: "resultExecuted" as NSCopying)
-            let executed = NSMutableArray()
-            executed.add(dict)
-            let newSchedule = ConfigurationSchedule(dictionary: masterdict, log: executed)
-            self.schedules!.append(newSchedule)
-            loggadded = true
         }
         return loggadded
     }
+    
+    private func addloggtaskmanulnew(_ hiddenID: Int, result: String, date: String) -> Bool {
+        var loggadded: Bool = false
+        let masterdict = NSMutableDictionary()
+        masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
+        masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
+        masterdict.setObject("manuel", forKey: "schedule" as NSCopying)
+        let dict = NSMutableDictionary()
+        dict.setObject(date, forKey: "dateExecuted" as NSCopying)
+        dict.setObject(result, forKey: "resultExecuted" as NSCopying)
+        let executed = NSMutableArray()
+        executed.add(dict)
+        let newSchedule = ConfigurationSchedule(dictionary: masterdict, log: executed)
+        self.schedules!.append(newSchedule)
+        loggadded = true
+        return loggadded
+        }
 
     /// Function adds results of task to file (via memory). Memory are
     /// saved after changed. Used in either single tasks or batch.
@@ -99,7 +96,6 @@ class ScheduleWriteLoggData: SetConfigurations, ReloadTable, Deselect {
                 if self.schedules![i].hiddenID == hiddenID  &&
                     self.schedules![i].schedule == schedule &&
                     self.schedules![i].dateStart == dateStart {
-                    if (self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == "backup") {
                         let dict = NSMutableDictionary()
                         dict.setObject(date, forKey: "dateExecuted" as NSCopying)
                         dict.setObject(result, forKey: "resultExecuted" as NSCopying)
@@ -110,7 +106,6 @@ class ScheduleWriteLoggData: SetConfigurations, ReloadTable, Deselect {
                 }
             }
         }
-    }
 
     init() {
         self.schedules = Array<ConfigurationSchedule>()
