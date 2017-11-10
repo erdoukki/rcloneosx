@@ -15,17 +15,14 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     var storageapi: PersistentStorageAPI?
     var newconfigurations: NewConfigurations?
     var tabledata: [NSMutableDictionary]?
-    let copy: String = "copy"
-    let move: String = "move"
-    let sync: String = "sync"
+    let copycommand: String = "copy"
+    let movecommand: String = "move"
+    let synccommand: String = "sync"
     let verbose: String = "--verbose"
     let dryrun: String = "--dry-run"
     var output: OutputProcess?
     var rclonecommand: String?
 
-    @IBOutlet weak var viewParameter1: NSTextField!
-    @IBOutlet weak var viewParameter2: NSTextField!
-    @IBOutlet weak var viewParameter3: NSTextField!
     @IBOutlet weak var viewParameter4: NSTextField!
     @IBOutlet weak var viewParameter5: NSTextField!
     @IBOutlet weak var localCatalog: NSTextField!
@@ -54,6 +51,22 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         _ = FileDialog(requester: .addRemoteCatalog)
     }
 
+    
+    @IBOutlet weak var copyradio: NSButton!
+    @IBOutlet weak var syncradio: NSButton!
+    @IBOutlet weak var moveradio: NSButton!
+    
+    
+    @IBAction func choosecommand(_ sender: NSButton) {
+        if self.copyradio.state == .on {
+            self.rclonecommand = self.copycommand
+        } else if self.syncradio.state == .on {
+            self.rclonecommand = self.synccommand
+        } else if self.moveradio.state == .on {
+            self.rclonecommand = self.movecommand
+        }
+    }
+    
     // Userconfiguration button
     @IBAction func userconfiguration(_ sender: NSButton) {
         globalMainQueue.async(execute: { () -> Void in
@@ -81,7 +94,8 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         }
         self.setFields()
         self.loadCloudServices()
-        self.rclonecommand = self.copy
+        self.rclonecommand = self.copycommand
+        self.copyradio.state = .on
     }
     
     private func loadCloudServices() {
@@ -98,9 +112,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     }
 
     private func setFields() {
-        self.viewParameter1.stringValue = self.copy
-        self.viewParameter2.stringValue = self.sync
-        self.viewParameter3.stringValue = self.move
         self.viewParameter4.stringValue = self.verbose
         self.localCatalog.stringValue = ""
         self.offsiteCatalog.stringValue = ""
@@ -119,7 +130,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.empty.isHidden = false
             return
         }
-        self.backupID.stringValue = self.copy
         let dict: NSMutableDictionary = [
             "task": self.rclonecommand ?? "",
             "backupID": self.backupID.stringValue,
