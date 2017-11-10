@@ -1,6 +1,6 @@
 ## RcloneOSX
 
-The project is a port of RsyncOSX to adapt [rclone](https://rclone.org/). It compiles, it executes and it does a `rclone copy`, `sync` and `move` command but there is still much work to do. See [Changelog](docs/RcloneOSX/Changelog.md).
+The project is a port of RsyncOSX to adapt [rclone](https://rclone.org/). It compiles, it executes and it does a `rclone copy`, `sync` and `move` command but there is still much work to do.
 
 RcloneOSX is compiled with support for macOS version 10.11 - 10.13. The application is implemented in **Swift 4** by using **Xcode 9**.
 
@@ -14,7 +14,7 @@ The application icon is created by [Forrest Walter](http://www.forrestwalter.com
 
 ### Changelog
 
-Please see [Changelog](docs/RcloneOSX/Changelog.md)
+Please see [Changelog](https://github.com/rsyncOSX/Documentation/blob/master/docs/RcloneOSX/Changelog.md)
 
 ### Sample transferring data to Dropbox
 
