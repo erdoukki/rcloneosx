@@ -4,9 +4,11 @@ The project is a port of RsyncOSX to adapt [rclone](https://rclone.org/). It com
 
 RcloneOSX is compiled with support for macOS version 10.11 - 10.13. The application is implemented in **Swift 4** by using **Xcode 9**.
 
+RcloneOSX require the rclone utility to be installed. If installed in other directory than `/usr/local/bin`, please change directory by `Configuration`. RcloneOSX checks if there is i `rclone` installed in the provided directory. 
+
 #### SwiftLint
 
-As part of this version of RsyncOSX I am using [SwiftLint](https://github.com/realm/SwiftLint) as tool for writing more readable code.
+As part of this version of RcloneOSX I am using [SwiftLint](https://github.com/realm/SwiftLint) as tool for writing more readable code.
 
 ### Application icon
 
