@@ -14,7 +14,7 @@ The application icon is created by [Forrest Walter](http://www.forrestwalter.com
 
 ### Changelog
 
-Please see [Changelog](docs/RcloneOSX/Changelog.md)
+Please see [Changelog](https://github.com/rsyncOSX/Documentation/blob/master/docs/RcloneOSX/Changelog.md)
 
 ### Sample transferring data to Dropbox
 
