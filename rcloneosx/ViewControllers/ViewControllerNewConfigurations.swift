@@ -21,6 +21,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     let verbose: String = "--verbose"
     let dryrun: String = "--dry-run"
     var output: OutputProcess?
+    var rclonecommand: String?
 
     @IBOutlet weak var viewParameter1: NSTextField!
     @IBOutlet weak var viewParameter2: NSTextField!
@@ -80,6 +81,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         }
         self.setFields()
         self.loadCloudServices()
+        self.rclonecommand = self.copy
     }
     
     private func loadCloudServices() {
@@ -119,7 +121,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         }
         self.backupID.stringValue = self.copy
         let dict: NSMutableDictionary = [
-            "task": "backup",
+            "task": self.rclonecommand ?? "",
             "backupID": self.backupID.stringValue,
             "localCatalog": self.localCatalog.stringValue,
             "offsiteCatalog": self.offsiteCatalog.stringValue,

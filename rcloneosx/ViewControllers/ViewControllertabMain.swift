@@ -431,7 +431,7 @@ extension ViewControllertabMain: NSTableViewDelegate {
         let hiddenID: Int = self.configurations!.getConfigurations()[row].hiddenID
         if self.schedules!.hiddenIDinSchedule(hiddenID) {
             text = object[tableColumn!.identifier] as? String
-            if text == "backup" || text == "restore" {
+            if text == "copy" || text == "sync" || text == "move" {
                 schedule = true
             }
         }
@@ -471,9 +471,7 @@ extension ViewControllertabMain: NSTableViewDelegate {
 
     // Toggling batch
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
-        if self.configurations!.getConfigurations()[row].task == "backup" {
-            self.configurations!.setBatchYesNo(row)
-        }
+        self.configurations!.setBatchYesNo(row)
         self.singletask = nil
         self.batchtaskObject = nil
         self.setInfo(info: "Estimate", color: .blue)
