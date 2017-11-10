@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var storage: PersistentStorageAPI?
         // Insert code here to initialize your application
         // Check for new version
-        // _ = Checkfornewversion(inMain: true)
+        _ = Checkfornewversion(inMain: true)
         // Read user configuration
         storage = PersistentStorageAPI(profile: nil)
         if let userConfiguration =  storage?.getUserconfiguration(readfromstorage: true) {
