@@ -260,7 +260,7 @@ extension ViewControllertabSchedule: NSTableViewDelegate {
         let hiddenID: Int = (object.value(forKey: "hiddenID") as? Int)!
         if self.schedules?.hiddenIDinSchedule(hiddenID) ?? false {
             text = object[tableColumn!.identifier] as? String
-            if text == "copy" || text == "sync" || text == "move" {
+            if text == "copy" || text == "sync" {
                 schedule = true
             }
         }
