@@ -138,7 +138,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             "localCatalog": self.localCatalog.stringValue,
             "offsiteCatalog": self.offsiteCatalog.stringValue,
             "offsiteServer": self.cloudService.stringValue,
-            "parameter1": self.rclonecommand ?? "",
+            "parameter1": self.rclonecommand ?? "copy",
             "parameter2": self.verbose,
             "dryrun": self.dryrun,
             "dateRun": ""]
