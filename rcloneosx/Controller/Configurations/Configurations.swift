@@ -160,7 +160,7 @@ class Configurations: ReloadTable {
     /// - parameter none: none
     /// - returns : Array of NSDictionary
     func getConfigurationsDataSourcecountBackupOnly() -> [NSDictionary]? {
-        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == "copy" || $0.task == "sync" || $0.task == "move" )})
+        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == "copy" || $0.task == "sync" )})
         var row =  NSDictionary()
         var data = Array<NSDictionary>()
         for i in 0 ..< configurations.count {
@@ -179,7 +179,7 @@ class Configurations: ReloadTable {
     }
 
     func getConfigurationsDataSourcecountBackupOnlyRemote() -> [NSDictionary]? {
-        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == "copy" || $0.task == "sync" || $0.task == "move" && $0.offsiteServer.isEmpty == false)})
+        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == "copy" || $0.task == "sync" && $0.offsiteServer.isEmpty == false)})
         var row =  NSDictionary()
         var data = Array<NSDictionary>()
         for i in 0 ..< configurations.count {
@@ -200,7 +200,7 @@ class Configurations: ReloadTable {
     /// Function returns all Configurations marked for backup.
     /// - returns : array of Configurations
     func getConfigurationsBatch() -> [Configuration] {
-        return self.configurations!.filter({return ($0.task == "copy" || $0.task == "sync" || $0.task == "move") && ($0.batch == "yes")})
+        return self.configurations!.filter({return ($0.task == "copy" || $0.task == "sync") && ($0.batch == "yes")})
     }
 
     /// Function computes arguments for rsync, either arguments for

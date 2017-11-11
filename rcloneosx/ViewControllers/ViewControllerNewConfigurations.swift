@@ -20,6 +20,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     let synccommand: String = "sync"
     let verbose: String = "--verbose"
     let dryrun: String = "--dry-run"
+    let checkcommand: String = "check"
     var output: OutputProcess?
     var rclonecommand: String?
 
@@ -50,12 +51,11 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     @IBAction func copyRemoteCatalog(_ sender: NSButton) {
         _ = FileDialog(requester: .addRemoteCatalog)
     }
-
     
     @IBOutlet weak var copyradio: NSButton!
     @IBOutlet weak var syncradio: NSButton!
     @IBOutlet weak var moveradio: NSButton!
-    
+    @IBOutlet weak var checkradio: NSButton!
     
     @IBAction func choosecommand(_ sender: NSButton) {
         if self.copyradio.state == .on {
@@ -64,6 +64,8 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.rclonecommand = self.synccommand
         } else if self.moveradio.state == .on {
             self.rclonecommand = self.movecommand
+        } else if self.checkradio.state == .on {
+            self.rclonecommand = self.checkcommand
         }
     }
     
