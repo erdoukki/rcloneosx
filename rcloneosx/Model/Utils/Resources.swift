@@ -19,7 +19,7 @@ enum ResourceType {
 
 struct Resources {
     // Resource strings
-    private var changelog: String = "https://rsyncosx.github.io/rcloneosx/docs/RcloneOSX/Changelog.html"
+    private var changelog: String = "https://rsyncosx.github.io/Documentation/docs/RcloneOSX/Changelog.html"
     private var documents: String = "https://rsyncosx.github.io/rcloneosx/"
     private var urlPlist: String = "https://raw.githubusercontent.com/rsyncOSX/rcloneosx/master/versionRcloneOSX/versionRcloneOSX.plist"
     // Get the resource.
