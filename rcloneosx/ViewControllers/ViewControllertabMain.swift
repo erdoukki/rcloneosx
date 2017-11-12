@@ -456,6 +456,12 @@ extension ViewControllertabMain: NSTableViewDelegate {
                     let range = (text! as NSString).range(of: text!)
                     attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.systemBlue, range: range)
                     return attributedString
+                } else if self.configurations!.getConfigurations()[row].task == "move"{
+                    text = object[tableColumn!.identifier] as? String
+                    let attributedString = NSMutableAttributedString(string: (text!))
+                    let range = (text! as NSString).range(of: text!)
+                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.red, range: range)
+                    return attributedString
                 } else {
                    return object[tableColumn!.identifier] as? String
                 }
