@@ -85,8 +85,6 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     private var schedulessorted: ScheduleSortedAndExpand?
     private var infoschedulessorted: InfoScheduleSortedAndExpand?
     // Bool if one or more remote server is offline
-    // Used in testing if remote server is on/off-line
-    private var serverOff: Array<Bool>?
     // Schedules in progress
     private var scheduledJobInProgress: Bool = false
     // Ready for execute again
@@ -408,18 +406,7 @@ extension ViewControllertabMain: NSTableViewDataSource {
 }
 
 extension ViewControllertabMain: NSTableViewDelegate {
-    // Function to test for remote server available or not, used in tableview delegate
-    private func testRow(_ row: Int) -> Bool {
-        if let serverOff = self.serverOff {
-            if row < serverOff.count {
-                return serverOff[row]
-            } else {
-                return false
-            }
-        }
-        return false
-    }
-
+   
     // TableView delegates
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if row > self.configurations!.configurationsDataSourcecount() - 1 {
@@ -453,18 +440,7 @@ extension ViewControllertabMain: NSTableViewDelegate {
                     return returnstr
                 }
             } else {
-                if self.testRow(row) {
-                    text = object[tableColumn!.identifier] as? String
-                    let attributedString = NSMutableAttributedString(string: (text!))
-                    let range = (text! as NSString).range(of: text!)
-                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.red, range: range)
-                    return attributedString
-                } else {
-                    if tableColumn!.identifier.rawValue == "offsiteServerCellID", ((object[tableColumn!.identifier] as? String)?.isEmpty)! {
-                        return "localhost"
-                    }
-                    return object[tableColumn!.identifier] as? String
-                }
+                return object[tableColumn!.identifier] as? String
             }
         }
     }
