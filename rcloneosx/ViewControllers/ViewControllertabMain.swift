@@ -85,8 +85,6 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     private var schedulessorted: ScheduleSortedAndExpand?
     private var infoschedulessorted: InfoScheduleSortedAndExpand?
     // Bool if one or more remote server is offline
-    // Used in testing if remote server is on/off-line
-    private var serverOff: Array<Bool>?
     // Schedules in progress
     private var scheduledJobInProgress: Bool = false
     // Ready for execute again
@@ -284,6 +282,11 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         guard self.index != nil else {
             return
         }
+        guard self.scheduledJobInProgress == false else {
+            self.selecttask.stringValue = "Scheduled task..."
+            self.selecttask.isHidden = false
+            return
+        }
         self.batchtaskObject = nil
         guard self.singletask != nil else {
             // Dry run
@@ -301,6 +304,11 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     @IBAction func executeBatch(_ sender: NSButton) {
         guard ViewControllerReference.shared.norsync == false else {
             self.tools!.noRsync()
+            return
+        }
+        guard self.scheduledJobInProgress == false else {
+            self.selecttask.stringValue = "Scheduled task..."
+            self.selecttask.isHidden = false
             return
         }
         self.singletask = nil
@@ -408,18 +416,7 @@ extension ViewControllertabMain: NSTableViewDataSource {
 }
 
 extension ViewControllertabMain: NSTableViewDelegate {
-    // Function to test for remote server available or not, used in tableview delegate
-    private func testRow(_ row: Int) -> Bool {
-        if let serverOff = self.serverOff {
-            if row < serverOff.count {
-                return serverOff[row]
-            } else {
-                return false
-            }
-        }
-        return false
-    }
-
+   
     // TableView delegates
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if row > self.configurations!.configurationsDataSourcecount() - 1 {
@@ -453,18 +450,7 @@ extension ViewControllertabMain: NSTableViewDelegate {
                     return returnstr
                 }
             } else {
-                if self.testRow(row) {
-                    text = object[tableColumn!.identifier] as? String
-                    let attributedString = NSMutableAttributedString(string: (text!))
-                    let range = (text! as NSString).range(of: text!)
-                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.red, range: range)
-                    return attributedString
-                } else {
-                    if tableColumn!.identifier.rawValue == "offsiteServerCellID", ((object[tableColumn!.identifier] as? String)?.isEmpty)! {
-                        return "localhost"
-                    }
-                    return object[tableColumn!.identifier] as? String
-                }
+                return object[tableColumn!.identifier] as? String
             }
         }
     }
@@ -573,6 +559,8 @@ extension ViewControllertabMain: ScheduledTaskWorking {
     func completed() {
         globalMainQueue.async(execute: {() -> Void in
             self.scheduledJobInProgress = false
+            self.selecttask.stringValue = "Select a task...."
+            self.selecttask.isHidden = true
             self.scheduledJobworking.stopAnimation(nil)
         })
     }

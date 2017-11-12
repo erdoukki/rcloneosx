@@ -137,9 +137,9 @@ final class Tools: SetConfigurations {
 
     func noRsync() {
         if let rsync = ViewControllerReference.shared.rsyncPath {
-            Alerts.showInfo("ERROR: no rsync in " + rsync)
+            Alerts.showInfo("ERROR: no rclone in " + rsync)
         } else {
-            Alerts.showInfo("ERROR: no rsync in /usr/local/bin")
+            Alerts.showInfo("ERROR: no rclone in /usr/local/bin")
         }
     }
 
