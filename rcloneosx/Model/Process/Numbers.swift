@@ -34,17 +34,9 @@ final class Numbers: SetConfigurations {
     
     var transferNum: String?
     var transferNumSize: String?
+    var transferNumSizeByte: String?
     var time: String?
     
-    // Temporary numbers
-    var files: String?
-    var filesSize: String?
-    var elapsedTime: Array<String>?
-    var totfilesNum: Array<String>?
-    var new: Array<String>?
-    var delete: Array<String>?
-    var tempfiles: Array<String>?
-
     // Get numbers from rclone (dry run)
     func getTransferredNumbers (numbers: EnumNumbers) -> Int {
         switch numbers {
@@ -70,17 +62,21 @@ final class Numbers: SetConfigurations {
     }
     
     private func prepareresult() {
-        self.tempfiles = self.output!.filter({(($0).contains("Transferred:"))})
-        self.elapsedTime = self.output!.filter({(($0).contains("Elapsed time:"))})
-        guard tempfiles?.count == 2 && elapsedTime?.count == 1  else {
-            return
-        }
-        var filesPartSize = self.tempfiles![0].components(separatedBy: " ").filter{ $0.isEmpty == false}
-        let filesPart = self.tempfiles![1].components(separatedBy: " ").filter{ $0.isEmpty == false }
-        let elapstedTimePart = self.elapsedTime![0].components(separatedBy: " ").filter{ $0.isEmpty == false }
-        filesPartSize.remove(at: 0)
+        let tempfiles = self.output!.filter({(($0).contains("Transferred:"))})
+        let elapsedTime = self.output!.filter({(($0).contains("Elapsed time:"))})
+        guard tempfiles.count == 2 && elapsedTime.count == 1  else { return }
+        var filesPartSize = tempfiles[0].components(separatedBy: " ").filter{ $0.isEmpty == false && $0 != "Transferred:"}
+        let filesPart = tempfiles[1].components(separatedBy: " ").filter{ $0.isEmpty == false }
+        let elapstedTimePart = elapsedTime[0].components(separatedBy: " ").filter{ $0.isEmpty == false }
+
         if filesPart.count > 1 {self.transferNum = filesPart[filesPart.count - 1]} else {self.transferNum = "0"}
-        if filesPartSize.count > 3 {self.transferNumSize = filesPartSize[0]} else {self.transferNumSize = "0.0"}
+        if filesPartSize.count > 3 {
+            self.transferNumSize = filesPartSize[0]
+            self.transferNumSizeByte = filesPartSize[1]
+        } else {
+            self.transferNumSize = "0.0"
+            self.transferNumSizeByte = "bytes"
+        }
         if elapstedTimePart.count > 2 {self.time = elapstedTimePart[2]} else {self.time = "0.0"}
     }
 
@@ -89,8 +85,9 @@ final class Numbers: SetConfigurations {
         self.prepareresult()
         let num = self.transferNum ?? "0"
         let size = self.transferNumSize ?? "0"
+        let byte = self.transferNumSizeByte ?? "bytes"
         let time = self.time ?? "0"
-        return  num + " files," + " " + size + " in " + time
+        return  num + " files," + " " + size + " " + byte  + " in " + time
     }
 
     init (output: OutputProcess?) {
