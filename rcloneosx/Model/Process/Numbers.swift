@@ -24,7 +24,7 @@ enum EnumNumbers {
 
 final class Numbers: SetConfigurations {
 
-    private var outputprocess: Array<String>?
+    private var output: Array<String>?
     // numbers after dryrun and stats
     var totNum: Int?
     var totDir: Int?
@@ -53,13 +53,13 @@ final class Numbers: SetConfigurations {
         case .totalNumber:
             return self.totNum ?? 0
         case .transferredNumber:
-            return Int(self.transferNum!) ?? 0
+            return Int(self.transferNum ?? "0")!
         case .totalNumberSizebytes:
             let size = self.totNumSize ?? 0
             return Int(size/1024 )
         case .transferredNumberSizebytes:
-            let size = Int(self.transferNumSize!) ?? 0
-            return Int(size/1024)
+            let size = Int(self.transferNumSize ?? "0" )
+            return Int(size!/1024)
         case .new:
             let num = self.newfiles ?? 0
             return Int(num)
@@ -68,45 +68,34 @@ final class Numbers: SetConfigurations {
             return Int(num)
         }
     }
-
-    private func resultrclone() {
-        let filesPart = self.files!.replacingOccurrences(of: ",", with: "").components(separatedBy: " ").filter{ $0.isEmpty == false }
-        let filesPartSize = self.filesSize!.replacingOccurrences(of: ",", with: "").components(separatedBy: " ").filter{ $0.isEmpty == false }
-        let elapstedTimePart = self.elapsedTime![0].replacingOccurrences(of: ",", with: "").components(separatedBy: " ").filter{ $0.isEmpty == false }
+    
+    private func prepareresult() {
+        self.tempfiles = self.output!.filter({(($0).contains("Transferred:"))})
+        self.elapsedTime = self.output!.filter({(($0).contains("Elapsed time:"))})
+        guard tempfiles?.count == 2 && elapsedTime?.count == 1  else {
+            return
+        }
+        var filesPartSize = self.tempfiles![0].components(separatedBy: " ").filter{ $0.isEmpty == false}
+        let filesPart = self.tempfiles![1].components(separatedBy: " ").filter{ $0.isEmpty == false }
+        let elapstedTimePart = self.elapsedTime![0].components(separatedBy: " ").filter{ $0.isEmpty == false }
+        filesPartSize.remove(at: 0)
         if filesPart.count > 1 {self.transferNum = filesPart[filesPart.count - 1]} else {self.transferNum = "0"}
-        if filesPartSize.count > 4 {self.transferNumSize = filesPartSize[1]} else {self.transferNumSize = "0.0"}
+        if filesPartSize.count > 3 {self.transferNumSize = filesPartSize[0]} else {self.transferNumSize = "0.0"}
         if elapstedTimePart.count > 2 {self.time = elapstedTimePart[2]} else {self.time = "0.0"}
     }
 
     // Collecting statistics about job
     func stats() -> String {
-        self.tempfiles = self.outputprocess!.filter({(($0).contains("Transferred:"))})
-        self.elapsedTime = self.outputprocess!.filter({(($0).contains("Elapsed time:"))})
-        if tempfiles?.count == 2 && elapsedTime!.count == 1  {
-            self.filesSize = self.tempfiles![0]
-            self.files = self.tempfiles![1]
-            self.resultrclone()
-        } else {
-            // If it breaks set number of transferred files to size of output.
-            self.transferNum = String(self.outputprocess!.count)
-        }
+        self.prepareresult()
         let num = self.transferNum ?? "0"
-        let size = self.filesSize ?? "0"
+        let size = self.transferNumSize ?? "0"
         let time = self.time ?? "0"
         return  num + " files," + " " + size + " in " + time
     }
 
     init (output: OutputProcess?) {
-        self.outputprocess = output!.trimoutput(trim: .two)
-        self.tempfiles = self.outputprocess!.filter({(($0).contains("Transferred:"))})
-        self.elapsedTime = self.outputprocess!.filter({(($0).contains("Elapsed time:"))})
-        if tempfiles?.count == 2 && elapsedTime!.count == 1  {
-            self.filesSize = self.tempfiles![0]
-            self.files = self.tempfiles![1]
-            self.resultrclone()
-        } else {
-            // If it breaks set number of transferred files to size of output.
-            self.transferNum = String(self.outputprocess!.count)
-        }
+        // Default number of files
+        self.output = output!.getOutput()
+        self.transferNum = String(self.output!.count)
     }
 }
