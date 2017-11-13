@@ -29,8 +29,8 @@ final class CompleteScheduledOperation: SetConfigurations, SetSchedules, Schedul
         let datestring = self.dateformatter!.string(from: date!)
         let dateStartstring = self.dateformatter!.string(from: dateStart!)
         let number = Numbers(output: output)
-        let numberstring = number.stats(numberOfFiles: nil, sizeOfFiles: nil)
-        self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring[0], date: datestring, schedule: schedule!)
+        let numberstring = number.stats()
+        self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
         // Writing timestamp to configuration
         _ = self.configurations!.setCurrentDateonConfiguration(self.index!)
         // Start next job, if any, by delegate and notify completed, by delegate

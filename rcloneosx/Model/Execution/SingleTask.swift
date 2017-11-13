@@ -148,9 +148,7 @@ final class SingleTask: SetSchedules, SetConfigurations {
                 self.transferredNumberSizebytes = self.taskDelegate?.gettransferredNumberSizebytes()
                 self.configurations!.setCurrentDateonConfiguration(self.index!)
                 let hiddenID = self.configurations!.gethiddenID(index: self.index!)
-                let numberOffFiles = self.transferredNumber
-                let sizeOfFiles = self.transferredNumberSizebytes
-                self.schedules!.addlogtaskmanuel(hiddenID, result: number.stats(numberOfFiles: numberOffFiles, sizeOfFiles: sizeOfFiles)[0])
+                self.schedules!.addlogtaskmanuel(hiddenID, result: number.stats())
             case .empty:
                 self.workload = nil
             default:
