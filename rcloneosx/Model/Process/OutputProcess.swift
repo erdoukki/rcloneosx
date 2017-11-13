@@ -67,16 +67,15 @@ final class OutputProcess {
         case .one:
             for i in 0 ..< self.output!.count {
                 let substr = self.output![i].dropFirst(10).trimmingCharacters(in: .whitespacesAndNewlines)
-                // let str = substr.components(separatedBy: " ").dropFirst(3).joined()
                 let str = substr.components(separatedBy: " ").dropFirst(3).joined(separator: " ")
                 if str.isEmpty == false {
                     out.append("./" + str)
                 }
             }
         case .two:
-            for i in 0 ..< self.output!.count where self.output![i].last != "/" {
+            for i in 0 ..< self.output!.count {
                 out.append(self.output![i])
-                let error = self.output![i].contains("rsync error:")
+                let error = self.output![i].contains("ERROR")
                 if error {
                     self.errorDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
                     self.errorDelegate?.rsyncerror()
