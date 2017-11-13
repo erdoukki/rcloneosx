@@ -80,20 +80,10 @@ final class Numbers: SetConfigurations {
 
     // Collecting statistics about job
     func stats() -> String {
-        self.tempfiles = self.outputprocess!.filter({(($0).contains("Transferred:"))})
-        self.elapsedTime = self.outputprocess!.filter({(($0).contains("Elapsed time:"))})
-        if tempfiles?.count == 2 && elapsedTime!.count == 1  {
-            self.filesSize = self.tempfiles![0]
-            self.files = self.tempfiles![1]
-            self.resultrclone()
-        } else {
-            // If it breaks set number of transferred files to size of output.
-            self.transferNum = String(self.outputprocess!.count)
-        }
-        let num = self.transferNum ?? "0" + " files,"
-        let size = self.filesSize ?? "0" + " in "
+        let num = self.transferNum ?? "0"
+        let size = self.filesSize ?? "0"
         let time = self.time ?? "0"
-        return  num + " " + size + " " + time
+        return  num + " files," + " " + size + " in " + time
     }
 
     init (output: OutputProcess?) {
