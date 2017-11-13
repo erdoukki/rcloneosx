@@ -96,7 +96,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.setFields()
         self.loadCloudServices()
         self.rclonecommand = self.copycommand
-        self.copyradio.state = .on
+        self.syncradio.state = .on
     }
     
     private func loadCloudServices() {
@@ -120,6 +120,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.backupID.stringValue = ""
         self.equal.isHidden = true
         self.empty.isHidden = true
+        self.syncradio.state = .on
     }
     
     @IBAction func addConfig(_ sender: NSButton) {
