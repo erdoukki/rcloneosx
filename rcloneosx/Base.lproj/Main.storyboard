@@ -1441,19 +1441,8 @@
                                     <rect key="frame" x="2" y="2" width="138" height="89"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PqD-x8-LUq">
-                                            <rect key="frame" x="19" y="66" width="54" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="radio" title="Copy" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="sVv-id-ByC">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="choosecommand:" target="3xI-3C-guU" id="8r1-Jy-oss"/>
-                                            </connections>
-                                        </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P9l-dq-Deo">
-                                            <rect key="frame" x="19" y="46" width="52" height="18"/>
+                                            <rect key="frame" x="19" y="67" width="52" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Sync" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="myB-4y-Cig">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1463,19 +1452,8 @@
                                                 <action selector="choosecommand:" target="3xI-3C-guU" id="sZB-6Y-rye"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cUU-ZL-P5j">
-                                            <rect key="frame" x="19" y="26" width="55" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="radio" title="Move" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="mQh-LH-kPu">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="choosecommand:" target="3xI-3C-guU" id="LOu-w6-vXD"/>
-                                            </connections>
-                                        </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eid-q9-7YQ">
-                                            <rect key="frame" x="19" y="6" width="61" height="18"/>
+                                            <rect key="frame" x="19" y="48" width="61" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Rfm-YG-CTy">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1483,6 +1461,28 @@
                                             </buttonCell>
                                             <connections>
                                                 <action selector="choosecommand:" target="3xI-3C-guU" id="CW1-wQ-hB1"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PqD-x8-LUq">
+                                            <rect key="frame" x="19" y="29" width="54" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="radio" title="Copy" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="sVv-id-ByC">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="choosecommand:" target="3xI-3C-guU" id="8r1-Jy-oss"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cUU-ZL-P5j">
+                                            <rect key="frame" x="19" y="10" width="55" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="radio" title="Move" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="mQh-LH-kPu">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="choosecommand:" target="3xI-3C-guU" id="LOu-w6-vXD"/>
                                             </connections>
                                         </button>
                                     </subviews>
