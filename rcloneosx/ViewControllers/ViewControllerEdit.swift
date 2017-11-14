@@ -17,7 +17,7 @@ class ViewControllerEdit: NSViewController, SetConfigurations, SetDismisser, Get
     @IBOutlet weak var backupID: NSTextField!
 
     var index: Int?
-    var output: OutputProcess?
+    var outputprocess: OutputProcess?
 
     // Close and dismiss view
     @IBAction func close(_ sender: NSButton) {
@@ -58,12 +58,12 @@ class ViewControllerEdit: NSViewController, SetConfigurations, SetDismisser, Get
         guard ViewControllerReference.shared.norsync == false else {
             return
         }
-        self.output = nil
-        self.output = OutputProcess()
-        _ = GetCloudServices(output: self.output)
+        self.outputprocess = nil
+        self.outputprocess = OutputProcess()
+        _ = GetCloudServices(output: self.outputprocess)
         self.cloudService.removeAllItems()
         self.delayWithSeconds(0.5) {
-            self.cloudService.addItems(withObjectValues: self.output!.trimoutput(trim: .three)!)
+            self.cloudService.addItems(withObjectValues: self.outputprocess!.trimoutput(trim: .three)!)
         }
     }
 

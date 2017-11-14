@@ -21,7 +21,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     let verbose: String = "--verbose"
     let dryrun: String = "--dry-run"
     let checkcommand: String = "check"
-    var output: OutputProcess?
+    var outputprocess: OutputProcess?
     var rclonecommand: String?
 
     @IBOutlet weak var viewParameter4: NSTextField!
@@ -103,12 +103,12 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         guard ViewControllerReference.shared.norsync == false else {
             return
         }
-        self.output = nil
-        self.output = OutputProcess()
-        _ = GetCloudServices(output: self.output)
+        self.outputprocess = nil
+        self.outputprocess = OutputProcess()
+        _ = GetCloudServices(output: self.outputprocess)
         self.cloudService.removeAllItems()
         self.delayWithSeconds(0.5) {
-            self.cloudService.addItems(withObjectValues: self.output!.trimoutput(trim: .three)!)
+            self.cloudService.addItems(withObjectValues: self.outputprocess!.trimoutput(trim: .three)!)
         }
     }
 
