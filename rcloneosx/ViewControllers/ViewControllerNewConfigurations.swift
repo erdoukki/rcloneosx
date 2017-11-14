@@ -95,7 +95,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         }
         self.setFields()
         self.loadCloudServices()
-        self.rclonecommand = self.copycommand
+        self.rclonecommand = self.synccommand
         self.syncradio.state = .on
     }
     
