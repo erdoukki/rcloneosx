@@ -60,7 +60,7 @@ class ViewControllerEdit: NSViewController, SetConfigurations, SetDismisser, Get
         }
         self.outputprocess = nil
         self.outputprocess = OutputProcess()
-        _ = GetCloudServices(output: self.outputprocess)
+        _ = GetCloudServices(outputprocess: self.outputprocess)
         self.cloudService.removeAllItems()
         self.delayWithSeconds(0.5) {
             self.cloudService.addItems(withObjectValues: self.outputprocess!.trimoutput(trim: .three)!)

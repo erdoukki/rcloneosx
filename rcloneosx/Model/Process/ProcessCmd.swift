@@ -27,7 +27,7 @@ class ProcessCmd {
     // Arguments to command
     var arguments: Array<String>?
 
-    func executeProcess (output: OutputProcess?) {
+    func executeProcess (outputprocess: OutputProcess?) {
         // Process
         let task = Process()
         // Setting the correct path for rsync
@@ -52,8 +52,8 @@ class ProcessCmd {
             let data = outHandle.availableData
             if data.count > 0 {
                 if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-                    output!.addlinefromoutput(str as String)
-                    self.calculatedNumberOfFiles = output!.count()
+                    outputprocess!.addlinefromoutput(str as String)
+                    self.calculatedNumberOfFiles = outputprocess!.count()
                     // Check if in a scheduled operation, if not use delegate to inform about progress
                     if self.aScheduledOperation! == false {
                         // Send message about files
@@ -74,7 +74,7 @@ class ProcessCmd {
                 // We are in Scheduled operation and must finalize the job
                 // e.g logging date and stuff like that
                 if ViewControllerReference.shared.completeoperation != nil {
-                    ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(output: output)
+                    ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: outputprocess)
                 }
                 // After logging is done set reference to object = nil
                 ViewControllerReference.shared.completeoperation = nil

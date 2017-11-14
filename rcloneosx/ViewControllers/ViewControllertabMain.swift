@@ -76,7 +76,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     // Index to selected row, index is set when row is selected
     private var index: Int?
     // Getting output from rsync 
-    private var output: OutputProcess?
+    private var outputprocess: OutputProcess?
     // Getting output from batchrun
     private var outputbatch: OutputBatch?
     // HiddenID task, set when row is selected
@@ -140,7 +140,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
 
     // Menus as Radiobuttons for Edit functions in tabMainView
     private func reset() {
-        self.output = nil
+        self.outputprocess = nil
         self.setNumbers(output: nil)
         self.setInfo(info: "Estimate", color: .blue)
         self.light.color = .systemYellow
@@ -354,7 +354,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         if let index = indexes.first {
             self.index = index
             self.hiddenID = self.configurations!.gethiddenID(index: index)
-            self.output = nil
+            self.outputprocess = nil
             self.outputbatch = nil
             self.setNumbers(output: nil)
         } else {
@@ -485,8 +485,8 @@ extension ViewControllertabMain: Information {
     func getInformation() -> Array<String> {
         if self.outputbatch != nil {
             return self.outputbatch!.getOutput()
-        } else if self.output != nil {
-            return self.output!.trimoutput(trim: .two)!
+        } else if self.outputprocess != nil {
+            return self.outputprocess!.trimoutput(trim: .two)!
         } else {
             return [""]
         }
@@ -530,7 +530,7 @@ extension ViewControllertabMain: NewProfile {
     // Function is called from profiles when new or default profiles is seleceted
     func newProfile(profile: String?) {
         self.process = nil
-        self.output = nil
+        self.outputprocess = nil
         self.outputbatch = nil
         self.singletask = nil
         self.setNumbers(output: nil)
@@ -642,7 +642,7 @@ extension ViewControllertabMain: UpdateProgress {
         self.readyforexecution = true
         // NB: must check if single run or batch run
         if let singletask = self.singletask {
-            self.output = singletask.outputprocess
+            self.outputprocess = singletask.outputprocess
             self.process = singletask.process
             singletask.processTermination()
         } else {
@@ -650,7 +650,7 @@ extension ViewControllertabMain: UpdateProgress {
             self.batchObjectDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vcbatch) as? ViewControllerBatch
             self.batchtaskObject = self.batchObjectDelegate?.getbatchtaskObject()
             guard self.batchtaskObject != nil else { return }
-            self.output = self.batchtaskObject!.outputprocess
+            self.outputprocess = self.batchtaskObject!.outputprocess
             self.process = self.batchtaskObject!.process
             self.batchtaskObject!.processTermination()
         }
@@ -676,7 +676,7 @@ extension ViewControllertabMain: UpdateProgress {
         } else {
             // Single task run
             guard self.singletask != nil else { return }
-            self.output = self.singletask!.outputprocess
+            self.outputprocess = self.singletask!.outputprocess
             self.process = self.singletask!.process
             localprocessupdateDelegate?.fileHandler()
         }
@@ -813,7 +813,7 @@ extension ViewControllertabMain: SingleTaskProgress {
     }
 
     func presentViewInformation(output: OutputProcess) {
-        self.output = output
+        self.outputprocess = output
         globalMainQueue.async(execute: { () -> Void in
             self.presentViewControllerAsSheet(self.viewControllerInformation!)
         })

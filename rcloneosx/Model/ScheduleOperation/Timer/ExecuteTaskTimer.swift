@@ -45,7 +45,7 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, ScheduledTas
                     globalMainQueue.async(execute: {
                         if arguments != nil {
                             let process = RsyncScheduled(arguments: arguments)
-                            process.executeProcess(output: output)
+                            process.executeProcess(outputprocess: output)
                         }
                     })
                 }

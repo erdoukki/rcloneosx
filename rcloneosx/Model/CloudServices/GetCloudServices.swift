@@ -12,15 +12,15 @@ final class GetCloudServices {
 
     var process: CloudServices?
     private var arguments: Array<String>?
-    private var output: OutputProcess?
+    private var outputprocess: OutputProcess?
     
     private func getCloudServices() {
         self.process = CloudServices(command: nil, arguments: self.arguments)
-        self.process!.executeProcess(output: self.output)
+        self.process!.executeProcess(outputprocess: self.outputprocess)
     }
     
-    init(output: OutputProcess?) {
-        self.output = output
+    init(outputprocess: OutputProcess?) {
+        self.outputprocess = outputprocess
         self.arguments = ["config","show"]
         self.getCloudServices()
     }

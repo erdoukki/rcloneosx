@@ -45,7 +45,7 @@ class ExecuteTaskDispatch: SetSchedules, SetConfigurations, ScheduledTask {
                     globalMainQueue.async(execute: {
                         if self.arguments != nil {
                             let process = RsyncScheduled(arguments: self.arguments)
-                            process.executeProcess(output: self.output)
+                            process.executeProcess(outputprocess: self.output)
                         }
                     })
                 }
