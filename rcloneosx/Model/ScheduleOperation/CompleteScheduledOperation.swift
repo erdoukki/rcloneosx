@@ -24,11 +24,11 @@ final class CompleteScheduledOperation: SetConfigurations, SetSchedules, Schedul
     // Function for finalizing the Scheduled job
     // The Operation object sets reference to the completeScheduledOperation in self.schedules!.operation
     // This function is executed when rsyn process terminates
-    func finalizeScheduledJob(output: OutputProcess?) {
+    func finalizeScheduledJob(outputprocess: OutputProcess?) {
         // Write result to Schedule
         let datestring = self.dateformatter!.string(from: date!)
         let dateStartstring = self.dateformatter!.string(from: dateStart!)
-        let number = Numbers(output: output)
+        let number = Numbers(output: outputprocess)
         let numberstring = number.stats()
         self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
         // Writing timestamp to configuration
