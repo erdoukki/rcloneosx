@@ -15,14 +15,6 @@ final class Userconfiguration {
     weak var rsyncchangedDelegate: RsyncChanged?
 
     private func readUserconfiguration(dict: NSDictionary) {
-        // Another version of rsync
-        if let version3rsync = dict.value(forKey: "version3Rsync") as? Int {
-            if version3rsync == 1 {
-                ViewControllerReference.shared.rsyncVer3 = true
-            } else {
-                ViewControllerReference.shared.rsyncVer3 = false
-            }
-        }
         // Detailed logging
         if let detailedlogging = dict.value(forKey: "detailedlogging") as? Int {
             if detailedlogging == 1 {
@@ -34,12 +26,6 @@ final class Userconfiguration {
         // Optional path for rsync
         if let rsyncPath = dict.value(forKey: "rsyncPath") as? String {
             ViewControllerReference.shared.rsyncPath = rsyncPath
-        }
-        // Temporary path for restores single files or directory
-        if let restorePath = dict.value(forKey: "restorePath") as? String {
-            ViewControllerReference.shared.restorePath = restorePath
-        } else {
-            ViewControllerReference.shared.restorePath = NSHomeDirectory() + "/tmp/"
         }
         // Operation object
         // Default is dispatch

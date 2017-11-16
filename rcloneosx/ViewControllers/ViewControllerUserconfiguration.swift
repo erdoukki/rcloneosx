@@ -20,27 +20,9 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
     weak var operationchangeDelegate: OperationChanged?
 
     @IBOutlet weak var rsyncPath: NSTextField!
-    @IBOutlet weak var version3rsync: NSButton!
     @IBOutlet weak var detailedlogging: NSButton!
     @IBOutlet weak var noRsync: NSTextField!
-    @IBOutlet weak var restorePath: NSTextField!
     @IBOutlet weak var operation: NSButton!
-
-    @IBAction func toggleversion3rsync(_ sender: NSButton) {
-        if self.version3rsync.state == .on {
-            ViewControllerReference.shared.rsyncVer3 = true
-            if self.rsyncPath.stringValue == "" {
-                ViewControllerReference.shared.rsyncPath = nil
-            } else {
-                self.setRsyncPath()
-            }
-        } else {
-            ViewControllerReference.shared.rsyncVer3 = false
-        }
-        self.newrsync()
-        self.dirty = true
-        self.verifyrsync()
-    }
 
     @IBAction func toggleDetailedlogging(_ sender: NSButton) {
         if self.detailedlogging.state == .on {
@@ -55,8 +37,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
         if self.dirty {
             // Before closing save changed configuration
             self.setRsyncPath()
-            // self.verifyRsync()
-            self.setRestorePath()
             _ = self.storageapi!.saveUserconfiguration()
         }
         if (self.presenting as? ViewControllertabMain) != nil {
@@ -91,18 +71,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
         self.dirty = true
     }
 
-    private func setRestorePath() {
-        if self.restorePath.stringValue.isEmpty == false {
-            if restorePath.stringValue.hasSuffix("/") == false {
-                restorePath.stringValue += "/"
-                ViewControllerReference.shared.restorePath = restorePath.stringValue
-            }
-        } else {
-            ViewControllerReference.shared.restorePath = nil
-        }
-        self.dirty = true
-    }
-
     private func verifyrsync() {
         let rsyncpath: String?
         let fileManager = FileManager.default
@@ -114,12 +82,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
             }
         } else {
             rsyncpath = nil
-        }
-
-        guard self.version3rsync.state == .on else {
-            self.noRsync.isHidden = true
-            ViewControllerReference.shared.norsync = false
-            return
         }
 
         guard rsyncpath != nil else {
@@ -139,7 +101,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rsyncPath.delegate = self
-        self.restorePath.delegate = self
         self.storageapi = PersistentStorageAPI(profile: nil)
     }
 
@@ -152,11 +113,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
 
     // Function for check and set user configuration
     private func checkUserConfig() {
-        if ViewControllerReference.shared.rsyncVer3 {
-            self.version3rsync.state = .on
-        } else {
-            self.version3rsync.state = .off
-        }
         if ViewControllerReference.shared.detailedlogging {
             self.detailedlogging.state = .on
         } else {
@@ -166,11 +122,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
             self.rsyncPath.stringValue = ViewControllerReference.shared.rsyncPath!
         } else {
             self.rsyncPath.stringValue = ""
-        }
-        if ViewControllerReference.shared.restorePath != nil {
-            self.restorePath.stringValue = ViewControllerReference.shared.restorePath!
-        } else {
-            self.restorePath.stringValue = ""
         }
         switch ViewControllerReference.shared.operation {
         case .dispatch:
@@ -185,7 +136,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
 extension ViewControllerUserconfiguration: NSTextFieldDelegate {
 
     override func controlTextDidChange(_ obj: Notification) {
-        self.version3rsync.state = .on
         self.dirty = true
         delayWithSeconds(0.5) {
             self.verifyrsync()
