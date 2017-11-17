@@ -66,11 +66,14 @@ final class OutputProcess {
         switch trim {
         case .one:
             for i in 0 ..< self.output!.count {
+                /*
                 let substr = self.output![i].dropFirst(10).trimmingCharacters(in: .whitespacesAndNewlines)
                 let str = substr.components(separatedBy: " ").dropFirst(3).joined(separator: " ")
                 if str.isEmpty == false {
                     out.append("./" + str)
                 }
+                */
+                out.append(self.output![i])
             }
         case .two:
             for i in 0 ..< self.output!.count {

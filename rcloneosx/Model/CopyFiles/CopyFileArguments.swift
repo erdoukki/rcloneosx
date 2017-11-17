@@ -11,17 +11,16 @@
 import Foundation
 
 enum Enumscopyfiles {
-    case rsyncCmd
-    case duCmd
+    case cprclone
+    case lsrclone
 }
 
-final class CopyFileArguments {
+final class CopyFileArguments: SetConfigurations {
 
     private var file: String?
     private var arguments: Array<String>?
     private var argDisplay: String?
     private var command: String?
-    private var config: Configuration?
 
     func getArguments() -> Array<String>? {
         return self.arguments
@@ -38,23 +37,18 @@ final class CopyFileArguments {
         return self.argDisplay!
     }
 
-    init (task: Enumscopyfiles, config: Configuration, remoteFile: String?, localCatalog: String?, drynrun: Bool?) {
+    init (task: Enumscopyfiles, config: Configuration) {
         self.arguments = nil
         self.arguments = Array<String>()
-        self.config = config
-        /*
         switch task {
-        case .rsyncCmd:
-            let arguments = RsyncArguments(config: config, remoteFile: remoteFile,
-                                           localCatalog: localCatalog, drynrun: drynrun)
-            self.arguments = arguments.getArguments()
-            self.command = arguments.getCommand()
-            self.argDisplay = arguments.getArgumentsDisplay()
-        case .duCmd:
-            let arguments = GetRemoteFilesArguments(config: config)
-            self.arguments = arguments.getArguments()
-            self.command = arguments.getCommand()
+        case .cprclone:
+            self.arguments = nil
+            // self.arguments = arguments.getArguments()
+            // self.command = arguments.getCommand()
+            // self.argDisplay = arguments.getArgumentsDisplay()
+        case .lsrclone:
+            let index = self.configurations?.getIndex(config.hiddenID)
+            self.arguments = self.configurations?.arguments4rsync(index: index!, argtype: .arglistfiles)
         }
-        */
     }
 }
