@@ -81,7 +81,7 @@ class ProcessCmd: Delay {
             self.termination = true
             if self.aScheduledOperation! == false {
                 // Send message about process termination
-                self.delayWithSeconds(0.5) {
+                self.delayWithSeconds(1.0) {
                     self.updateDelegate?.processTermination()
                 }
             } else {
