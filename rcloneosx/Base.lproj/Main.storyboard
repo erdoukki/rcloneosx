@@ -802,10 +802,10 @@
                                 </view>
                             </box>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QRi-Ek-iWn">
-                                <rect key="frame" x="445" y="89" width="124" height="17"/>
+                                <rect key="frame" x="445" y="89" width="146" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Possible error ouput" id="Hu5-c7-4Ek">
-                                    <font key="font" metaFont="system" size="12"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Possible error logging.." id="Hu5-c7-4Ek">
+                                    <font key="font" metaFont="cellTitle"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
