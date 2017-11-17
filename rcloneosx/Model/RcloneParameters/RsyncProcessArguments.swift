@@ -88,7 +88,7 @@ class RsyncProcessArguments {
     /// - parameter dryRun: true if compute dryrun arguments, false if compute arguments for real run
     /// - paramater forDisplay: true if for display, false if not
     /// - returns: Array of Strings
-    func argumentsRsync (_ config: Configuration, dryRun: Bool, forDisplay: Bool) -> Array<String> {
+    func argumentsRsync(_ config: Configuration, dryRun: Bool, forDisplay: Bool) -> Array<String> {
         self.localCatalog = config.localCatalog
         self.offsiteCatalog = config.offsiteCatalog
         self.offsiteServer = config.offsiteServer
@@ -110,6 +110,16 @@ class RsyncProcessArguments {
             self.dryrunparameter(config, forDisplay: forDisplay)
         }
         self.setParameters2To14(config, dryRun: dryRun, forDisplay: forDisplay)
+        return self.arguments!
+    }
+    
+    func argumentsRsynclistfile(_ config: Configuration) -> Array<String> {
+        self.localCatalog = nil
+        self.offsiteCatalog = config.offsiteCatalog
+        self.offsiteServer = config.offsiteServer
+        self.remoteargs = self.offsiteServer! + ":" + self.offsiteCatalog!
+        self.appendParameter(parameter: "ls", forDisplay: false)
+        self.appendParameter(parameter: self.remoteargs!, forDisplay: false)
         return self.arguments!
     }
 

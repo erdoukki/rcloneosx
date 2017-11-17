@@ -20,6 +20,7 @@ struct ArgumentsOneConfiguration {
     var argdryRun: Array<String>?
     var argDisplay: Array<String>?
     var argdryRunDisplay: Array<String>?
+    var argslistRemotefiles: Array<String>?
 
     init(config: Configuration) {
         // The configuration
@@ -30,5 +31,6 @@ struct ArgumentsOneConfiguration {
         self.argDisplay = RsyncProcessArguments().argumentsRsync(config, dryRun: false, forDisplay: true)
         self.argdryRun = RsyncProcessArguments().argumentsRsync(config, dryRun: true, forDisplay: false)
         self.argdryRunDisplay = RsyncProcessArguments().argumentsRsync(config, dryRun: true, forDisplay: true)
+        self.argslistRemotefiles = RsyncProcessArguments().argumentsRsynclistfile(config)
     }
 }
