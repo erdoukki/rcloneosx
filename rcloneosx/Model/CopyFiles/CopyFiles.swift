@@ -50,11 +50,14 @@ final class CopyFiles: SetConfigurations {
     }
 
     func getCommandDisplayinView(remotefile: String, localCatalog: String) -> String {
-        guard self.config != nil else {
-            return ""
+        guard self.config != nil else { return "" }
+        guard self.index != nil else { return "" }
+        let arguments = self.configurations?.arguments4rsync(index: self.index!, argtype: .arglistfiles)
+        self.commandDisplay = Tools().rsyncpath() + " "
+        for i in 0 ..< arguments!.count {
+            self.commandDisplay! += arguments![i] + " "
         }
-        // self.commandDisplay = CopyFileArguments(task: .copyCmd, config: self.config!)
-        guard self.commandDisplay != nil else { return "TBD" }
+        guard self.commandDisplay != nil else { return "" }
         return self.commandDisplay!
     }
 
