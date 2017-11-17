@@ -10,6 +10,10 @@
 
 import Foundation
 
+protocol ErrorOutput: class {
+    func erroroutput()
+}
+
 class ProcessCmd: Delay {
 
     // Number of calculated files to be copied
@@ -28,6 +32,8 @@ class ProcessCmd: Delay {
     var arguments: Array<String>?
     // true if processtermination
     var termination: Bool = false
+    // possible error ouput
+    weak var possibleerrorDelegate: ErrorOutput?
 
     func executeProcess (outputprocess: OutputProcess?) {
         // Process
@@ -61,7 +67,7 @@ class ProcessCmd: Delay {
                         // Send message about files
                         self.updateDelegate?.fileHandler()
                         if self.termination {
-                            print("terminated before filehandler")
+                            self.possibleerrorDelegate?.erroroutput()
                         }
                     }
                 }
@@ -107,6 +113,7 @@ class ProcessCmd: Delay {
         self.command = command
         self.arguments = arguments
         self.aScheduledOperation = aScheduledOperation
+        self.possibleerrorDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
     }
 
 }
