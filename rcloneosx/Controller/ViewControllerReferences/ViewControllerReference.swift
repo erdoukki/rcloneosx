@@ -16,6 +16,7 @@ enum ViewController {
     case vcabout
     case vcbatch
     case vcprogressview
+    case vccopyfiles
 }
 
 class ViewControllerReference {
@@ -88,7 +89,11 @@ class ViewControllerReference {
             return self.viewControllerBatch
         case .vcprogressview:
             return self.viewControllerProgressView
+        case .vccopyfiles:
+            return self.viewControllerCopyFiles
         }
+        
+        
     }
 
     func setvcref(viewcontroller: ViewController, nsviewcontroller: NSViewController) {
@@ -107,6 +112,8 @@ class ViewControllerReference {
             self.viewControllerBatch = nsviewcontroller
         case .vcprogressview:
             self.viewControllerProgressView = nsviewcontroller
+        case .vccopyfiles:
+            self.viewControllerCopyFiles = nsviewcontroller
         }
     }
 }

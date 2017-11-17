@@ -81,6 +81,7 @@ extension ReloadTable {
 enum ArgumentsRsync {
     case arg
     case argdryRun
+    case arglistfiles
 }
 
 // Enum which resource to return
@@ -215,6 +216,8 @@ class Configurations: ReloadTable {
             return allarguments.arg!
         case .argdryRun:
             return allarguments.argdryRun!
+        case .arglistfiles:
+            return allarguments.argslistRemotefiles!
         }
     }
 
