@@ -54,8 +54,9 @@ extension ViewControllerInformationCopyFiles: NSTableViewDelegate {
                      owner: nil) as? NSTableCellView {
             cell.textField?.stringValue = text
             return cell
+        } else {
+            return nil
         }
-        return nil
     }
 
 }

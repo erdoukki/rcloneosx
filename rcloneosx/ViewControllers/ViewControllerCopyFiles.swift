@@ -239,14 +239,29 @@ extension ViewControllerCopyFiles: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var text: String?
-        guard self.tabledata != nil else { return nil }
-        let cellIdentifier: String = "fileID"
-        text = self.tabledata![row]
-        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: self) as? NSTableCellView {
+        var cellIdentifier: String?
+        guard self.tabledata != nil else {
+            return nil
+        }
+        var split = self.tabledata![row].components(separatedBy: " ")
+        if tableColumn == tableView.tableColumns[0] {
+            text = split[0]
+            cellIdentifier = "sizeID"
+        }
+        if tableColumn == tableView.tableColumns[1] {
+            if split.count > 1 {
+                text = split[1]
+            } else {
+                text = split[0]
+            }
+            cellIdentifier = "fileID"
+        }
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier!), owner: self) as? NSTableCellView {
             cell.textField?.stringValue = text!
             return cell
+        } else {
+            return nil
         }
-        return nil
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {

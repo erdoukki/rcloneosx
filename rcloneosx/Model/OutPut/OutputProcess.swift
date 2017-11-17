@@ -67,7 +67,6 @@ final class OutputProcess {
         case .one:
             for i in 0 ..< self.output!.count {
                 let str = self.output![i].trimmingCharacters(in: .whitespacesAndNewlines)
-                // let str = substr.components(separatedBy: " ").dropFirst(3).joined(separator: " ")
                 if str.isEmpty == false {
                     out.append(str)
                 }
