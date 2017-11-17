@@ -978,6 +978,4 @@ extension ViewControllertabMain: ErrorOutput {
     func erroroutput() {
         self.possibleerroroutput.isHidden = false
     }
-    
-    
 }

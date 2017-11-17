@@ -78,11 +78,11 @@ class ProcessCmd: Delay {
         self.notifications = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification,
                                                             object: task, queue: nil) { _ -> Void in
             // Check if in a scheduled operation, if not use delegate to inform about termination of Process()
-            self.termination = true
             if self.aScheduledOperation! == false {
                 // Send message about process termination
-                self.delayWithSeconds(1.0) {
-                    self.updateDelegate?.processTermination()
+                self.delayWithSeconds(0.5) {
+                     self.termination = true
+                     self.updateDelegate?.processTermination()
                 }
             } else {
                 // We are in Scheduled operation and must finalize the job
