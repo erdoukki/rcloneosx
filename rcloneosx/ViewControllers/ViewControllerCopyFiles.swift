@@ -266,7 +266,12 @@ extension ViewControllerCopyFiles: NSTableViewDelegate {
         let indexes = myTableViewFromNotification.selectedRowIndexes
         if let index = indexes.first {
             guard self.tabledata != nil else { return }
-            self.remoteCatalog.stringValue = self.tabledata![index]
+            let split = self.tabledata![index].components(separatedBy: " ")
+            if split.count > 1 {
+                self.remoteCatalog.stringValue = split[1]
+            } else {
+                self.remoteCatalog.stringValue = self.tabledata![index]
+            }
             guard self.remoteCatalog.stringValue.isEmpty == false && self.localCatalog.stringValue.isEmpty == false else {
                 self.error.isHidden = false
                 return
