@@ -82,6 +82,9 @@ enum ArgumentsRsync {
     case arg
     case argdryRun
     case arglistfiles
+    case argrestore
+    case argrestoredryRun
+    case argrestoreDisplaydryRun
 }
 
 // Enum which resource to return
@@ -218,6 +221,12 @@ class Configurations: ReloadTable {
             return allarguments.argdryRun!
         case .arglistfiles:
             return allarguments.argslistRemotefiles!
+        case .argrestore:
+            return allarguments.argsRestorefiles!
+        case .argrestoredryRun:
+            return allarguments.argsRestorefilesdryRun!
+        case .argrestoreDisplaydryRun:
+            return allarguments.argsRestorefilesdryRunDisplay!
         }
     }
 

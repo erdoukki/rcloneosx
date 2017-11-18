@@ -17,37 +17,54 @@ enum Enumscopyfiles {
 
 final class CopyFileArguments: SetConfigurations {
 
-    private var file: String?
     private var arguments: Array<String>?
-    private var argDisplay: String?
-    private var command: String?
+    private var argDisplaydryRun: Array<String>?
+    private var argdryRun: Array<String>?
+    private var remotefile: String?
+    private var localCatalog: String?
 
     func getArguments() -> Array<String>? {
+        guard self.arguments!.count > 2 else {
+            return self.arguments
+        }
+        self.arguments![1] = self.arguments![1] + "/" + self.remotefile!
+        self.arguments?.insert(self.localCatalog!, at: 2)
         return self.arguments
     }
-
-    func getCommand() -> String? {
-        return self.command
+    
+    func getArgumentsdryRun() -> Array<String>? {
+        self.argdryRun![1] = self.argdryRun![1] + "/" + self.remotefile!
+        self.argdryRun?.insert(self.localCatalog!, at: 2)
+        return self.argdryRun
     }
 
     func getcommandDisplay() -> String {
-        guard self.argDisplay != nil else {
+        guard self.argDisplaydryRun != nil else {
             return ""
         }
-        return self.argDisplay!
+        var arguments: String = ""
+        for i in 0 ..< self.argDisplaydryRun!.count {
+            if i == 2 {
+                arguments += self.argDisplaydryRun![i] + "/" + self.remotefile!
+                arguments += " " + self.localCatalog! + " "
+            } else {
+               arguments += self.argDisplaydryRun![i]
+            }
+            
+        }
+        return arguments
     }
 
-    init (task: Enumscopyfiles, config: Configuration) {
-        self.arguments = nil
-        self.arguments = Array<String>()
+    init (task: Enumscopyfiles, config: Configuration, remotefile: String?, localCatalog: String?) {
+        self.remotefile = remotefile
+        self.localCatalog = localCatalog
+        let index = self.configurations?.getIndex(config.hiddenID)
         switch task {
         case .cprclone:
-            self.arguments = nil
-            // self.arguments = arguments.getArguments()
-            // self.command = arguments.getCommand()
-            // self.argDisplay = arguments.getArgumentsDisplay()
+            self.arguments = self.configurations?.arguments4rsync(index: index!, argtype: .argrestore)
+            self.argdryRun = self.configurations?.arguments4rsync(index: index!, argtype: .argrestoredryRun)
+            self.argDisplaydryRun = self.configurations?.arguments4rsync(index: index!, argtype: .argrestoreDisplaydryRun)
         case .lsrclone:
-            let index = self.configurations?.getIndex(config.hiddenID)
             self.arguments = self.configurations?.arguments4rsync(index: index!, argtype: .arglistfiles)
         }
     }

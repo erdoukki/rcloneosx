@@ -305,15 +305,23 @@ protocol Information: class {
 
 protocol GetInformation {
     weak var informationDelegateMain: Information? {get}
+    weak var informationDelegateCopyFiles: Information? {get}
 }
 
 extension GetInformation {
     weak var informationDelegateMain: Information? {
         return ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
     }
+    weak var informationDelegateCopyFiles: Information? {
+        return ViewControllerReference.shared.getvcref(viewcontroller: .vccopyfiles) as? ViewControllerCopyFiles
+    }
 
     func getinfo(viewcontroller: ViewController) -> [String] {
-        return (self.informationDelegateMain?.getInformation())!
+        if viewcontroller == .vctabmain {
+            return self.informationDelegateMain!.getInformation()
+        } else {
+            return self.informationDelegateCopyFiles!.getInformation()
+        }
     }
 }
 // Protocol for doing updates when optional path for rsync is changed
