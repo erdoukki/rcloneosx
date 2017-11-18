@@ -43,6 +43,7 @@ final class CopyFiles: SetConfigurations {
         self.command = nil
         self.outputprocess = nil
         self.outputprocess = OutputProcess()
+        self.process = CommandCopyFiles(command: nil, arguments: self.arguments)
         self.process!.executeProcess(outputprocess: self.outputprocess)
     }
 

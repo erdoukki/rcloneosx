@@ -130,7 +130,7 @@ class RsyncProcessArguments {
         self.remoteargs = self.offsiteServer! + ":" + self.offsiteCatalog!
         self.appendParameter(parameter: "copy", forDisplay: forDisplay)
         self.appendParameter(parameter: self.remoteargs!, forDisplay: forDisplay)
-        self.setParameters2To14(config, dryRun: dryRun, forDisplay: forDisplay)
+        self.appendParameter(parameter: "--verbose", forDisplay: forDisplay)
         if dryRun {
            self.dryrunparameter(config, forDisplay: forDisplay)
         }
