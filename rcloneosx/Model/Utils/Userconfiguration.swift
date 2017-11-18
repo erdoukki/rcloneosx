@@ -27,6 +27,12 @@ final class Userconfiguration {
         if let rsyncPath = dict.value(forKey: "rsyncPath") as? String {
             ViewControllerReference.shared.rsyncPath = rsyncPath
         }
+        // Temporary path for restores single files or directory
+        if let restorePath = dict.value(forKey: "restorePath") as? String {
+            ViewControllerReference.shared.restorePath = restorePath
+        } else {
+            ViewControllerReference.shared.restorePath = NSHomeDirectory() + "/tmp/"
+        }
         // Operation object
         // Default is dispatch
         if let operation = dict.value(forKey: "operation") as? String {
