@@ -23,7 +23,8 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
     @IBOutlet weak var detailedlogging: NSButton!
     @IBOutlet weak var noRsync: NSTextField!
     @IBOutlet weak var operation: NSButton!
-
+    @IBOutlet weak var restorePath: NSTextField!
+    
     @IBAction func toggleDetailedlogging(_ sender: NSButton) {
         if self.detailedlogging.state == .on {
             ViewControllerReference.shared.detailedlogging = true
@@ -37,6 +38,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
         if self.dirty {
             // Before closing save changed configuration
             self.setRsyncPath()
+            self.setRestorePath()
             _ = self.storageapi!.saveUserconfiguration()
         }
         if (self.presenting as? ViewControllertabMain) != nil {
@@ -83,7 +85,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
         } else {
             rsyncpath = nil
         }
-
         guard rsyncpath != nil else {
             self.noRsync.isHidden = true
             ViewControllerReference.shared.norsync = false
@@ -97,10 +98,25 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
             ViewControllerReference.shared.norsync = true
         }
     }
+    
+    private func setRestorePath() {
+        if self.restorePath.stringValue.isEmpty == false {
+            if restorePath.stringValue.hasSuffix("/") == false {
+                restorePath.stringValue += "/"
+                ViewControllerReference.shared.restorePath = restorePath.stringValue
+            } else {
+                ViewControllerReference.shared.restorePath = restorePath.stringValue
+            }
+        } else {
+            ViewControllerReference.shared.restorePath = nil
+        }
+        self.dirty = true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rsyncPath.delegate = self
+        self.restorePath.delegate = self
         self.storageapi = PersistentStorageAPI(profile: nil)
     }
 
@@ -122,6 +138,11 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
             self.rsyncPath.stringValue = ViewControllerReference.shared.rsyncPath!
         } else {
             self.rsyncPath.stringValue = ""
+        }
+        if ViewControllerReference.shared.restorePath != nil {
+            self.restorePath.stringValue = ViewControllerReference.shared.restorePath!
+        } else {
+            self.restorePath.stringValue = ""
         }
         switch ViewControllerReference.shared.operation {
         case .dispatch:
