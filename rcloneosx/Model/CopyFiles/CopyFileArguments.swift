@@ -17,35 +17,38 @@ enum Enumscopyfiles {
 
 final class CopyFileArguments: SetConfigurations {
 
-    private var file: String?
     private var arguments: Array<String>?
-    private var argDisplay: String?
-    private var command: String?
+    private var argDisplaydryRun: Array<String>?
+    private var argdryRun: Array<String>?
 
     func getArguments() -> Array<String>? {
         return self.arguments
     }
-
-    func getCommand() -> String? {
-        return self.command
+    
+    func getArgumentsdryRun() -> Array<String>? {
+        return self.argdryRun
     }
 
     func getcommandDisplay() -> String {
-        guard self.argDisplay != nil else {
+        guard self.argDisplaydryRun != nil else {
             return ""
         }
-        return self.argDisplay!
+        var arguments: String = ""
+        for i in 0 ..< self.argDisplaydryRun!.count {
+            arguments += self.argDisplaydryRun![i]
+        }
+        return arguments
     }
 
-    init (task: Enumscopyfiles, config: Configuration) {
+    init (task: Enumscopyfiles, config: Configuration, remotefile: String?, localCatalog: String?) {
         self.arguments = nil
         self.arguments = Array<String>()
         switch task {
         case .cprclone:
-            self.arguments = nil
-            // self.arguments = arguments.getArguments()
-            // self.command = arguments.getCommand()
-            // self.argDisplay = arguments.getArgumentsDisplay()
+            let index = self.configurations?.getIndex(config.hiddenID)
+            self.arguments = self.configurations?.arguments4rsync(index: index!, argtype: .argrestore)
+            self.argdryRun = self.configurations?.arguments4rsync(index: index!, argtype: .argdryRun)
+            self.argDisplaydryRun = self.configurations?.arguments4rsync(index: index!, argtype: .argrestoreDisplaydryRun)
         case .lsrclone:
             let index = self.configurations?.getIndex(config.hiddenID)
             self.arguments = self.configurations?.arguments4rsync(index: index!, argtype: .arglistfiles)

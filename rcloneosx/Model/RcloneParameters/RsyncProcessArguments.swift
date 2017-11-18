@@ -122,6 +122,20 @@ class RsyncProcessArguments {
         self.appendParameter(parameter: self.remoteargs!, forDisplay: false)
         return self.arguments!
     }
+    
+    func argumentsRsyncrestore(_ config: Configuration, dryRun: Bool, forDisplay: Bool) -> Array<String> {
+        self.localCatalog = nil
+        self.offsiteCatalog = config.offsiteCatalog
+        self.offsiteServer = config.offsiteServer
+        self.remoteargs = self.offsiteServer! + ":" + self.offsiteCatalog!
+        self.appendParameter(parameter: "copy", forDisplay: forDisplay)
+        self.appendParameter(parameter: self.remoteargs!, forDisplay: forDisplay)
+        self.setParameters2To14(config, dryRun: dryRun, forDisplay: forDisplay)
+        if dryRun {
+           self.dryrunparameter(config, forDisplay: forDisplay)
+        }
+        return self.arguments!
+    }
 
     init () {
         self.arguments = nil
