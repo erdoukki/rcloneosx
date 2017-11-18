@@ -17,7 +17,6 @@ final class CopyFiles: SetConfigurations {
     private var files: Array<String>?
     private var arguments: Array<String>?
     private var command: String?
-    var argumentsObject: CopyFileArguments?
     private var argumentsRsync: Array<String>?
     private var argymentsRsyncDrynRun: Array<String>?
     private var commandDisplay: String?
@@ -37,11 +36,9 @@ final class CopyFiles: SetConfigurations {
     func executeRsync(remotefile: String, localCatalog: String, dryrun: Bool) {
         guard self.config != nil else { return }
         if dryrun {
-            self.argumentsObject = CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog)
-            self.arguments = self.argumentsObject!.getArguments()
+            self.arguments = CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getArgumentsdryRun()
         } else {
-            self.argumentsObject = CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog)
-            self.arguments = self.argumentsObject!.getArguments()
+            self.arguments = CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getArguments()
         }
         self.command = nil
         self.outputprocess = nil
@@ -52,16 +49,14 @@ final class CopyFiles: SetConfigurations {
     func getCommandDisplayinView(remotefile: String, localCatalog: String) -> String {
         guard self.config != nil else { return "" }
         guard self.index != nil else { return "" }
-        self.argumentsObject = CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog)
-        self.commandDisplay = Tools().rsyncpath() + " " + self.argumentsObject!.getcommandDisplay()
+        self.commandDisplay = Tools().rsyncpath() + " " + CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getcommandDisplay()
         return self.commandDisplay ?? " "
     }
 
     private func getRemoteFileList() {
         self.outputprocess = nil
         self.outputprocess = OutputProcess()
-        self.argumentsObject = CopyFileArguments(task: .lsrclone, config: self.config!, remotefile: nil, localCatalog: nil)
-        self.arguments = self.argumentsObject!.getArguments()
+        self.arguments = CopyFileArguments(task: .lsrclone, config: self.config!, remotefile: nil, localCatalog: nil).getArguments()
         self.process = CommandCopyFiles(command: nil, arguments: self.arguments)
         self.process!.executeProcess(outputprocess: self.outputprocess)
     }

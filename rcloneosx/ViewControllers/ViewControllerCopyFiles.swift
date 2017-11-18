@@ -62,7 +62,6 @@ class ViewControllerCopyFiles: NSViewController, SetConfigurations, GetIndex, De
             self.error.isHidden = false
             return
         }
-        /*
         if self.copyFiles != nil {
             self.rsync = true
             self.workingRsync.startAnimation(nil)
@@ -77,7 +76,6 @@ class ViewControllerCopyFiles: NSViewController, SetConfigurations, GetIndex, De
                 self.estimated = false
             }
         }
-        */
     }
 
     // Getting index from Execute View
@@ -169,7 +167,6 @@ class ViewControllerCopyFiles: NSViewController, SetConfigurations, GetIndex, De
         guard self.index != nil else { return }
         guard self.remoteCatalog!.stringValue.isEmpty == false else { return }
         guard self.localCatalog!.stringValue.isEmpty == false else { return }
-        /*
         let answer = Alerts.dialogOKCancel("Copy single files or directory", text: "Start copy?")
         if answer {
             self.copyButton.title = "Execute"
@@ -178,7 +175,6 @@ class ViewControllerCopyFiles: NSViewController, SetConfigurations, GetIndex, De
             self.workingRsync.startAnimation(nil)
             self.copyFiles!.executeRsync(remotefile: remoteCatalog!.stringValue, localCatalog: localCatalog!.stringValue, dryrun: false)
         }
-        */
     }
 
     private func verifylocalCatalog() {
