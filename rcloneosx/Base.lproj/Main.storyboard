@@ -4044,7 +4044,7 @@ DQ
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDe-R9-Fcp">
                                 <rect key="frame" x="629" y="289" width="103" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Server :" id="d4J-UH-nMH">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Cloud service :" id="d4J-UH-nMH">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -4120,7 +4120,7 @@ DQ
                                     </subviews>
                                 </view>
                             </box>
-                            <box verticalHuggingPriority="249" fixedFrame="YES" title="Rsync command (--dry-run)" translatesAutoresizingMaskIntoConstraints="NO" id="NG5-Ft-JeD">
+                            <box verticalHuggingPriority="249" fixedFrame="YES" title="Rclone command (--dry-run)" translatesAutoresizingMaskIntoConstraints="NO" id="NG5-Ft-JeD">
                                 <rect key="frame" x="613" y="16" width="462" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="0Oz-SX-uv4">
