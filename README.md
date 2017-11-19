@@ -6,11 +6,7 @@ The project is a adapting [RsyncOSX](https://github.com/rsyncOSX/RsyncOSX) utili
 
 RcloneOSX is compiled with support for macOS version 10.11 - 10.13. The application is implemented in **Swift 4** by using **Xcode 9**. RcloneOSX **require** the `rclone` utility to be installed. If installed in other directory than `/usr/local/bin`, please change directory by user Configuration in RcloneOSX. RcloneOSX checks if there is a `rclone` installed in the provided directory.
 
-RcloneOSX is built upon the code for [RsyncOSX](https://github.com/rsyncOSX/RsyncOSX).
-
-A short [intro](https://rsyncosx.github.io/Documentation/docs/RcloneOSX/Intro/Intro.html) about what RcloneOSX is.
-
-A [rc](https://github.com/rsyncOSX/rcloneosx/releases) is released fixing the issue.
+RcloneOSX is built upon the code for [RsyncOSX](https://github.com/rsyncOSX/RsyncOSX). A short [intro](https://rsyncosx.github.io/Documentation/docs/RcloneOSX/Intro/Intro.html) about what RcloneOSX is.
 
 #### SwiftLint
 
