@@ -11,8 +11,8 @@
 import Foundation
 
 enum Enumscopyfiles {
-    case cprclone
-    case lsrclone
+    case restorerclone
+    case listrclone
 }
 
 final class CopyFileArguments: SetConfigurations {
@@ -60,11 +60,11 @@ final class CopyFileArguments: SetConfigurations {
         self.localCatalog = localCatalog
         let index = self.configurations?.getIndex(config.hiddenID)
         switch task {
-        case .cprclone:
+        case .restorerclone:
             self.arguments = self.configurations?.arguments4rsync(index: index!, argtype: .argrestore)
             self.argdryRun = self.configurations?.arguments4rsync(index: index!, argtype: .argrestoredryRun)
             self.argDisplaydryRun = self.configurations?.arguments4rsync(index: index!, argtype: .argrestoreDisplaydryRun)
-        case .lsrclone:
+        case .listrclone:
             self.arguments = self.configurations?.arguments4rsync(index: index!, argtype: .arglistfiles)
         }
     }

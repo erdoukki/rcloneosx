@@ -66,13 +66,13 @@ class ViewControllerCopyFiles: NSViewController, SetConfigurations, GetIndex, De
             self.rsync = true
             self.workingRsync.startAnimation(nil)
             if self.estimated == false {
-                self.copyFiles!.executeRsync(remotefile: remoteCatalog!.stringValue, localCatalog: localCatalog!.stringValue, dryrun: true)
+                self.copyFiles!.executeRclone(remotefile: remoteCatalog!.stringValue, localCatalog: localCatalog!.stringValue, dryrun: true)
                 self.copyButton.title = "Execute"
                 self.estimated = true
             } else {
                 self.copyButton.isEnabled = false
                 self.workingRsync.startAnimation(nil)
-                self.copyFiles!.executeRsync(remotefile: remoteCatalog!.stringValue, localCatalog: localCatalog!.stringValue, dryrun: false)
+                self.copyFiles!.executeRclone(remotefile: remoteCatalog!.stringValue, localCatalog: localCatalog!.stringValue, dryrun: false)
                 self.estimated = false
             }
         }
@@ -173,7 +173,7 @@ class ViewControllerCopyFiles: NSViewController, SetConfigurations, GetIndex, De
             self.copyButton.isEnabled = false
             self.rsync = true
             self.workingRsync.startAnimation(nil)
-            self.copyFiles!.executeRsync(remotefile: remoteCatalog!.stringValue, localCatalog: localCatalog!.stringValue, dryrun: false)
+            self.copyFiles!.executeRclone(remotefile: remoteCatalog!.stringValue, localCatalog: localCatalog!.stringValue, dryrun: false)
         }
     }
 

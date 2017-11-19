@@ -33,12 +33,12 @@ final class CopyFiles: SetConfigurations {
         self.process!.abortProcess()
     }
 
-    func executeRsync(remotefile: String, localCatalog: String, dryrun: Bool) {
+    func executeRclone(remotefile: String, localCatalog: String, dryrun: Bool) {
         guard self.config != nil else { return }
         if dryrun {
-            self.arguments = CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getArgumentsdryRun()
+            self.arguments = CopyFileArguments(task: .restorerclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getArgumentsdryRun()
         } else {
-            self.arguments = CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getArguments()
+            self.arguments = CopyFileArguments(task: .restorerclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getArguments()
         }
         self.command = nil
         self.outputprocess = nil
@@ -50,14 +50,14 @@ final class CopyFiles: SetConfigurations {
     func getCommandDisplayinView(remotefile: String, localCatalog: String) -> String {
         guard self.config != nil else { return "" }
         guard self.index != nil else { return "" }
-        self.commandDisplay = Tools().rsyncpath() + " " + CopyFileArguments(task: .cprclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getcommandDisplay()
+        self.commandDisplay = Tools().rsyncpath() + " " + CopyFileArguments(task: .restorerclone, config: self.config!, remotefile: remotefile, localCatalog: localCatalog).getcommandDisplay()
         return self.commandDisplay ?? " "
     }
 
     private func getRemoteFileList() {
         self.outputprocess = nil
         self.outputprocess = OutputProcess()
-        self.arguments = CopyFileArguments(task: .lsrclone, config: self.config!, remotefile: nil, localCatalog: nil).getArguments()
+        self.arguments = CopyFileArguments(task: .listrclone, config: self.config!, remotefile: nil, localCatalog: nil).getArguments()
         self.process = CommandCopyFiles(command: nil, arguments: self.arguments)
         self.process!.executeProcess(outputprocess: self.outputprocess)
     }
