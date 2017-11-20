@@ -64,11 +64,11 @@ final class Numbers: SetConfigurations {
     private func prepareresult() {
         let tempfiles = self.output!.filter({(($0).contains("Transferred:"))})
         let elapsedTime = self.output!.filter({(($0).contains("Elapsed time:"))})
-        guard tempfiles.count == 2 && elapsedTime.count == 1  else { return }
-        var filesPartSize = tempfiles[0].components(separatedBy: " ").filter{ $0.isEmpty == false && $0 != "Transferred:"}
-        let filesPart = tempfiles[1].components(separatedBy: " ").filter{ $0.isEmpty == false }
+        guard tempfiles.count >= 2 && elapsedTime.count == 1  else { return }
+        let index = tempfiles.count
+        var filesPartSize = tempfiles[index-2].components(separatedBy: " ").filter{ $0.isEmpty == false && $0 != "Transferred:"}
+        let filesPart = tempfiles[index-1].components(separatedBy: " ").filter{ $0.isEmpty == false }
         let elapstedTimePart = elapsedTime[0].components(separatedBy: " ").filter{ $0.isEmpty == false }
-
         if filesPart.count > 1 {self.transferNum = filesPart[filesPart.count - 1]} else {self.transferNum = "0"}
         if filesPartSize.count > 3 {
             self.transferNumSize = filesPartSize[0]

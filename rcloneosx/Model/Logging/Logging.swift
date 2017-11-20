@@ -34,7 +34,11 @@ class Logging {
     
     private func logg() {
         self.read()
-        self.log = self.log ?? "" + self.outputprocess!.getOutput()!.joined(separator: "\n")
+        if self.log == nil {
+            self.log = self.outputprocess!.getOutput()!.joined(separator: "\n")
+        } else {
+            self.log = self.log! + self.outputprocess!.getOutput()!.joined(separator: "\n")
+        }
         self.write()
     }
     

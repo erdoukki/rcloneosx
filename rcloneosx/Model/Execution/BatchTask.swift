@@ -118,6 +118,7 @@ final class BatchTask: SetSchedules, SetConfigurations, Delay {
                 }
             case 1:
                 // Real run
+                _ = Logging(outputprocess: self.outputprocess)
                 let number = Numbers(output: self.outputprocess)
                 batchobject.updateInProcess(numberOfFiles: self.outputprocess!.count())
                 batchobject.setCompleted()
@@ -142,7 +143,6 @@ final class BatchTask: SetSchedules, SetConfigurations, Delay {
                     self.schedules!.addlogtaskmanuel(hiddenID, result: numbers)
                 }
                 self.configurations!.setCurrentDateonConfiguration(index)
-                _ = Logging(outputprocess: self.outputprocess)
                 self.delayWithSeconds(1) {
                     self.executeBatch()
                 }
