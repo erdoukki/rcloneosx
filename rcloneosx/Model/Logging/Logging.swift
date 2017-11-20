@@ -33,7 +33,7 @@ class Logging {
     }
     
     private func logg() {
-        if ViewControllerReference.shared.minimumlogging == true || ViewControllerReference.shared.fulllogging == true {
+        if ViewControllerReference.shared.fulllogging  {
             self.read()
             if self.log == nil {
                 self.log = self.outputprocess!.getOutput()!.joined(separator: "\n")
@@ -41,6 +41,8 @@ class Logging {
                 self.log = self.log! + self.outputprocess!.getOutput()!.joined(separator: "\n")
             }
             self.write()
+        } else if ViewControllerReference.shared.minimumlogging {
+            //
         }
     }
     
