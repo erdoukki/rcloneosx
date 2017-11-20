@@ -33,13 +33,15 @@ class Logging {
     }
     
     private func logg() {
-        self.read()
-        if self.log == nil {
-            self.log = self.outputprocess!.getOutput()!.joined(separator: "\n")
-        } else {
-            self.log = self.log! + self.outputprocess!.getOutput()!.joined(separator: "\n")
+        if ViewControllerReference.shared.minimumlogging == true || ViewControllerReference.shared.fulllogging == true {
+            self.read()
+            if self.log == nil {
+                self.log = self.outputprocess!.getOutput()!.joined(separator: "\n")
+            } else {
+                self.log = self.log! + self.outputprocess!.getOutput()!.joined(separator: "\n")
+            }
+            self.write()
         }
-        self.write()
     }
     
     
@@ -50,7 +52,7 @@ class Logging {
     
     init(outputprocess: OutputProcess?) {
         self.outputprocess = outputprocess
-        self.filename = "rclonelog"
+        self.filename = ViewControllerReference.shared.logname
         let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         self.fileURL = DocumentDirURL.appendingPathComponent(self.filename!).appendingPathExtension("txt")
         self.logg()
