@@ -8,10 +8,6 @@ RcloneOSX is compiled with support for macOS version 10.11 - 10.13. The applicat
 
 RcloneOSX is built upon the code for [RsyncOSX](https://github.com/rsyncOSX/RsyncOSX). A short [intro](https://rsyncosx.github.io/Documentation/docs/RcloneOSX/Intro/Intro.html) about what RcloneOSX is.
 
-#### SwiftLint
-
-As part of this version of RcloneOSX I am using [SwiftLint](https://github.com/realm/SwiftLint) as tool for writing more readable code.
-
 ### Application icon
 
 The application icon is created by [Forrest Walter](http://www.forrestwalter.com/). All rights reserved to Forrest Walter.
