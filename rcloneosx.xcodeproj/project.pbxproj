@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E931186C1FC2BCC1007D1C1B /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931186B1FC2BCC1007D1C1B /* Logging.swift */; };
 		E960CB041FB091DE0008D12E /* OutputProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAB61FB091D30008D12E /* OutputProcess.swift */; };
 		E960CB051FB091DE0008D12E /* RsyncScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAB71FB091D30008D12E /* RsyncScheduled.swift */; };
 		E960CB061FB091DE0008D12E /* Rsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAB81FB091D30008D12E /* Rsync.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E931186B1FC2BCC1007D1C1B /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = RcloneOSX/Model/Logging/Logging.swift; sourceTree = SOURCE_ROOT; };
 		E960CAB51FB091D20008D12E /* rcloneosx-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rcloneosx-Bridging-Header.h"; sourceTree = "<group>"; };
 		E960CAB61FB091D30008D12E /* OutputProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputProcess.swift; sourceTree = "<group>"; };
 		E960CAB71FB091D30008D12E /* RsyncScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncScheduled.swift; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E931186A1FC2BCA4007D1C1B /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				E931186B1FC2BCC1007D1C1B /* Logging.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
 		E9482D1E1FB0AEAB00AFBB0D /* RcloneParameters */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +360,7 @@
 		E960CB531FB092E70008D12E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E931186A1FC2BCA4007D1C1B /* Logging */,
 				E9DD810A1FBF3AFE0080FEAD /* OutPut */,
 				E9DD81091FBF3A450080FEAD /* CopyFiles */,
 				E9D1F1A01FB49D870099D25C /* CloudServices */,
@@ -561,6 +572,7 @@
 				E960CB231FB091DE0008D12E /* ViewControllerNewVersion.swift in Sources */,
 				E960CB281FB091DE0008D12E /* ArgumentsOneConfiguration.swift in Sources */,
 				E960CB441FB091DE0008D12E /* ScheduleSortedAndExpanded.swift in Sources */,
+				E931186C1FC2BCC1007D1C1B /* Logging.swift in Sources */,
 				E960CB401FB091DE0008D12E /* ViewControllerRsyncParameters.swift in Sources */,
 				E960CB291FB091DE0008D12E /* BatchTask.swift in Sources */,
 				E9A7958F1FBF28A500AF8A5F /* CopyFiles.swift in Sources */,

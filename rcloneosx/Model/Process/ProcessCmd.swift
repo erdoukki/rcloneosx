@@ -81,8 +81,8 @@ class ProcessCmd: Delay {
             if self.aScheduledOperation! == false {
                 // Send message about process termination
                 self.delayWithSeconds(0.5) {
-                     self.termination = true
-                     self.updateDelegate?.processTermination()
+                    self.termination = true
+                    self.updateDelegate?.processTermination()
                 }
             } else {
                 // We are in Scheduled operation and must finalize the job
