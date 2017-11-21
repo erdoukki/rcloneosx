@@ -18,16 +18,16 @@ class Logging {
     private func write() {
         do {
             try self.log!.write(to: self.fileURL!, atomically: true, encoding: String.Encoding.utf8)
-        } catch let error as NSError  {
-            print(error)
+        } catch _ as NSError  {
+            // print(error)
         }
     }
     
     private func read() {
         do {
             self.log = try String(contentsOf: self.fileURL!, encoding: String.Encoding.utf8)
-        } catch let error as NSError {
-            print(error)
+        } catch _ as NSError {
+            // print(error)
         }
         
     }
@@ -44,7 +44,8 @@ class Logging {
         } else if ViewControllerReference.shared.minimumlogging {
             self.read()
             var tmplogg = Array<String>()
-            let startindex = self.outputprocess!.getOutput()!.count - 8
+            var startindex = self.outputprocess!.getOutput()!.count - 8
+            if startindex < 0 { startindex = 0 }
             for i in startindex ..< self.outputprocess!.getOutput()!.count {
                 tmplogg.append(self.outputprocess!.getOutput()![i])
             }
