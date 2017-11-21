@@ -24,6 +24,9 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
     @IBOutlet weak var noRsync: NSTextField!
     @IBOutlet weak var operation: NSButton!
     @IBOutlet weak var restorePath: NSTextField!
+    @IBOutlet weak var minimumlogging: NSButton!
+    @IBOutlet weak var fulllogging: NSButton!
+    @IBOutlet weak var nologging: NSButton!
     
     @IBAction func toggleDetailedlogging(_ sender: NSButton) {
         if self.detailedlogging.state == .on {
@@ -61,6 +64,19 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
         self.dirty = true
     }
 
+    @IBAction func logging(_ sender: NSButton) {
+        if self.detailedlogging.state == .on {
+            ViewControllerReference.shared.fulllogging = true
+            ViewControllerReference.shared.minimumlogging = false
+        } else if self.minimumlogging.state == .on {
+            ViewControllerReference.shared.fulllogging = false
+            ViewControllerReference.shared.minimumlogging = true
+        } else if self.nologging.state == .on {
+            ViewControllerReference.shared.fulllogging = false
+            ViewControllerReference.shared.minimumlogging = false
+        }
+    }
+    
     private func setRsyncPath() {
         if self.rsyncPath.stringValue.isEmpty == false {
             if rsyncPath.stringValue.hasSuffix("/") == false {
@@ -118,6 +134,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
         self.rsyncPath.delegate = self
         self.restorePath.delegate = self
         self.storageapi = PersistentStorageAPI(profile: nil)
+        self.nologging.state = .on
     }
 
     override func viewDidAppear() {

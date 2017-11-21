@@ -150,6 +150,7 @@ final class SingleTask: SetSchedules, SetConfigurations {
                 if self.configurations!.getConfigurations()[self.index!].task != "check" {
                     self.configurations!.setCurrentDateonConfiguration(self.index!)
                     self.schedules!.addlogtaskmanuel(hiddenID, result: number.stats())
+                    _ = Logging(outputprocess: self.outputprocess)
                 }
             case .empty:
                 self.workload = nil

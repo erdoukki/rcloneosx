@@ -2044,6 +2044,39 @@ DQ
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rrp-Al-X8G">
+                                            <rect key="frame" x="37" y="62" width="126" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="radio" title="minimum logging" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="1zo-wf-QpW">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="logging:" target="Psw-ga-cgO" id="D3P-b4-Xtt"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="caX-2K-TPs">
+                                            <rect key="frame" x="37" y="40" width="90" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="radio" title="full logging" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="qUL-jh-iuW">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="logging:" target="Psw-ga-cgO" id="Cdj-6w-ZSK"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTx-Ac-qNg">
+                                            <rect key="frame" x="37" y="18" width="83" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="radio" title="nologging" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="1eL-09-gFQ">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="logging:" target="Psw-ga-cgO" id="Q7N-eK-mfY"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </box>
@@ -2051,7 +2084,10 @@ DQ
                     </view>
                     <connections>
                         <outlet property="detailedlogging" destination="dg1-Pc-D5r" id="Z5n-3i-nJ1"/>
+                        <outlet property="fulllogging" destination="caX-2K-TPs" id="dYP-vg-BHH"/>
+                        <outlet property="minimumlogging" destination="Rrp-Al-X8G" id="ebE-q9-CyV"/>
                         <outlet property="noRsync" destination="MU5-XI-9GS" id="apy-XI-W5g"/>
+                        <outlet property="nologging" destination="WTx-Ac-qNg" id="RgQ-7d-M65"/>
                         <outlet property="operation" destination="lfE-RV-MgW" id="kwe-Bo-Rh6"/>
                         <outlet property="restorePath" destination="tvd-JD-0eF" id="fCt-L4-MGJ"/>
                         <outlet property="rsyncPath" destination="Raw-fd-DIw" id="9MU-5e-zvh"/>
