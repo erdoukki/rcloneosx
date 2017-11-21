@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E91E8BED1FC4B0AE00D23EFD /* Fileerrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E8BEC1FC4B0AE00D23EFD /* Fileerrors.swift */; };
 		E931186C1FC2BCC1007D1C1B /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931186B1FC2BCC1007D1C1B /* Logging.swift */; };
 		E960CB041FB091DE0008D12E /* OutputProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAB61FB091D30008D12E /* OutputProcess.swift */; };
 		E960CB051FB091DE0008D12E /* RsyncScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAB71FB091D30008D12E /* RsyncScheduled.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E91E8BEC1FC4B0AE00D23EFD /* Fileerrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Fileerrors.swift; path = RcloneOSX/Model/Logging/Fileerrors.swift; sourceTree = SOURCE_ROOT; };
 		E931186B1FC2BCC1007D1C1B /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = RcloneOSX/Model/Logging/Logging.swift; sourceTree = SOURCE_ROOT; };
 		E960CAB51FB091D20008D12E /* rcloneosx-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rcloneosx-Bridging-Header.h"; sourceTree = "<group>"; };
 		E960CAB61FB091D30008D12E /* OutputProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputProcess.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				E931186B1FC2BCC1007D1C1B /* Logging.swift */,
+				E91E8BEC1FC4B0AE00D23EFD /* Fileerrors.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				E960CB251FB091DE0008D12E /* ViewControllerInformation.swift in Sources */,
 				E960CB2B1FB091DE0008D12E /* SingleTaskWorkQueu.swift in Sources */,
 				E960CB4E1FB091DE0008D12E /* NewConfigurations.swift in Sources */,
+				E91E8BED1FC4B0AE00D23EFD /* Fileerrors.swift in Sources */,
 				E9A7958B1FBF285300AF8A5F /* ViewControllerCopyFiles.swift in Sources */,
 				E960CB2D1FB091DE0008D12E /* Alerts.swift in Sources */,
 				E99AA3831FAFA28900C1E86A /* AppDelegate.swift in Sources */,
