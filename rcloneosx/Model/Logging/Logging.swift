@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Logging {
+class Logging: Reportfileerror {
     
     var outputprocess: OutputProcess?
     var log: String?
@@ -18,16 +18,18 @@ class Logging {
     private func write() {
         do {
             try self.log!.write(to: self.fileURL!, atomically: true, encoding: String.Encoding.utf8)
-        } catch _ as NSError  {
-            // print(error)
+        } catch let e {
+            let error = e as NSError
+            self.error(error: error.description)
         }
     }
     
     private func read() {
         do {
             self.log = try String(contentsOf: self.fileURL!, encoding: String.Encoding.utf8)
-        } catch _ as NSError {
-            // print(error)
+        } catch let e {
+            let error = e as NSError
+            self.error(error: error.description)
         }
         
     }
