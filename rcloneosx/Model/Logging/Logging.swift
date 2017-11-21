@@ -42,7 +42,18 @@ class Logging {
             }
             self.write()
         } else if ViewControllerReference.shared.minimumlogging {
-            //
+            self.read()
+            var tmplogg = Array<String>()
+            let startindex = self.outputprocess!.getOutput()!.count - 8
+            for i in startindex ..< self.outputprocess!.getOutput()!.count {
+                tmplogg.append(self.outputprocess!.getOutput()![i])
+            }
+            if self.log == nil {
+                self.log = tmplogg.joined(separator: "\n")
+            } else {
+                self.log = self.log! + tmplogg.joined(separator: "\n")
+            }
+            self.write()
         }
     }
     
