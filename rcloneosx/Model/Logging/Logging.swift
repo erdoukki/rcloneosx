@@ -20,7 +20,7 @@ class Logging: Reportfileerror {
             try self.log!.write(to: self.fileURL!, atomically: true, encoding: String.Encoding.utf8)
         } catch let e {
             let error = e as NSError
-            self.error(error: error.description)
+            self.error(error: error.description, errortype: .writelogfile)
         }
     }
     
@@ -29,7 +29,7 @@ class Logging: Reportfileerror {
             self.log = try String(contentsOf: self.fileURL!, encoding: String.Encoding.utf8)
         } catch let e {
             let error = e as NSError
-            self.error(error: error.description)
+            self.error(error: error.description, errortype: .openlogfile)
         }
         
     }

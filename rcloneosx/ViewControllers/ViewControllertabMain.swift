@@ -722,13 +722,13 @@ extension ViewControllertabMain: RsyncError {
 
 // If, for any reason, handling files or directory throws an error
 extension ViewControllertabMain: Fileerror {
-    func fileerror(errorstr: String) {
+    
+    func fileerror(errorstr: String, errortype: fileerrortype ) {
         globalMainQueue.async(execute: { () -> Void in
             self.setInfo(info: "Error", color: .red)
             self.light.color = .systemRed
             self.showProcessInfo(info: .error)
-            // Dump the errormessage in rsynccommand field
-            self.rsyncCommand.stringValue = errorstr
+            self.rsyncCommand.stringValue = Filerrors(errortype: errortype).errordescription()
         })
     }
 }
