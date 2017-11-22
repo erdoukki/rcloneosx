@@ -27,7 +27,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
     @IBOutlet weak var minimumlogging: NSButton!
     @IBOutlet weak var fulllogging: NSButton!
     @IBOutlet weak var nologging: NSButton!
-    
+
     @IBAction func toggleDetailedlogging(_ sender: NSButton) {
         if self.detailedlogging.state == .on {
             ViewControllerReference.shared.detailedlogging = true
@@ -65,7 +65,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
     }
 
     @IBAction func logging(_ sender: NSButton) {
-        if self.detailedlogging.state == .on {
+        if self.fulllogging.state == .on {
             ViewControllerReference.shared.fulllogging = true
             ViewControllerReference.shared.minimumlogging = false
         } else if self.minimumlogging.state == .on {
@@ -76,7 +76,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
             ViewControllerReference.shared.minimumlogging = false
         }
     }
-    
+
     private func setRsyncPath() {
         if self.rsyncPath.stringValue.isEmpty == false {
             if rsyncPath.stringValue.hasSuffix("/") == false {
@@ -114,7 +114,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
             ViewControllerReference.shared.norsync = true
         }
     }
-    
+
     private func setRestorePath() {
         if self.restorePath.stringValue.isEmpty == false {
             if restorePath.stringValue.hasSuffix("/") == false {
@@ -168,7 +168,6 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
             self.operation.state = .off
         }
     }
-
 }
 
 extension ViewControllerUserconfiguration: NSTextFieldDelegate {
@@ -180,5 +179,4 @@ extension ViewControllerUserconfiguration: NSTextFieldDelegate {
             self.newrsync()
         }
     }
-
 }

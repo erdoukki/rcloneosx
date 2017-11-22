@@ -53,7 +53,7 @@ class ViewControllerEdit: NSViewController, SetConfigurations, SetDismisser, Get
         self.backupID.stringValue = config.backupID
         self.loadCloudServices()
     }
-    
+
     private func loadCloudServices() {
         guard ViewControllerReference.shared.norsync == false else {
             return

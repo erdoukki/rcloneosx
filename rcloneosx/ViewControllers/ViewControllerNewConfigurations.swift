@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 13/02/16.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
-//  swiftlint:disable function_body_length
 
 import Foundation
 import Cocoa
@@ -34,7 +33,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     @IBOutlet weak var profilInfo: NSTextField!
     @IBOutlet weak var newTableView: NSTableView!
     @IBOutlet weak var cloudService: NSComboBox!
-    
+
     @IBAction func cleartable(_ sender: NSButton) {
         self.newconfigurations = nil
         self.newconfigurations = NewConfigurations()
@@ -43,20 +42,20 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.setFields()
         })
     }
-   
+
     @IBAction func copyLocalCatalog(_ sender: NSButton) {
          _ = FileDialog(requester: .addLocalCatalog)
     }
-    
+
     @IBAction func copyRemoteCatalog(_ sender: NSButton) {
         _ = FileDialog(requester: .addRemoteCatalog)
     }
-    
+
     @IBOutlet weak var copyradio: NSButton!
     @IBOutlet weak var syncradio: NSButton!
     @IBOutlet weak var moveradio: NSButton!
     @IBOutlet weak var checkradio: NSButton!
-    
+
     @IBAction func choosecommand(_ sender: NSButton) {
         if self.copyradio.state == .on {
             self.rclonecommand = self.copycommand
@@ -68,7 +67,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.rclonecommand = self.checkcommand
         }
     }
-    
+
     // Userconfiguration button
     @IBAction func userconfiguration(_ sender: NSButton) {
         globalMainQueue.async(execute: { () -> Void in
@@ -98,7 +97,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.rclonecommand = self.synccommand
         self.syncradio.state = .on
     }
-    
+
     private func loadCloudServices() {
         guard ViewControllerReference.shared.norsync == false else {
             return
@@ -122,7 +121,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.empty.isHidden = true
         self.syncradio.state = .on
     }
-    
+
     @IBAction func addConfig(_ sender: NSButton) {
         guard self.offsiteCatalog.stringValue != self.localCatalog.stringValue else {
             self.equal.isHidden = false

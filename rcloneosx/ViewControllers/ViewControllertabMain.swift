@@ -71,7 +71,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     @IBOutlet weak var selecttask: NSTextField!
     @IBOutlet weak var norsync: NSTextField!
     @IBOutlet weak var possibleerroroutput: NSTextField!
-    
+
     // Reference to Process task
     private var process: Process?
     // Index to selected row, index is set when row is selected
@@ -722,8 +722,8 @@ extension ViewControllertabMain: RsyncError {
 
 // If, for any reason, handling files or directory throws an error
 extension ViewControllertabMain: Fileerror {
-    
-    func fileerror(errorstr: String, errortype: fileerrortype ) {
+
+    func fileerror(errorstr: String, errortype: Fileerrortype ) {
         globalMainQueue.async(execute: { () -> Void in
             if errortype == .openlogfile {
                 self.rsyncCommand.stringValue = Filerrors(errortype: errortype).errordescription()

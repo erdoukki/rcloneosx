@@ -10,7 +10,7 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         var storage: PersistentStorageAPI?
         // Insert code here to initialize your application
@@ -22,10 +22,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             _ = Userconfiguration(userconfigRsyncOSX: userConfiguration)
         }
     }
-    
+
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
 }
 
