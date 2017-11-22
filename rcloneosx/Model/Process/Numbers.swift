@@ -7,7 +7,8 @@
 //
 //  Class for crunching numbers from rsyn output.  Numbers are
 //  informal only, either used in main view or for logging purposes.
-//  swiftlint:disable syntactic_sugar
+//
+//  swiftlint:disable syntactic_sugar line_length
 
 import Foundation
 

@@ -31,7 +31,7 @@ final class CopyFileArguments: SetConfigurations {
         self.arguments?.insert(self.localCatalog!, at: 2)
         return self.arguments
     }
-    
+
     func getArgumentsdryRun() -> Array<String>? {
         self.argdryRun![1] = self.argdryRun![1] + "/" + self.remotefile!
         self.argdryRun?.insert(self.localCatalog!, at: 2)
@@ -50,7 +50,6 @@ final class CopyFileArguments: SetConfigurations {
             } else {
                arguments += self.argDisplaydryRun![i]
             }
-            
         }
         return arguments
     }

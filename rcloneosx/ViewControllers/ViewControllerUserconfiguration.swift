@@ -65,7 +65,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
     }
 
     @IBAction func logging(_ sender: NSButton) {
-        if self.detailedlogging.state == .on {
+        if self.fulllogging.state == .on {
             ViewControllerReference.shared.fulllogging = true
             ViewControllerReference.shared.minimumlogging = false
         } else if self.minimumlogging.state == .on {

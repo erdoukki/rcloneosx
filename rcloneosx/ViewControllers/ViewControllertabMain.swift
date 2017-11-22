@@ -71,7 +71,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     @IBOutlet weak var selecttask: NSTextField!
     @IBOutlet weak var norsync: NSTextField!
     @IBOutlet weak var possibleerroroutput: NSTextField!
-    
+
     // Reference to Process task
     private var process: Process?
     // Index to selected row, index is set when row is selected

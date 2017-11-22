@@ -6,7 +6,7 @@
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
 //  SwiftLint: OK 31 July 2017
-//  swiftlint:disable syntactic_sugar
+//  swiftlint:disable syntactic_sugar cyclomatic_complexity
 
 import Foundation
 
