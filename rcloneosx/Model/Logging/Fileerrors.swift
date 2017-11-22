@@ -36,12 +36,15 @@ extension Reportfileerror {
 
 class Filerrors {
     
-    private var errortype: fileerrortype?
+    private var errortype: fileerrortype
     
     func errordescription() -> String {
-        switch self.errortype! {
+        switch self.errortype {
         case .openlogfile:
-            return "Could not open logfile"
+            guard ViewControllerReference.shared.fileURL != nil else {
+                return "No existing logfile, creating a new one"
+            }
+            return "No existing logfile, creating a new one: " + String(describing: ViewControllerReference.shared.fileURL!)
         case .writelogfile:
             return "Could not write to logfile"
         case .profilecreatedirectory:

@@ -57,6 +57,7 @@ class ViewControllerReference {
     var minimumlogging: Bool = false
     var fulllogging: Bool = false
     var logname: String = "rclonelog"
+    var fileURL: URL?
 
     // Reference to main View
     private var viewControllertabMain: NSViewController?

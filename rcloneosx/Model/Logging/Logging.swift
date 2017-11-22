@@ -71,6 +71,7 @@ class Logging: Reportfileerror {
         self.filename = ViewControllerReference.shared.logname
         let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         self.fileURL = DocumentDirURL.appendingPathComponent(self.filename!).appendingPathExtension("txt")
+        ViewControllerReference.shared.fileURL = self.fileURL
         self.logg()
     }
 }
