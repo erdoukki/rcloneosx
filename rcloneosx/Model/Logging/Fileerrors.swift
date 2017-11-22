@@ -5,10 +5,11 @@
 //  Created by Thomas Evensen on 21.11.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 
-enum fileerrortype {
+enum Fileerrortype {
     case openlogfile
     case writelogfile
     case profilecreatedirectory
@@ -17,7 +18,7 @@ enum fileerrortype {
 
 // Protocol for reporting file errors
 protocol Fileerror: class {
-    func fileerror(errorstr: String, errortype: fileerrortype)
+    func fileerror(errorstr: String, errortype: Fileerrortype)
 }
 
 protocol Reportfileerror {
@@ -28,16 +29,16 @@ extension Reportfileerror {
     weak var errorDelegate: Fileerror? {
         return ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
     }
-    
-    func error(error: String, errortype: fileerrortype) {
+
+    func error(error: String, errortype: Fileerrortype) {
         self.errorDelegate?.fileerror(errorstr: error, errortype: errortype)
     }
 }
 
 class Filerrors {
-    
-    private var errortype: fileerrortype
-    
+
+    private var errortype: Fileerrortype
+
     func errordescription() -> String {
         switch self.errortype {
         case .openlogfile:
@@ -54,7 +55,7 @@ class Filerrors {
         }
      }
 
-    init(errortype: fileerrortype) {
+    init(errortype: Fileerrortype) {
         self.errortype = errortype
     }
 }

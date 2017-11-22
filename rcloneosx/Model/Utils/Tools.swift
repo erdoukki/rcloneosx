@@ -6,7 +6,7 @@
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
 //  SwiftLint: OK 31 July 2017
-//  swiftlint:disable syntactic_sugar line_length
+//  swiftlint:disable line_length
 
 import Foundation
 
@@ -57,7 +57,6 @@ final class Tools: SetConfigurations {
     weak var newprofileDelegate: NewProfile?
     private var macSerialNumber: String?
     weak var verifyrsyncDelegate: Verifyrsync?
-
 
     // Setting date format
     func setDateformat() -> DateFormatter {

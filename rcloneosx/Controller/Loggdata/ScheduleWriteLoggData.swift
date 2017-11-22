@@ -65,7 +65,7 @@ class ScheduleWriteLoggData: SetConfigurations, ReloadTable, Deselect {
         }
         return loggadded
     }
-    
+
     private func addloggtaskmanulnew(_ hiddenID: Int, result: String, date: String) -> Bool {
         var loggadded: Bool = false
         let masterdict = NSMutableDictionary()

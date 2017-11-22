@@ -97,8 +97,6 @@ class ViewControllerReference {
         case .vccopyfiles:
             return self.viewControllerCopyFiles
         }
-        
-        
     }
 
     func setvcref(viewcontroller: ViewController, nsviewcontroller: NSViewController) {
