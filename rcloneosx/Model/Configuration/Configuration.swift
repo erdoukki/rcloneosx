@@ -31,6 +31,17 @@ struct Configuration {
     var parameter12: String?
     var parameter13: String?
     var parameter14: String?
+    var dayssincelastbackup: String?
+    
+    private func calculatedays(date: String) -> Double? {
+        guard date != "" else {
+            return nil
+        }
+        let dateformatter = Tools().setDateformat()
+        let lastbackup = dateformatter.date(from: date)
+        let seconds: TimeInterval = lastbackup!.timeIntervalSinceNow
+        return seconds * (-1)
+    }
 
     init(dictionary: NSDictionary) {
         // Parameters 1 - 6 is mandatory, set by RsyncOSX.
@@ -45,8 +56,11 @@ struct Configuration {
         // Last run of task
         if let dateRun = dictionary.object(forKey: "dateRun") {
             self.dateRun = dateRun as? String
+            if let secondssince = self.calculatedays(date: self.dateRun!) {
+                self.dayssincelastbackup = String(format: "%.2f", secondssince/(60*60*24))
+            }
         } else {
-            self.dateRun = " "
+            self.dateRun = ""
         }
         if let parameter1 = dictionary.object(forKey: "parameter1") {
             self.parameter1 = parameter1 as? String

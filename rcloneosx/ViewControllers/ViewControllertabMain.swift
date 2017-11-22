@@ -725,10 +725,14 @@ extension ViewControllertabMain: Fileerror {
     
     func fileerror(errorstr: String, errortype: fileerrortype ) {
         globalMainQueue.async(execute: { () -> Void in
-            self.setInfo(info: "Error", color: .red)
-            self.light.color = .systemRed
-            self.showProcessInfo(info: .error)
-            self.rsyncCommand.stringValue = Filerrors(errortype: errortype).errordescription()
+            if errortype == .openlogfile {
+                self.rsyncCommand.stringValue = Filerrors(errortype: errortype).errordescription()
+            } else {
+                self.setInfo(info: "Error", color: .red)
+                self.light.color = .systemRed
+                self.showProcessInfo(info: .error)
+                self.rsyncCommand.stringValue = Filerrors(errortype: errortype).errordescription() + "\n" + errorstr
+            }
         })
     }
 }
