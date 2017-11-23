@@ -5,7 +5,7 @@
 //  Created by Thomas Evensen on 20.11.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable syntactic_sugar
+// swiftlint:disable syntactic_sugar line_length
 
 import Foundation
 
@@ -32,7 +32,6 @@ class Logging: Reportfileerror {
             let error = e as NSError
             self.error(error: error.description, errortype: .openlogfile)
         }
-        
     }
 
     private func logg() {
