@@ -22,7 +22,7 @@ final class GetCloudServices {
     
     init(outputprocess: OutputProcess?) {
         self.outputprocess = outputprocess
-        self.arguments = ["config","show"]
+        self.arguments = ["config", "show"]
         self.getCloudServices()
     }
 }

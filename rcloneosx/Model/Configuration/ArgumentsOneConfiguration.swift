@@ -5,7 +5,7 @@
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
 //  swiftlint OK - 17 July 2017
-//  swiftlint:disable syntactic_sugar disable
+//  swiftlint:disable syntactic_sugar line_length
 
 import Foundation
 
