@@ -428,6 +428,7 @@ extension ViewControllertabMain: NSTableViewDelegate {
         var text: String?
         var schedule: Bool = false
         let hiddenID: Int = self.configurations!.getConfigurations()[row].hiddenID
+        let markdays: Bool = self.configurations!.getConfigurations()[row].markdays
         if self.schedules!.hiddenIDinSchedule(hiddenID) {
             text = object[tableColumn!.identifier] as? String
             if text == "copy" || text == "sync" {
@@ -436,7 +437,10 @@ extension ViewControllertabMain: NSTableViewDelegate {
         }
         if tableColumn!.identifier.rawValue == "batchCellID" {
             return object[tableColumn!.identifier] as? Int!
-        } else {
+        } else if markdays == true && tableColumn!.identifier.rawValue == "daysID" {
+            text = object[tableColumn!.identifier] as? String
+            return self.attributtedstring(str: text!, color: NSColor.red, alignright: true)
+    } else {
             var number: Int = 0
             if let obj = self.schedulessorted {
                 number = obj.countallscheduledtasks(hiddenID)
@@ -444,31 +448,32 @@ extension ViewControllertabMain: NSTableViewDelegate {
             if schedule && number > 0 {
                 let returnstr = text! + " (" + String(number) + ")"
                 if let color = self.colorindex, color == hiddenID {
-                    let attributedString = NSMutableAttributedString(string: (returnstr))
-                    let range = (returnstr as NSString).range(of: returnstr)
-                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.green, range: range)
-                    return attributedString
+                    return self.attributtedstring(str: returnstr, color: NSColor.green, alignright: false)
                 } else {
                     return returnstr
                 }
             } else {
                 if self.configurations!.getConfigurations()[row].task == "check" {
                     text = object[tableColumn!.identifier] as? String
-                    let attributedString = NSMutableAttributedString(string: (text!))
-                    let range = (text! as NSString).range(of: text!)
-                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.systemBlue, range: range)
-                    return attributedString
+                    return self.attributtedstring(str: text!, color: NSColor.systemBlue, alignright: false)
                 } else if self.configurations!.getConfigurations()[row].task == "move"{
                     text = object[tableColumn!.identifier] as? String
-                    let attributedString = NSMutableAttributedString(string: (text!))
-                    let range = (text! as NSString).range(of: text!)
-                    attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: NSColor.red, range: range)
-                    return attributedString
+                    return self.attributtedstring(str: text!, color: NSColor.red, alignright: false)
                 } else {
                    return object[tableColumn!.identifier] as? String
                 }
             }
         }
+    }
+    
+    private func attributtedstring(str: String, color: NSColor, alignright: Bool) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: str)
+        let range = (str as NSString).range(of: str)
+        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+        if alignright {
+            attributedString.setAlignment(.right, range: range)
+        }
+        return attributedString
     }
 
     // Toggling batch
