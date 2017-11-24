@@ -2061,10 +2061,10 @@ DQ
                                 </connections>
                             </button>
                             <box fixedFrame="YES" title="Loggfile" translatesAutoresizingMaskIntoConstraints="NO" id="6sN-Z4-KVE">
-                                <rect key="frame" x="17" y="64" width="467" height="114"/>
+                                <rect key="frame" x="17" y="64" width="192" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="g0H-Yg-8dV">
-                                    <rect key="frame" x="2" y="2" width="463" height="97"/>
+                                    <rect key="frame" x="2" y="2" width="188" height="97"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTx-Ac-qNg">
@@ -2103,11 +2103,38 @@ DQ
                                     </subviews>
                                 </view>
                             </box>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dl0-p7-uVO">
+                                <rect key="frame" x="422" y="112" width="41" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="9su-28-pB9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3s3-RG-Au5">
+                                <rect key="frame" x="230" y="115" width="190" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Number of days last backup:" id="YAx-Qx-MdM">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box fixedFrame="YES" title="Number of days" translatesAutoresizingMaskIntoConstraints="NO" id="etI-de-i9h">
+                                <rect key="frame" x="211" y="64" width="273" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="9uS-K4-zoE">
+                                    <rect key="frame" x="2" y="2" width="269" height="97"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </box>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="detailedlogging" destination="dg1-Pc-D5r" id="Z5n-3i-nJ1"/>
                         <outlet property="fulllogging" destination="caX-2K-TPs" id="dYP-vg-BHH"/>
+                        <outlet property="marknumberofdayssince" destination="Dl0-p7-uVO" id="GLm-Df-x3p"/>
                         <outlet property="minimumlogging" destination="Rrp-Al-X8G" id="ebE-q9-CyV"/>
                         <outlet property="noRsync" destination="MU5-XI-9GS" id="apy-XI-W5g"/>
                         <outlet property="nologging" destination="WTx-Ac-qNg" id="RgQ-7d-M65"/>

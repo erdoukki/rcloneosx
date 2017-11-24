@@ -32,12 +32,12 @@ final class Numbers: SetConfigurations {
     var totNumSize: Double?
     var newfiles: Int?
     var deletefiles: Int?
-    
+
     var transferNum: String?
     var transferNumSize: String?
     var transferNumSizeByte: String?
     var time: String?
-    
+
     // Get numbers from rclone (dry run)
     func getTransferredNumbers (numbers: EnumNumbers) -> Int {
         switch numbers {
@@ -61,17 +61,17 @@ final class Numbers: SetConfigurations {
             return Int(num)
         }
     }
-    
+
     private func prepareresult() {
         let tempfiles = self.output!.filter({(($0).contains("Transferred:"))})
         let elapsedTime = self.output!.filter({(($0).contains("Elapsed time:"))})
         guard tempfiles.count >= 2 && elapsedTime.count >= 1  else { return }
         let index = tempfiles.count
         let index2 = elapsedTime.count
-        var filesPartSize = tempfiles[index-2].components(separatedBy: " ").filter{ $0.isEmpty == false && $0 != "Transferred:"}
-        let filesPart = tempfiles[index-1].components(separatedBy: " ").filter{ $0.isEmpty == false }
-        let elapstedTimePart = elapsedTime[index2-1].components(separatedBy: " ").filter{ $0.isEmpty == false }
-        if filesPart.count > 1 {self.transferNum = filesPart[filesPart.count - 1]} else {self.transferNum = "0"}
+        var filesPartSize = tempfiles[index-2].components(separatedBy: " ").filter{$0.isEmpty == false && $0 != "Transferred:"}
+        let filesPart = tempfiles[index-1].components(separatedBy: " ").filter{$0.isEmpty == false}
+        let elapstedTimePart = elapsedTime[index2-1].components(separatedBy: " ").filter{$0.isEmpty == false}
+        if filesPart.count > 1 { self.transferNum = filesPart[filesPart.count - 1] } else { self.transferNum = "0" }
         if filesPartSize.count > 3 {
             self.transferNumSize = filesPartSize[0]
             self.transferNumSizeByte = filesPartSize[1]
@@ -79,7 +79,7 @@ final class Numbers: SetConfigurations {
             self.transferNumSize = "0.0"
             self.transferNumSizeByte = "bytes"
         }
-        if elapstedTimePart.count > 2 {self.time = elapstedTimePart[2]} else {self.time = "0.0"}
+        if elapstedTimePart.count > 2 { self.time = elapstedTimePart[2] } else { self.time = "0.0" }
     }
 
     // Collecting statistics about job

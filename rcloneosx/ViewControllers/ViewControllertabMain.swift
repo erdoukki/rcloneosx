@@ -418,7 +418,7 @@ extension ViewControllertabMain: NSTableViewDataSource {
 }
 
 extension ViewControllertabMain: NSTableViewDelegate {
-   
+
     // TableView delegates
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if row > self.configurations!.configurationsDataSourcecount() - 1 {
@@ -465,7 +465,7 @@ extension ViewControllertabMain: NSTableViewDelegate {
             }
         }
     }
-    
+
     private func attributtedstring(str: String, color: NSColor, alignright: Bool) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: str)
         let range = (str as NSString).range(of: str)
@@ -987,4 +987,8 @@ extension ViewControllertabMain: ErrorOutput {
     func erroroutput() {
         self.possibleerroroutput.isHidden = false
     }
+}
+
+extension ViewControllertabMain: Createandreloadconfigurations {
+    // func createandreloadconfigurations()
 }
