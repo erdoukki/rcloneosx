@@ -265,6 +265,9 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         super.viewDidDisappear()
         // Do not allow notify in Main
         self.configurations!.allowNotifyinMain = false
+        if self.process != nil {
+            self.abortOperations()
+        }
     }
 
     // Execute tasks by double click in table
@@ -346,6 +349,9 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     // when row is selected
     // setting which table row is selected
     func tableViewSelectionDidChange(_ notification: Notification) {
+        if self.process != nil {
+            self.abortOperations()
+        }
         if self.readyforexecution == false {
             self.abortOperations()
         }
@@ -478,6 +484,9 @@ extension ViewControllertabMain: NSTableViewDelegate {
 
     // Toggling batch
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+        if self.process != nil {
+            self.abortOperations()
+        }
         self.configurations!.setBatchYesNo(row)
         self.singletask = nil
         self.batchtaskObject = nil
@@ -824,6 +833,9 @@ extension ViewControllertabMain: SingleTaskProgress {
     }
 
     func presentViewInformation(output: OutputProcess) {
+        guard  self.configurations!.allowNotifyinMain == true else {
+            return
+        }
         self.outputprocess = output
         globalMainQueue.async(execute: { () -> Void in
             self.presentViewControllerAsSheet(self.viewControllerInformation!)
