@@ -68,9 +68,9 @@ final class Numbers: SetConfigurations {
         guard tempfiles.count >= 2 && elapsedTime.count >= 1  else { return }
         let index = tempfiles.count
         let index2 = elapsedTime.count
-        var filesPartSize = tempfiles[index-2].components(separatedBy: " ").filter{$0.isEmpty == false && $0 != "Transferred:"}
-        let filesPart = tempfiles[index-1].components(separatedBy: " ").filter{$0.isEmpty == false}
-        let elapstedTimePart = elapsedTime[index2-1].components(separatedBy: " ").filter{$0.isEmpty == false}
+        var filesPartSize = tempfiles[index-2].components(separatedBy: " ").filter {$0.isEmpty == false && $0 != "Transferred:"}
+        let filesPart = tempfiles[index-1].components(separatedBy: " ").filter {$0.isEmpty == false}
+        let elapstedTimePart = elapsedTime[index2-1].components(separatedBy: " ").filter {$0.isEmpty == false}
         if filesPart.count > 1 { self.transferNum = filesPart[filesPart.count - 1] } else { self.transferNum = "0" }
         if filesPartSize.count > 3 {
             self.transferNumSize = filesPartSize[0]
