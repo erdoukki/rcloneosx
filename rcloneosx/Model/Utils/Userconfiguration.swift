@@ -45,6 +45,18 @@ final class Userconfiguration {
                 ViewControllerReference.shared.operation = .dispatch
             }
         }
+        // Mark tasks
+        if let marknumberofdayssince = dict.value(forKey: "marknumberofdayssince") as? String {
+            if Double(marknumberofdayssince)! > 0 {
+                let oldmarknumberofdayssince = ViewControllerReference.shared.marknumberofdayssince
+                ViewControllerReference.shared.marknumberofdayssince = Double(marknumberofdayssince)!
+                if oldmarknumberofdayssince != ViewControllerReference.shared.marknumberofdayssince {
+                    weak var reloadconfigurationsDelegate: Createandreloadconfigurations?
+                    reloadconfigurationsDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
+                    reloadconfigurationsDelegate?.createandreloadconfigurations()
+                }
+            }
+        }
     }
 
     init (userconfigRsyncOSX: [NSDictionary]) {

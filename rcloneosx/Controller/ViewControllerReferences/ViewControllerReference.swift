@@ -59,7 +59,7 @@ class ViewControllerReference {
     var logname: String = "rclonelog"
     var fileURL: URL?
     // Mark number of days since last backup
-    var marknumberofdayssince: Double = 2
+    var marknumberofdayssince: Double = 5
 
     // Reference to main View
     private var viewControllertabMain: NSViewController?

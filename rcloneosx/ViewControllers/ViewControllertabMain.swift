@@ -988,3 +988,7 @@ extension ViewControllertabMain: ErrorOutput {
         self.possibleerroroutput.isHidden = false
     }
 }
+
+extension ViewControllertabMain: Createandreloadconfigurations {
+    // func reateandreloadconfigurations()
+}

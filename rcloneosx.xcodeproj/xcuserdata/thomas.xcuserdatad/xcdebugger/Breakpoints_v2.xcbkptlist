@@ -42,12 +42,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rcloneosx/ViewControllers/ViewControllerUserconfiguration.swift"
-            timestampString = "532902388.728364"
+            timestampString = "533211442.999339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
-            landmarkName = "logging(_:)"
+            landmarkName = "toggleOperation(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rcloneosx/ViewControllers/ViewControllerUserconfiguration.swift"
+            timestampString = "533211442.999847"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "close(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
