@@ -11,7 +11,7 @@
 import Foundation
 
 class RsyncProcessArguments {
-    
+
     private var arguments: Array<String>?
     var localCatalog: String?
     var offsiteCatalog: String?
@@ -112,7 +112,7 @@ class RsyncProcessArguments {
         self.setParameters2To14(config, dryRun: dryRun, forDisplay: forDisplay)
         return self.arguments!
     }
-    
+
     func argumentsRsynclistfile(_ config: Configuration) -> Array<String> {
         self.localCatalog = nil
         self.offsiteCatalog = config.offsiteCatalog
@@ -122,7 +122,7 @@ class RsyncProcessArguments {
         self.appendParameter(parameter: self.remoteargs!, forDisplay: false)
         return self.arguments!
     }
-    
+
     func argumentsRsyncrestore(_ config: Configuration, dryRun: Bool, forDisplay: Bool) -> Array<String> {
         self.localCatalog = nil
         self.offsiteCatalog = config.offsiteCatalog

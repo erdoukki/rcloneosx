@@ -19,7 +19,7 @@ final class GetCloudServices {
         self.process = CloudServices(command: nil, arguments: self.arguments)
         self.process!.executeProcess(outputprocess: self.outputprocess)
     }
-    
+
     init(outputprocess: OutputProcess?) {
         self.outputprocess = outputprocess
         self.arguments = ["config", "show"]

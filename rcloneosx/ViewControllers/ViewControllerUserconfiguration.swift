@@ -31,7 +31,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
     @IBOutlet weak var fulllogging: NSButton!
     @IBOutlet weak var nologging: NSButton!
     @IBOutlet weak var marknumberofdayssince: NSTextField!
-    
+
     @IBAction func toggleDetailedlogging(_ sender: NSButton) {
         if self.detailedlogging.state == .on {
             ViewControllerReference.shared.detailedlogging = true
@@ -94,7 +94,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
             }
         }
     }
-    
+
     private func setRsyncPath() {
         if self.rsyncPath.stringValue.isEmpty == false {
             if rsyncPath.stringValue.hasSuffix("/") == false {
