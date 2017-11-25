@@ -149,8 +149,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         self.singletask = nil
     }
 
-    // Presenting Information from Rsync
-    @IBAction func information(_ sender: NSButton) {
+    @IBAction func information(_ sender: Any) {
         globalMainQueue.async(execute: { () -> Void in
             self.presentViewControllerAsSheet(self.viewControllerInformation!)
         })
@@ -167,7 +166,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     }
 
     // Userconfiguration button
-    @IBAction func userconfiguration(_ sender: NSButton) {
+    @IBAction func userconfiguration(_ sender: Any) {
         globalMainQueue.async(execute: { () -> Void in
             self.presentViewControllerAsSheet(self.viewControllerUserconfiguration!)
         })
@@ -302,8 +301,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         self.singletask?.executeSingleTask()
     }
 
-    // Execute BATCH TASKS only
-    @IBAction func executeBatch(_ sender: NSButton) {
+    @IBAction func executeBatch(_ sender: NSToolbarItem) {
         guard ViewControllerReference.shared.norsync == false else {
             self.tools!.noRsync()
             return
