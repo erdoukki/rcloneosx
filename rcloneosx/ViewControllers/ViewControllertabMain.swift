@@ -265,9 +265,6 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         super.viewDidDisappear()
         // Do not allow notify in Main
         self.configurations!.allowNotifyinMain = false
-        if self.process != nil {
-            self.abortOperations()
-        }
     }
 
     // Execute tasks by double click in table
@@ -832,11 +829,11 @@ extension ViewControllertabMain: SingleTaskProgress {
         })
     }
 
-    func presentViewInformation(output: OutputProcess) {
+    func presentViewInformation(outputprocess: OutputProcess) {
         guard  self.configurations!.allowNotifyinMain == true else {
             return
         }
-        self.outputprocess = output
+        self.outputprocess = outputprocess
         globalMainQueue.async(execute: { () -> Void in
             self.presentViewControllerAsSheet(self.viewControllerInformation!)
         })
