@@ -21,9 +21,8 @@ class ViewControllerProgressProcess: NSViewController, SetConfigurations, SetDis
     var calculatedNumberOfFiles: Int?
     weak var countDelegate: Count?
     @IBOutlet weak var abort: NSButton!
-    
-    @IBOutlet weak var progress: NSProgressIndicator!
 
+    @IBOutlet weak var progress: NSProgressIndicator!
     @IBAction func abort(_ sender: NSButton) {
         self.abort()
     }
