@@ -261,6 +261,11 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     }
 
     override func viewDidDisappear() {
+        if self.process != nil {
+            self.process!.terminate()
+            self.index = nil
+            self.working.stopAnimation(nil)
+        }
         super.viewDidDisappear()
         // Do not allow notify in Main
         self.configurations!.allowNotifyinMain = false
