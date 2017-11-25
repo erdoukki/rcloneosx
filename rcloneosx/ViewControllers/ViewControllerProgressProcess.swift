@@ -20,20 +20,17 @@ class ViewControllerProgressProcess: NSViewController, SetConfigurations, SetDis
     var maxcount: Double = 0
     var calculatedNumberOfFiles: Int?
     weak var countDelegate: Count?
-
+    @IBOutlet weak var abort: NSButton!
+    
     @IBOutlet weak var progress: NSProgressIndicator!
 
     @IBAction func abort(_ sender: NSButton) {
         self.abort()
-        self.processTermination()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.abort.image = #imageLiteral(resourceName: "abort")
         ViewControllerReference.shared.setvcref(viewcontroller: .vcprogressview, nsviewcontroller: self)
         if let pvc2 = self.configurations!.singleTask {
             self.countDelegate = pvc2
