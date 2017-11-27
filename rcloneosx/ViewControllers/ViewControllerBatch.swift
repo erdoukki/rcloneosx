@@ -39,7 +39,6 @@ class ViewControllerBatch: NSViewController, SetDismisser, AbortTask {
     @IBOutlet weak var executeButton: NSButton!
     @IBOutlet weak var abortbutton: NSButton!
     
-    
     @IBAction func abort(_ sender: NSButton) {
         self.abort()
         self.waitToClose?.invalidate()

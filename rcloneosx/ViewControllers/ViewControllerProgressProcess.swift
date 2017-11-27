@@ -30,6 +30,7 @@ class ViewControllerProgressProcess: NSViewController, SetConfigurations, SetDis
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.abort.isEnabled = true
         ViewControllerReference.shared.setvcref(viewcontroller: .vcprogressview, nsviewcontroller: self)
         if let pvc2 = self.configurations!.singleTask {
             self.countDelegate = pvc2

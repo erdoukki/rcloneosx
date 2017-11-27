@@ -1847,6 +1847,9 @@ DQ
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="abort:" target="auW-64-IFG" id="N4f-fk-Pt9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
