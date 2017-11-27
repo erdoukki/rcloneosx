@@ -37,13 +37,18 @@ class ViewControllerBatch: NSViewController, SetDismisser, AbortTask {
     @IBOutlet weak var closeinseconds: NSTextField!
     @IBOutlet weak var rownumber: NSTextField!
     @IBOutlet weak var executeButton: NSButton!
+    @IBOutlet weak var abortbutton: NSButton!
+    
+    @IBAction func abort(_ sender: NSButton) {
+        self.abort()
+        self.waitToClose?.invalidate()
+        self.closeIn?.invalidate()
+        self.batchTask = nil
+        self.dismissview(viewcontroller: self, vcontroller: .vctabmain)
+    }
 
     @IBAction func close(_ sender: NSButton) {
-        if self.close! {
-            self.batchTask!.closeOperation()
-        } else {
-            self.abort()
-        }
+        self.batchTask!.closeOperation()
         self.waitToClose?.invalidate()
         self.closeIn?.invalidate()
         self.batchTask = nil
@@ -53,9 +58,9 @@ class ViewControllerBatch: NSViewController, SetDismisser, AbortTask {
     // Execute batch
     @IBAction func execute(_ sender: NSButton) {
         self.batchTask!.executeBatch()
-        self.closeButton.title = "Abort"
         self.executeButton.isEnabled = false
-        self.close = false
+        self.abortbutton.isHidden = false
+        self.closeButton.isHidden = true
     }
 
     @objc private func setSecondsView() {
@@ -78,16 +83,14 @@ class ViewControllerBatch: NSViewController, SetDismisser, AbortTask {
         self.closeinseconds.isHidden = true
         self.executeButton.isEnabled = true
         self.working.stopAnimation(nil)
-        self.close = true
         self.label.stringValue = "Progress "
         self.rownumber.stringValue = ""
         self.closeButton.title = "Close"
-        self.close = true
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
     }
-
+    
     // Initial functions viewDidLoad and viewDidAppear
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,9 +100,12 @@ class ViewControllerBatch: NSViewController, SetDismisser, AbortTask {
         self.mainTableView.dataSource = self
         self.loadtasks()
     }
-
+    
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.closeButton.isHidden = false
+        self.abortbutton.isHidden = true
+        self.executeButton.isEnabled = true
         self.configurations = self.batchTask?.configurations
         if self.batchTask == nil {
             self.loadtasks()
