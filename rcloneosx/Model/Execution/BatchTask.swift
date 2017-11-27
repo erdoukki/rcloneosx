@@ -64,13 +64,13 @@ final class BatchTask: SetSchedules, SetConfigurations, Delay {
                 self.batchViewDelegate?.progressIndicatorViewBatch(operation: .start)
                 let args: Array<String> = self.configurations!.arguments4rsync(index: index, argtype: .argdryRun)
                 let process = Rsync(arguments: args)
-                // Setting reference to process for Abort if requiered
+                // Setting reference to process for Abort if Required
                 process.executeProcess(outputprocess: self.outputprocess)
                 self.process = process.getProcess()
             case 1:
                 let arguments: Array<String> = self.configurations!.arguments4rsync(index: index, argtype: .arg)
                 let process = Rsync(arguments: arguments)
-                // Setting reference to process for Abort if requiered
+                // Setting reference to process for Abort if Required
                 process.executeProcess(outputprocess: self.outputprocess)
                 self.process = process.getProcess()
             case -1:
