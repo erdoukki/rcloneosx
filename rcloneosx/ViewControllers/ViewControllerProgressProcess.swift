@@ -25,9 +25,9 @@ class ViewControllerProgressProcess: NSViewController, SetConfigurations, SetDis
     @IBAction func abort(_ sender: NSButton) {
         self.abort()
     }
-    
+
     @IBOutlet weak var progress: NSProgressIndicator!
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         self.abort.isEnabled = true
