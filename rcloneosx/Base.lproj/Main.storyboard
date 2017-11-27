@@ -1872,6 +1872,7 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="abortbutton" destination="9r9-wm-ZMR" id="p8I-B6-UO1"/>
                         <outlet property="closeButton" destination="kMM-ZX-vSQ" id="3RR-WQ-IyF"/>
                         <outlet property="closeinseconds" destination="w95-Na-zVc" id="XZ7-IU-hPc"/>
                         <outlet property="executeButton" destination="fsl-j9-KAO" id="NBV-ES-whh"/>
