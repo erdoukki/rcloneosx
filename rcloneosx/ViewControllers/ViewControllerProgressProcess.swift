@@ -22,14 +22,15 @@ class ViewControllerProgressProcess: NSViewController, SetConfigurations, SetDis
     weak var countDelegate: Count?
     @IBOutlet weak var abort: NSButton!
 
-    @IBOutlet weak var progress: NSProgressIndicator!
     @IBAction func abort(_ sender: NSButton) {
         self.abort()
     }
-
+    
+    @IBOutlet weak var progress: NSProgressIndicator!
+    
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.abort.image = #imageLiteral(resourceName: "abort")
+        self.abort.isEnabled = true
         ViewControllerReference.shared.setvcref(viewcontroller: .vcprogressview, nsviewcontroller: self)
         if let pvc2 = self.configurations!.singleTask {
             self.countDelegate = pvc2

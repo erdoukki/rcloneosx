@@ -83,6 +83,7 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.localCatalog.toolTip = "By using Finder drag and drop filepaths."
         self.offsiteCatalog.toolTip = "By using Finder drag and drop filepaths."
         ViewControllerReference.shared.setvcref(viewcontroller: .vcnewconfigurations, nsviewcontroller: self)
+        self.loadCloudServices()
     }
 
     override func viewDidAppear() {
@@ -93,7 +94,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
             self.storageapi = PersistentStorageAPI(profile: nil)
         }
         self.setFields()
-        self.loadCloudServices()
         self.rclonecommand = self.synccommand
         self.syncradio.state = .on
     }

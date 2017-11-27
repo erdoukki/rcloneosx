@@ -149,7 +149,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         self.singletask = nil
     }
 
-    @IBAction func information(_ sender: Any) {
+    @IBAction func information(_ sender: NSToolbarItem) {
         globalMainQueue.async(execute: { () -> Void in
             self.presentViewControllerAsSheet(self.viewControllerInformation!)
         })
@@ -165,13 +165,12 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         })
     }
 
-    // Userconfiguration button
-    @IBAction func userconfiguration(_ sender: Any) {
+    @IBAction func userconfiguration(_ sender: NSToolbarItem) {
         globalMainQueue.async(execute: { () -> Void in
             self.presentViewControllerAsSheet(self.viewControllerUserconfiguration!)
         })
     }
-
+    
     // Selecting profiles
     @IBAction func profiles(_ sender: NSButton) {
         if self.loadProfileMenu == true {
