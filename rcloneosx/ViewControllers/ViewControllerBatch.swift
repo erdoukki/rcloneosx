@@ -94,7 +94,7 @@ class ViewControllerBatch: NSViewController, SetDismisser, AbortTask {
         self.mainTableView.dataSource = self
         self.loadtasks()
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         self.executeButton.isEnabled = true

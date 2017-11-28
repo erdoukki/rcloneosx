@@ -170,7 +170,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
             self.presentViewControllerAsSheet(self.viewControllerUserconfiguration!)
         })
     }
-    
+
     // Selecting profiles
     @IBAction func profiles(_ sender: NSButton) {
         if self.loadProfileMenu == true {
