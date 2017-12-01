@@ -82,6 +82,7 @@ class ViewControllerBatch: NSViewController, SetDismisser, AbortTask {
     // Initial functions viewDidLoad and viewDidAppear
     override func viewDidLoad() {
         super.viewDidLoad()
+        ViewControllerReference.shared.setvcref(viewcontroller: .vcbatch, nsviewcontroller: self)
         // Do view setup here.
         // Setting delegates and datasource
         self.mainTableView.delegate = self
