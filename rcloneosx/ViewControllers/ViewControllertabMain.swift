@@ -316,6 +316,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         }
         self.singletask = nil
         self.setNumbers(output: nil)
+        self.deselect()
         globalMainQueue.async(execute: { () -> Void in
             self.presentViewControllerAsSheet(self.viewControllerBatch!)
         })
