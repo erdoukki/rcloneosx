@@ -259,14 +259,14 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     }
 
     override func viewDidDisappear() {
+        super.viewDidDisappear()
+        // Do not allow notify in Main
+        self.configurations!.allowNotifyinMain = false
         if self.process != nil {
             self.process!.terminate()
             self.index = nil
             self.working.stopAnimation(nil)
         }
-        super.viewDidDisappear()
-        // Do not allow notify in Main
-        self.configurations!.allowNotifyinMain = false
     }
 
     // Execute tasks by double click in table
@@ -374,6 +374,9 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         self.statuslight.image = #imageLiteral(resourceName: "yellow")
         self.showProcessInfo(info: .blank)
         self.setRsyncCommandDisplay()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
     }
 
     func createandloadschedules() {
@@ -428,6 +431,17 @@ extension ViewControllertabMain: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if row > self.configurations!.configurationsDataSourcecount() - 1 {
             return nil
+        }
+        if tableColumn!.identifier.rawValue == "statCellID" {
+            if row == self.index {
+                if self.singletask == nil {
+                    return #imageLiteral(resourceName: "yellow")
+                } else {
+                    return #imageLiteral(resourceName: "green")
+                }
+            } else {
+                return nil
+            }
         }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSource()![row]
         var text: String?
