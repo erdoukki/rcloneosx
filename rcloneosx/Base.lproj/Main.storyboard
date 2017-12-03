@@ -309,7 +309,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="BZN-Ba-N1e" id="gd0-mk-eEg">
-                                            <rect key="frame" x="0.0" y="0.0" width="970.5" height="246"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="930.5" height="246"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -349,7 +349,7 @@
                                                     </buttonCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="localCatalogCellID" width="243.97265625" minWidth="40" maxWidth="1000" id="35g-px-ZH6">
+                                                <tableColumn identifier="localCatalogCellID" width="203.97265625" minWidth="40" maxWidth="1000" id="35g-px-ZH6">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Local catalog">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -448,7 +448,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="BZN-Ba-N1e">
-                                    <rect key="frame" x="0.0" y="0.0" width="970.5" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="930.5" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -1803,7 +1803,7 @@ DQ
                                 </tableHeaderView>
                             </scrollView>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lR-Vu-lR3">
-                                <rect key="frame" x="187" y="23" width="90" height="17"/>
+                                <rect key="frame" x="161" y="23" width="116" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Progress" id="IoG-CI-zhH">
                                     <font key="font" metaFont="system"/>
