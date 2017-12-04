@@ -425,7 +425,7 @@ extension ViewControllertabMain: NSTableViewDataSource {
     }
 }
 
-extension ViewControllertabMain: NSTableViewDelegate {
+extension ViewControllertabMain: NSTableViewDelegate, Attributtedestring {
 
     // TableView delegates
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
@@ -483,14 +483,6 @@ extension ViewControllertabMain: NSTableViewDelegate {
                 }
             }
         }
-    }
-
-    private func attributtedstring(str: String, color: NSColor, align: NSTextAlignment) -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: str)
-        let range = (str as NSString).range(of: str)
-        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
-        attributedString.setAlignment(.right, range: range)
-        return attributedString
     }
 
     // Toggling batch
