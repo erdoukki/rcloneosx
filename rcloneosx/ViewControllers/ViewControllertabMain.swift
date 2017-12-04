@@ -425,7 +425,7 @@ extension ViewControllertabMain: NSTableViewDataSource {
     }
 }
 
-extension ViewControllertabMain: NSTableViewDelegate {
+extension ViewControllertabMain: NSTableViewDelegate, Attributtedestring {
 
     // TableView delegates
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
@@ -458,7 +458,7 @@ extension ViewControllertabMain: NSTableViewDelegate {
             return object[tableColumn!.identifier] as? Int!
         } else if markdays == true && tableColumn!.identifier.rawValue == "daysID" {
             text = object[tableColumn!.identifier] as? String
-            return self.attributtedstring(str: text!, color: NSColor.red, alignright: true)
+            return self.attributtedstring(str: text!, color: NSColor.red, align: .right)
     } else {
             var number: Int = 0
             if let obj = self.schedulessorted {
@@ -467,32 +467,22 @@ extension ViewControllertabMain: NSTableViewDelegate {
             if schedule && number > 0 {
                 let returnstr = text! + " (" + String(number) + ")"
                 if let color = self.colorindex, color == hiddenID {
-                    return self.attributtedstring(str: returnstr, color: NSColor.green, alignright: false)
+                    return self.attributtedstring(str: returnstr, color: NSColor.green, align: .left)
                 } else {
                     return returnstr
                 }
             } else {
                 if self.configurations!.getConfigurations()[row].task == "check" {
                     text = object[tableColumn!.identifier] as? String
-                    return self.attributtedstring(str: text!, color: NSColor.systemBlue, alignright: false)
+                    return self.attributtedstring(str: text!, color: NSColor.systemBlue, align: .left)
                 } else if self.configurations!.getConfigurations()[row].task == "move"{
                     text = object[tableColumn!.identifier] as? String
-                    return self.attributtedstring(str: text!, color: NSColor.red, alignright: false)
+                    return self.attributtedstring(str: text!, color: NSColor.red, align: .left)
                 } else {
                    return object[tableColumn!.identifier] as? String
                 }
             }
         }
-    }
-
-    private func attributtedstring(str: String, color: NSColor, alignright: Bool) -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: str)
-        let range = (str as NSString).range(of: str)
-        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
-        if alignright {
-            attributedString.setAlignment(.right, range: range)
-        }
-        return attributedString
     }
 
     // Toggling batch
