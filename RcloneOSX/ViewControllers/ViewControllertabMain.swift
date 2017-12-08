@@ -217,6 +217,9 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
             "schedule": "manuel"]
         ViewControllerReference.shared.scheduledTask = task
         _ = OperationFactory()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
     }
 
     // Function for display rsync command
@@ -457,6 +460,9 @@ extension ViewControllertabMain: NSTableViewDelegate, Attributtedestring {
         }
         if tableColumn!.identifier.rawValue == "statCellID" {
             if row == self.index {
+                if self.scheduledJobInProgress == true {
+                    return #imageLiteral(resourceName: "green")
+                }
                 if self.singletask == nil {
                     return #imageLiteral(resourceName: "yellow")
                 } else {
