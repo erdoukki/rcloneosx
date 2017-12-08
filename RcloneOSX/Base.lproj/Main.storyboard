@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="abu-zT-Ht4">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="abu-zT-Ht4">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -72,6 +72,28 @@
                                         <menuItem title="Logs" keyEquivalent="l" id="qit-95-flM" userLabel="Logs">
                                             <connections>
                                                 <action selector="loggrecords:" target="Ady-hI-5gd" id="80A-2l-5VP"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="xPF-vi-RgT"/>
+                                        <menuItem title="Edit" keyEquivalent="e" id="qjA-xj-v0Q" userLabel="Edit">
+                                            <connections>
+                                                <action selector="edit:" target="Ady-hI-5gd" id="bGJ-lg-Yx5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Parameters" keyEquivalent="o" id="qOD-Xg-5br" userLabel="Parameters">
+                                            <connections>
+                                                <action selector="rsyncparams:" target="Ady-hI-5gd" id="roS-Z1-4WN"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Delete" keyEquivalent="d" id="VTA-QI-yT5" userLabel="Delete">
+                                            <connections>
+                                                <action selector="delete:" target="Ady-hI-5gd" id="yVY-6Z-EVU"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="6Ac-ti-Bu9"/>
+                                        <menuItem title="Run" keyEquivalent="r" id="R4M-Am-2zt" userLabel="Run">
+                                            <connections>
+                                                <action selector="executetasknow:" target="Ady-hI-5gd" id="7M8-pZ-unb"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -309,7 +331,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="BZN-Ba-N1e" id="gd0-mk-eEg">
-                                            <rect key="frame" x="0.0" y="0.0" width="930.5" height="246"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="929" height="246"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -414,7 +436,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="runDateCellID" width="120.58203125" minWidth="10" maxWidth="3.4028234663852886e+38" id="qvy-yX-V6C">
+                                                <tableColumn identifier="runDateCellID" width="119.08203125" minWidth="10" maxWidth="3.4028234663852886e+38" id="qvy-yX-V6C">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Last run">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -439,7 +461,7 @@
                                     <constraint firstAttribute="height" constant="273" id="dDF-ZD-O7G"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="273" id="suk-e3-Ntv"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="9Do-RL-EKP">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9Do-RL-EKP">
                                     <rect key="frame" x="2" y="255" width="929" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -448,7 +470,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="BZN-Ba-N1e">
-                                    <rect key="frame" x="0.0" y="0.0" width="930.5" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="929" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>

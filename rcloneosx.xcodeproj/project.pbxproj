@@ -384,7 +384,7 @@
 		E99AA3761FAFA28900C1E86A = {
 			isa = PBXGroup;
 			children = (
-				E99AA3811FAFA28900C1E86A /* rcloneosx */,
+				E99AA3811FAFA28900C1E86A /* RcloneOSX */,
 				E99AA3801FAFA28900C1E86A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E99AA3811FAFA28900C1E86A /* rcloneosx */ = {
+		E99AA3811FAFA28900C1E86A /* RcloneOSX */ = {
 			isa = PBXGroup;
 			children = (
 				E99AA3821FAFA28900C1E86A /* AppDelegate.swift */,
@@ -409,7 +409,7 @@
 				E99AA38B1FAFA28900C1E86A /* Info.plist */,
 				E960CAB51FB091D20008D12E /* rcloneosx-Bridging-Header.h */,
 			);
-			path = rcloneosx;
+			path = RcloneOSX;
 			sourceTree = "<group>";
 		};
 		E9B528C51FB2CE740075CF4D /* ViewControllerReferences */ = {
