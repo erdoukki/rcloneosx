@@ -288,13 +288,11 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
         super.viewDidDisappear()
         // Do not allow notify in Main
         self.configurations!.allowNotifyinMain = false
-        /*
         if self.process != nil {
             self.process!.terminate()
             self.index = nil
             self.working.stopAnimation(nil)
         }
-        */
     }
 
     // Execute tasks by double click in table
