@@ -91,4 +91,8 @@ class OperationFactory {
     init(factory: OperationObject) {
         self.factory = factory
     }
+
+    init() {
+        self.operationDispatch = ScheduleOperationDispatch(seconds: 0)
+    }
 }
