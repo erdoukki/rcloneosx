@@ -195,6 +195,29 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     @IBAction func about (_ sender: NSButton) {
         self.presentViewControllerAsModalWindow(self.viewControllerAbout!)
     }
+    
+    @IBAction func executetasknow(_ sender: NSButton) {
+        guard self.hiddenID != nil else {
+            self.selecttask.isHidden = false
+            return
+        }
+        guard self.index != nil else {
+            self.selecttask.isHidden = false
+            return
+        }
+        guard self.configurations!.getConfigurations()[self.index!].task == "backup" else {
+            return
+        }
+        let now: Date = Date()
+        let dateformatter = Tools().setDateformat()
+        let task: NSDictionary = [
+            "start": now,
+            "hiddenID": self.hiddenID!,
+            "dateStart": dateformatter.date(from: "01 Jan 1900 00:00") as Date!,
+            "schedule": "manuel"]
+        ViewControllerReference.shared.scheduledTask = task
+        _ = OperationFactory()
+    }
 
     // Function for display rsync command
     // Either --dry-run or real run

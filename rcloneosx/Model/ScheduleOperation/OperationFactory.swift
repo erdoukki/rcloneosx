@@ -83,10 +83,8 @@ class OperationFactory {
         switch self.factory! {
         case .timer:
             self.operationTimer = ScheduleOperationTimer()
-            self.operationTimer?.initiate()
         case .dispatch:
             self.operationDispatch = ScheduleOperationDispatch()
-            self.operationDispatch?.initiate()
         }
     }
 
