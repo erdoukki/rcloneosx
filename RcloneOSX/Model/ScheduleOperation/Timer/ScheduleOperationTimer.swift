@@ -44,7 +44,7 @@ final class ScheduleOperationTimer: SetSchedules, SecondsBeforeStart {
             self.schedules!.setTimerTaskWaiting(timer: self.timerTaskWaiting!)
         }
     }
-    
+
     init(seconds: Int) {
         self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: Double(seconds), target: self, selector: #selector(executetask),
                                                      userInfo: nil, repeats: false)

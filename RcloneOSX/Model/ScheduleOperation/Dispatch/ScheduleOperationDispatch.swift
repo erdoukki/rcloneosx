@@ -28,7 +28,7 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart {
             self.schedules!.setDispatchTaskWaiting(taskitem: self.pendingRequestWorkItem!)
         }
     }
-    
+
     init(seconds: Int) {
         self.dispatchtask(seconds)
         self.schedules!.setDispatchTaskWaiting(taskitem: self.pendingRequestWorkItem!)
