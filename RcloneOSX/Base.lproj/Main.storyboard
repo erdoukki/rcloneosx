@@ -75,15 +75,27 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="xPF-vi-RgT"/>
-                                        <menuItem title="Edit" keyEquivalent="e" id="qjA-xj-v0Q" userLabel="Edit"/>
-                                        <menuItem title="Parameters" keyEquivalent="o" id="qOD-Xg-5br" userLabel="Parameters"/>
+                                        <menuItem title="Edit" keyEquivalent="e" id="qjA-xj-v0Q" userLabel="Edit">
+                                            <connections>
+                                                <action selector="edit:" target="Ady-hI-5gd" id="bGJ-lg-Yx5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Parameters" keyEquivalent="o" id="qOD-Xg-5br" userLabel="Parameters">
+                                            <connections>
+                                                <action selector="rsyncparams:" target="Ady-hI-5gd" id="roS-Z1-4WN"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Delete" keyEquivalent="d" id="VTA-QI-yT5" userLabel="Delete">
                                             <connections>
                                                 <action selector="delete:" target="Ady-hI-5gd" id="yVY-6Z-EVU"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="6Ac-ti-Bu9"/>
-                                        <menuItem title="Run" keyEquivalent="r" id="R4M-Am-2zt" userLabel="Run"/>
+                                        <menuItem title="Run" keyEquivalent="r" id="R4M-Am-2zt" userLabel="Run">
+                                            <connections>
+                                                <action selector="executetasknow:" target="Ady-hI-5gd" id="7M8-pZ-unb"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
