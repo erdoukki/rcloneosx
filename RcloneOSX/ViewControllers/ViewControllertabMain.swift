@@ -195,7 +195,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     @IBAction func about (_ sender: NSButton) {
         self.presentViewControllerAsModalWindow(self.viewControllerAbout!)
     }
-    
+
     @IBAction func executetasknow(_ sender: NSButton) {
         guard self.hiddenID != nil else {
             self.selecttask.isHidden = false
@@ -205,7 +205,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
             self.selecttask.isHidden = false
             return
         }
-        guard self.configurations!.getConfigurations()[self.index!].task == "backup" else {
+        guard self.configurations!.getConfigurations()[self.index!].task != "move" else {
             return
         }
         let now: Date = Date()
@@ -845,7 +845,7 @@ extension ViewControllertabMain: SingleTaskProgress {
             case .abort:
                 self.processInfo.stringValue = "Abort"
             case .error:
-                self.processInfo.stringValue = "Rsync error"
+                self.processInfo.stringValue = "Rclone error"
             case .blank:
                 self.processInfo.stringValue = ""
             }
