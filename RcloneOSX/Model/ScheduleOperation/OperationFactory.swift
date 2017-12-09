@@ -73,6 +73,10 @@ enum OperationObject {
     case dispatch
 }
 
+protocol Sendprocessreference: class {
+    func sendprocessreference(process: Process?)
+}
+
 class OperationFactory {
 
     private var factory: OperationObject?
