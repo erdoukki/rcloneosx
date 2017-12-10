@@ -569,7 +569,7 @@ extension ViewControllertabMain: GetSelecetedIndex {
 // Next scheduled job is started, if any
 extension ViewControllertabMain: StartNextTask {
     func startanyscheduledtask() {
-        _ = OperationFactory(factory: self.configurations!.operation).initiate()
+        _ = OperationFactory(factory: self.configurations!.operation)
     }
 }
 
