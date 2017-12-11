@@ -406,6 +406,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     }
 
     func createandloadschedules() {
+        self.process = nil
         guard self.configurations != nil else {
             self.schedules = Schedules(profile: nil)
             return
@@ -457,15 +458,18 @@ extension ViewControllertabMain: NSTableViewDelegate, Attributtedestring {
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if row > self.configurations!.configurationsDataSourcecount() - 1 { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSource()![row]
-        var text: String?
+        var celltext: String?
         let hiddenID: Int = self.configurations!.getConfigurations()[row].hiddenID
         let markdays: Bool = self.configurations!.getConfigurations()[row].markdays
+        celltext = object[tableColumn!.identifier] as? String
         if tableColumn!.identifier.rawValue == "batchCellID" {
             return object[tableColumn!.identifier] as? Int!
         }
         if markdays == true && tableColumn!.identifier.rawValue == "daysID" {
-            text = object[tableColumn!.identifier] as? String
-            return self.attributtedstring(str: text!, color: NSColor.red, align: .right)
+            return self.attributtedstring(str: celltext!, color: NSColor.red, align: .right)
+        }
+        if tableColumn!.identifier.rawValue == "offsiteServerCellID", ((object[tableColumn!.identifier] as? String)?.isEmpty)! {
+            celltext =  "localhost"
         }
         if tableColumn!.identifier.rawValue == "schedCellID" {
             if let obj = self.schedulessorted {
@@ -486,11 +490,7 @@ extension ViewControllertabMain: NSTableViewDelegate, Attributtedestring {
                 }
             }
         }
-        if tableColumn!.identifier.rawValue == "offsiteServerCellID", ((object[tableColumn!.identifier] as? String)?.isEmpty)! {
-            return "localhost"
-        } else {
-            return object[tableColumn!.identifier] as? String
-        }
+        return object[tableColumn!.identifier] as? String
     }
 
     // Toggling batch
