@@ -3339,6 +3339,9 @@ DQ
                                     <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </datePickerCell>
+                                <connections>
+                                    <action selector="selectdate:" target="6Sn-U7-fnM" id="HYa-f9-OhP"/>
+                                </connections>
                             </datePicker>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J0o-0d-kb0">
                                 <rect key="frame" x="384" y="73" width="149" height="22"/>
@@ -3495,9 +3498,9 @@ DQ
                                 </connections>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqn-FI-yWE">
-                                <rect key="frame" x="163" y="292" width="69" height="22"/>
+                                <rect key="frame" x="163" y="292" width="69" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <datePickerCell key="cell" borderStyle="bezel" baseWritingDirection="rightToLeft" userInterfaceLayoutDirection="rightToLeft" alignment="left" datePickerStyle="textField" id="olF-fs-gvI">
+                                <datePickerCell key="cell" borderStyle="bezel" baseWritingDirection="rightToLeft" userInterfaceLayoutDirection="rightToLeft" alignment="left" id="olF-fs-gvI">
                                     <font key="font" metaFont="system"/>
                                     <date key="date" timeIntervalSinceReferenceDate="-595929600">
                                         <!--1982-02-12 16:00:00 +0000-->
@@ -3506,6 +3509,9 @@ DQ
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
                                 </datePickerCell>
+                                <connections>
+                                    <action selector="selecttime:" target="6Sn-U7-fnM" id="VDO-Gz-MeP"/>
+                                </connections>
                             </datePicker>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="onU-Vl-91O">
                                 <rect key="frame" x="21" y="138" width="213" height="17"/>
@@ -3545,10 +3551,12 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dailybutton" destination="gdt-Z5-oOs" id="GiQ-8f-jUz"/>
                         <outlet property="firstLocalCatalog" destination="2mf-Bk-kzA" id="KRh-9y-nSW"/>
                         <outlet property="firstRemoteServer" destination="kWM-CL-hKn" id="dhh-VV-2xL"/>
                         <outlet property="firstScheduledTask" destination="J0o-0d-kb0" id="10L-gA-43Z"/>
                         <outlet property="mainTableView" destination="M2k-eh-eJR" id="gST-S2-fQo"/>
+                        <outlet property="oncebutton" destination="tXQ-RV-Af6" id="Oua-k2-FaV"/>
                         <outlet property="operation" destination="onU-Vl-91O" id="HSo-k5-kJg"/>
                         <outlet property="profilInfo" destination="5vw-0e-A6P" id="2r7-rd-2e1"/>
                         <outlet property="secondLocalCatalog" destination="tbu-TI-VZP" id="wII-WR-T03"/>
@@ -3557,6 +3565,7 @@ DQ
                         <outlet property="selecttask" destination="kMg-Qj-nkw" id="BtY-kE-C7P"/>
                         <outlet property="stopdate" destination="xHj-UP-XJf" id="8WA-aa-8DM"/>
                         <outlet property="stoptime" destination="cqn-FI-yWE" id="7Hf-fC-JYD"/>
+                        <outlet property="weeklybutton" destination="Ikx-eC-7aI" id="m0o-D0-LMK"/>
                     </connections>
                 </viewController>
                 <customObject id="s1B-zK-TQc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
