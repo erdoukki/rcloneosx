@@ -299,7 +299,7 @@ extension ViewControllertabSchedule: NSTableViewDelegate, Attributtedestring {
     switch tableColumn!.identifier.rawValue {
     case "numberCellID" :
         if self.schedulessorted != nil {
-            number = self.schedulessorted!.countallscheduledtasks(hiddenID)
+            number = self.schedulessorted!.countscheduledtasks(hiddenID)
         }
         if number ?? 0 > 0 {
             let returnstr = String(number!)
@@ -319,7 +319,7 @@ extension ViewControllertabSchedule: NSTableViewDelegate, Attributtedestring {
         }
     case "inCellID":
         if self.schedulessorted != nil {
-            taskintime = self.schedulessorted!.sortandcountallscheduledtasks(hiddenID)
+            taskintime = self.schedulessorted!.sortandcountscheduledtasks(hiddenID)
             return taskintime ?? ""
         }
     default:
