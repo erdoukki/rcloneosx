@@ -26,7 +26,7 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart {
             guard seconds > 0 else { return }
             self.dispatchtask(Int(seconds))
             // Set reference to schedule for later cancel if any
-            // self.schedules!.setDispatchTaskWaiting(taskitem: self.pendingRequestWorkItem!)
+            ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
         }
     }
 
