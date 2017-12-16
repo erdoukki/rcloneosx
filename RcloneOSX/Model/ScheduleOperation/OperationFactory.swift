@@ -22,7 +22,7 @@ extension NextTask {
     weak var nexttaskDelegate: StartNextTask? {
         return ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
     }
-    
+
     func startnexttask() {
         self.nexttaskDelegate?.startfirstcheduledtask()
     }
