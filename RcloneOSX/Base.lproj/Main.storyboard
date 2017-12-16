@@ -3216,7 +3216,7 @@ DQ
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="taskCellID" width="75.703125" minWidth="40" maxWidth="1000" id="3BY-6E-CRs">
+                                                <tableColumn identifier="taskCellID" width="51.703125" minWidth="40" maxWidth="1000" id="3BY-6E-CRs">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Task">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3229,7 +3229,7 @@ DQ
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="numberCellID" width="48.703125" minWidth="40" maxWidth="1000" id="oU6-mb-dmv" userLabel="Number">
+                                                <tableColumn identifier="numberCellID" width="51.703125" minWidth="40" maxWidth="1000" id="oU6-mb-dmv" userLabel="Number">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Number">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3255,7 +3255,7 @@ DQ
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="localCatalogCellID" width="226.47265625" minWidth="40" maxWidth="1000" id="eju-a1-akN">
+                                                <tableColumn identifier="localCatalogCellID" width="246.47265625" minWidth="40" maxWidth="1000" id="eju-a1-akN">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Local catalog">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
