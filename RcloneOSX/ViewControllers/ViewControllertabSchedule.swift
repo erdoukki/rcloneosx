@@ -5,7 +5,7 @@
 //  Created by Thomas Evensen on 19/08/2016.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
-//  swiftlint:disable line_length
+//  swiftlint:disable line_length file_length cyclomatic_complexity
 
 import Foundation
 import Cocoa
@@ -362,7 +362,6 @@ extension ViewControllertabSchedule: Reloadandrefresh {
         self.secondRemoteServer.stringValue = ""
         self.secondLocalCatalog.stringValue = ""
         // Create a New schedules object
-        self.schedulessorted = nil
         self.schedulessorted = ScheduleSortedAndExpand()
         self.infoschedulessorted = InfoScheduleSortedAndExpand(sortedandexpanded: self.schedulessorted)
         self.firstScheduledTask.stringValue = self.infoschedulessorted!.whenIsNextTwoTasksString()[0]
@@ -378,7 +377,6 @@ extension ViewControllertabSchedule: StartTimer {
 
     // Called from Process
     func startTimerNextJob() {
-        self.schedulessorted = nil
         self.schedulessorted = ScheduleSortedAndExpand()
         self.infoschedulessorted = InfoScheduleSortedAndExpand(sortedandexpanded: self.schedulessorted)
         self.firstRemoteServer.stringValue = ""
