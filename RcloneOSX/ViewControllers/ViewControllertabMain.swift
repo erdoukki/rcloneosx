@@ -298,6 +298,9 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
 
     // Single task can be activated by double click from table
     private func executeSingleTask() {
+        guard self.scheduledJobInProgress == false else {
+            return
+        }
         guard ViewControllerReference.shared.norsync == false else {
             self.tools!.noRsync()
             return
@@ -319,6 +322,9 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     }
 
     @IBAction func executeBatch(_ sender: NSToolbarItem) {
+        guard self.scheduledJobInProgress == false else {
+            return
+        }
         guard ViewControllerReference.shared.norsync == false else {
             self.tools!.noRsync()
             return
