@@ -197,6 +197,11 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     }
 
     @IBAction func executetasknow(_ sender: NSButton) {
+        guard self.scheduledJobInProgress == false else {
+            self.selecttask.stringValue = "⌘A to abort or wait..."
+            self.selecttask.isHidden = false
+            return
+        }
         guard self.hiddenID != nil else {
             self.selecttask.isHidden = false
             return
@@ -299,6 +304,8 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     // Single task can be activated by double click from table
     private func executeSingleTask() {
         guard self.scheduledJobInProgress == false else {
+            self.selecttask.stringValue = "⌘A to abort or wait..."
+            self.selecttask.isHidden = false
             return
         }
         guard ViewControllerReference.shared.norsync == false else {
@@ -323,6 +330,8 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
 
     @IBAction func executeBatch(_ sender: NSToolbarItem) {
         guard self.scheduledJobInProgress == false else {
+            self.selecttask.stringValue = "⌘A to abort or wait..."
+            self.selecttask.isHidden = false
             return
         }
         guard ViewControllerReference.shared.norsync == false else {
