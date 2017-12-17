@@ -357,6 +357,9 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     // when row is selected
     // setting which table row is selected
     func tableViewSelectionDidChange(_ notification: Notification) {
+        guard self.scheduledJobInProgress == false else {
+            return
+        }
         if self.process != nil {
             self.abortOperations()
         }
@@ -568,7 +571,6 @@ extension ViewControllertabMain: ScheduledTaskWorking {
         globalMainQueue.async(execute: {() -> Void in
             self.scheduledJobInProgress = true
             self.scheduledJobworking.startAnimation(nil)
-            self.mainTableView.isEnabled = false
         })
     }
 
@@ -578,7 +580,6 @@ extension ViewControllertabMain: ScheduledTaskWorking {
             self.selecttask.stringValue = "Select a task...."
             self.selecttask.isHidden = true
             self.scheduledJobworking.stopAnimation(nil)
-            self.mainTableView.isEnabled = true
         })
     }
 
