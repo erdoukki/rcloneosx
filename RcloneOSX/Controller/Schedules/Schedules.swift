@@ -236,11 +236,4 @@ class Schedules: ScheduleWriteLoggData {
         self.storageapi = PersistentStorageAPI(profile: self.profile)
         self.readschedules()
     }
-
-    /*
-    deinit {
-        self.timerTaskWaiting?.invalidate()
-        self.dispatchTaskWaiting?.cancel()
-    }
-    */
 }
