@@ -163,10 +163,10 @@ class Configurations: ReloadTable {
     /// Function for getting all Configurations marked as backup (not restore)
     /// - parameter none: none
     /// - returns : Array of NSDictionary
-    func getConfigurationsDataSourcecountBackupOnly() -> [NSDictionary]? {
+    func getConfigurationsDataSourcecountBackupOnly() -> [NSMutableDictionary]? {
         let configurations: [Configuration] = self.configurations!.filter({return ($0.task == "copy" || $0.task == "sync" )})
-        var row =  NSDictionary()
-        var data = Array<NSDictionary>()
+        var row =  NSMutableDictionary()
+        var data = Array<NSMutableDictionary>()
         for i in 0 ..< configurations.count {
             row = [
                 "taskCellID": configurations[i].task,
@@ -177,7 +177,8 @@ class Configurations: ReloadTable {
                 "backupIDCellID": configurations[i].backupID,
                 "runDateCellID": configurations[i].dateRun!,
                 "daysID": configurations[i].dayssincelastbackup ?? "",
-                "markdays": configurations[i].markdays
+                "markdays": configurations[i].markdays,
+                "selectCellID": 0
             ]
             data.append(row)
         }
@@ -198,7 +199,8 @@ class Configurations: ReloadTable {
                 "backupIDCellID": configurations[i].backupID,
                 "runDateCellID": configurations[i].dateRun!,
                 "daysID": configurations[i].dayssincelastbackup ?? "",
-                "markdays": configurations[i].markdays
+                "markdays": configurations[i].markdays,
+                "selectCellID": 0
             ]
             data.append(row)
         }
