@@ -16,7 +16,7 @@ protocol getNewBatchTask: class {
 }
 
 // Dismiss view when rsync error
-protocol closeViewError: class {
+protocol CloseViewError: class {
     func closeerror()
 }
 
@@ -198,7 +198,7 @@ extension ViewControllerBatch: getNewBatchTask {
     }
 }
 
-extension ViewControllerBatch: closeViewError {
+extension ViewControllerBatch: CloseViewError {
     func closeerror() {
         self.batchTask = nil
         self.abort()

@@ -76,6 +76,8 @@
 		E9A795901FBF28A500AF8A5F /* CopyFileArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7958E1FBF28A400AF8A5F /* CopyFileArguments.swift */; };
 		E9A795921FBF2AB000AF8A5F /* CommandCopyFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A795911FBF2AB000AF8A5F /* CommandCopyFiles.swift */; };
 		E9A795941FBF2CDA00AF8A5F /* ViewControllerInformationCopyFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A795931FBF2CDA00AF8A5F /* ViewControllerInformationCopyFiles.swift */; };
+		E9CB92351FEE29800047F9CA /* ViewControllerQuickBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB92341FEE29800047F9CA /* ViewControllerQuickBackup.swift */; };
+		E9CB92381FEE2A8D0047F9CA /* QuickBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB92371FEE2A8D0047F9CA /* QuickBackup.swift */; };
 		E9D1F19F1FB49C3B0099D25C /* CloudServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D1F19E1FB49C3B0099D25C /* CloudServices.swift */; };
 		E9D1F1A21FB49DB60099D25C /* GetCloudServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D1F1A11FB49DB60099D25C /* GetCloudServices.swift */; };
 /* End PBXBuildFile section */
@@ -153,6 +155,8 @@
 		E9A7958E1FBF28A400AF8A5F /* CopyFileArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CopyFileArguments.swift; path = rcloneosx/Model/CopyFiles/CopyFileArguments.swift; sourceTree = SOURCE_ROOT; };
 		E9A795911FBF2AB000AF8A5F /* CommandCopyFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommandCopyFiles.swift; path = rcloneosx/Model/CopyFiles/CommandCopyFiles.swift; sourceTree = SOURCE_ROOT; };
 		E9A795931FBF2CDA00AF8A5F /* ViewControllerInformationCopyFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerInformationCopyFiles.swift; path = RcloneOSX/ViewControllers/ViewControllerInformationCopyFiles.swift; sourceTree = SOURCE_ROOT; };
+		E9CB92341FEE29800047F9CA /* ViewControllerQuickBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerQuickBackup.swift; sourceTree = "<group>"; };
+		E9CB92371FEE2A8D0047F9CA /* QuickBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickBackup.swift; sourceTree = "<group>"; };
 		E9D1F19E1FB49C3B0099D25C /* CloudServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudServices.swift; sourceTree = "<group>"; };
 		E9D1F1A11FB49DB60099D25C /* GetCloudServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCloudServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -356,6 +360,7 @@
 				E960CAFE1FB091DD0008D12E /* ViewControllertabMain.swift */,
 				E960CACE1FB091D60008D12E /* ViewControllertabSchedule.swift */,
 				E960CACF1FB091D60008D12E /* ViewControllerUserconfiguration.swift */,
+				E9CB92341FEE29800047F9CA /* ViewControllerQuickBackup.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 		E960CB531FB092E70008D12E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9CB92361FEE2A720047F9CA /* QuickBackup */,
 				E931186A1FC2BCA4007D1C1B /* Logging */,
 				E9DD810A1FBF3AFE0080FEAD /* OutPut */,
 				E9DD81091FBF3A450080FEAD /* CopyFiles */,
@@ -419,6 +425,14 @@
 				E960CAE31FB091DA0008D12E /* ViewControllerReference.swift */,
 			);
 			path = ViewControllerReferences;
+			sourceTree = "<group>";
+		};
+		E9CB92361FEE2A720047F9CA /* QuickBackup */ = {
+			isa = PBXGroup;
+			children = (
+				E9CB92371FEE2A8D0047F9CA /* QuickBackup.swift */,
+			);
+			path = QuickBackup;
 			sourceTree = "<group>";
 		};
 		E9D1F1A01FB49D870099D25C /* CloudServices */ = {
@@ -573,6 +587,7 @@
 				E960CB211FB091DE0008D12E /* Resources.swift in Sources */,
 				E960CB311FB091DE0008D12E /* ViewControllerReference.swift in Sources */,
 				E9D1F1A21FB49DB60099D25C /* GetCloudServices.swift in Sources */,
+				E9CB92351FEE29800047F9CA /* ViewControllerQuickBackup.swift in Sources */,
 				E960CB0C1FB091DE0008D12E /* ScheduleWriteLoggData.swift in Sources */,
 				E960CB3A1FB091DE0008D12E /* ScheduleLoggData.swift in Sources */,
 				E960CB0E1FB091DE0008D12E /* RsyncParameters.swift in Sources */,
@@ -585,6 +600,7 @@
 				E960CB251FB091DE0008D12E /* ViewControllerInformation.swift in Sources */,
 				E960CB2B1FB091DE0008D12E /* SingleTaskWorkQueu.swift in Sources */,
 				E960CB4E1FB091DE0008D12E /* NewConfigurations.swift in Sources */,
+				E9CB92381FEE2A8D0047F9CA /* QuickBackup.swift in Sources */,
 				E91E8BED1FC4B0AE00D23EFD /* Fileerrors.swift in Sources */,
 				E9A7958B1FBF285300AF8A5F /* ViewControllerCopyFiles.swift in Sources */,
 				E960CB2D1FB091DE0008D12E /* Alerts.swift in Sources */,
