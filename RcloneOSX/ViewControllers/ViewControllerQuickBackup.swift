@@ -112,7 +112,7 @@ extension ViewControllerQuickBackup: NSTableViewDelegate, Attributtedestring {
         }
         return object[tableColumn!.identifier] as? String
     }
-    
+
     // Toggling selection
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
         guard  self.quickbackluplist?.sortedlist != nil else { return }
