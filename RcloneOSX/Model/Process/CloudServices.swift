@@ -9,8 +9,8 @@
 import Foundation
 
 final class CloudServices: ProcessCmd {
-    init (command: String?, arguments: Array<String>?) {
-        super.init(command: command, arguments: arguments, aScheduledOperation: true)
+    override init (command: String?, arguments: Array<String>?) {
+        super.init(command: command, arguments: arguments)
         self.updateDelegate = nil
     }
 }
