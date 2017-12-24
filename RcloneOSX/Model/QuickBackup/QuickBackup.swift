@@ -55,8 +55,9 @@ class QuickBackup: SetConfigurations {
         case .offsiteServer:
             sortby = "offsiteServerCellID"
         }
-        let sorted = self.backuplist!.sorted {($0.value(forKey: sortby!) as? String)!.localizedStandardCompare(($1.value(forKey: sortby!) as? String)!) == .orderedAscending}
+        let sorted = self.backuplist!.sorted {return ($0.value(forKey: sortby!) as? String)!.localizedStandardCompare(($1.value(forKey: sortby!) as? String)!) == .orderedAscending}
         self.sortedlist = sorted
+        // let sortedTransactions = transactions.sorted { return ($0["Sequence"]! as! Int) < ($1["Sequence"]! as! Int)}
     }
 
     private func executetasknow(hiddenID: Int) {
@@ -71,7 +72,7 @@ class QuickBackup: SetConfigurations {
         _ = OperationFactory()
     }
 
-    func prepareexecutetasks() {
+    func prepareandstartexecutetasks() {
         if let list = self.sortedlist {
             self.stackoftasktobeexecuted = nil
             self.stackoftasktobeexecuted = [Row]()
@@ -80,6 +81,28 @@ class QuickBackup: SetConfigurations {
                     self.stackoftasktobeexecuted?.append(((list[i].value(forKey: "hiddenID") as? Int)!, i))
                 }
             }
+            guard self.stackoftasktobeexecuted!.count > 0 else {
+                return
+            }
+            let hiddenID = self.stackoftasktobeexecuted![0].0
+            self.stackoftasktobeexecuted?.remove(at: 0)
+            self.executetasknow(hiddenID: hiddenID)
+        }
+    }
+
+    func processTermination() {
+        guard self.stackoftasktobeexecuted != nil else {
+            return
+        }
+        // Last record
+        if self.stackoftasktobeexecuted!.count == 1 {
+            let hiddenID = self.stackoftasktobeexecuted![0].0
+            self.stackoftasktobeexecuted = nil
+            self.executetasknow(hiddenID: hiddenID)
+        } else {
+            let hiddenID = self.stackoftasktobeexecuted![0].0
+            self.stackoftasktobeexecuted?.remove(at: 0)
+            self.executetasknow(hiddenID: hiddenID)
         }
     }
 
