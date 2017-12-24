@@ -21,7 +21,7 @@ class QuickBackup: SetConfigurations {
     var sortedlist: [NSDictionary]?
     typealias Row = (Int, Int)
     var stackoftasktobeexecuted: [Row]?
-
+    
     func sortbydays() {
         guard self.backuplist != nil else {
             self.sortedlist = nil
@@ -38,7 +38,7 @@ class QuickBackup: SetConfigurations {
         }
         self.sortedlist = sorted
     }
-
+    
     func sortbystrings(sort: Sort) {
         var sortby: String?
         guard self.backuplist != nil else {
@@ -59,7 +59,7 @@ class QuickBackup: SetConfigurations {
         self.sortedlist = sorted
         // let sortedTransactions = transactions.sorted { return ($0["Sequence"]! as! Int) < ($1["Sequence"]! as! Int)}
     }
-
+    
     private func executetasknow(hiddenID: Int) {
         let now: Date = Date()
         let dateformatter = Tools().setDateformat()
@@ -71,7 +71,7 @@ class QuickBackup: SetConfigurations {
         ViewControllerReference.shared.scheduledTask = task
         _ = OperationFactory()
     }
-
+    
     func prepareandstartexecutetasks() {
         if let list = self.sortedlist {
             self.stackoftasktobeexecuted = nil
@@ -86,28 +86,29 @@ class QuickBackup: SetConfigurations {
             }
             let hiddenID = self.stackoftasktobeexecuted![0].0
             self.stackoftasktobeexecuted?.remove(at: 0)
+            if self.stackoftasktobeexecuted?.count == 0 { self.stackoftasktobeexecuted = nil }
             self.executetasknow(hiddenID: hiddenID)
         }
     }
-
+    
     func processTermination() {
         guard self.stackoftasktobeexecuted != nil else {
             return
         }
         // Last record
-        if self.stackoftasktobeexecuted!.count == 1 {
-            let hiddenID = self.stackoftasktobeexecuted![0].0
+        guard self.stackoftasktobeexecuted!.count > 0 else {
             self.stackoftasktobeexecuted = nil
-            self.executetasknow(hiddenID: hiddenID)
-        } else {
-            let hiddenID = self.stackoftasktobeexecuted![0].0
-            self.stackoftasktobeexecuted?.remove(at: 0)
-            self.executetasknow(hiddenID: hiddenID)
+            return
         }
+        let hiddenID = self.stackoftasktobeexecuted![0].0
+        self.stackoftasktobeexecuted?.remove(at: 0)
+        if self.stackoftasktobeexecuted?.count == 0 { self.stackoftasktobeexecuted = nil }
+        self.executetasknow(hiddenID: hiddenID)
     }
-
+    
     init() {
         self.backuplist = self.configurations!.getConfigurationsDataSourcecountBackupOnly()
         self.sortbydays()
     }
 }
+
