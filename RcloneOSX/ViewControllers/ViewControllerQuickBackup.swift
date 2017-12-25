@@ -152,3 +152,17 @@ extension ViewControllerQuickBackup: UpdateProgress {
         // nothing
     }
 }
+
+extension ViewControllerQuickBackup: StartStopProgressIndicator {
+    func start() {
+        // nothing
+    }
+    
+    func stop() {
+        self.working.stopAnimation(nil)
+    }
+    
+    func complete() {
+        // nothing
+    }
+}
