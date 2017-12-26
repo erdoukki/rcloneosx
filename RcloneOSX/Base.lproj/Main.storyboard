@@ -4577,14 +4577,14 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView fixedFrame="YES" borderType="groove" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="gD1-ob-SZ2">
-                                <rect key="frame" x="20" y="61" width="738" height="241"/>
+                                <rect key="frame" x="20" y="61" width="738" height="203"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="aFs-9Q-7Qx">
-                                    <rect key="frame" x="2" y="2" width="734" height="237"/>
+                                    <rect key="frame" x="2" y="2" width="734" height="199"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="CSN-Ao-rr0" id="tT2-b2-nCb">
-                                            <rect key="frame" x="0.0" y="0.0" width="734" height="214"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="734" height="176"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -4719,12 +4719,31 @@ DQ
                                 <rect key="frame" x="640" y="23" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUL-OQ-Ma6">
+                                <rect key="frame" x="20" y="280" width="420" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="ylf-pD-iRt">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                            </searchField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVv-rm-R56">
+                                <rect key="frame" x="446" y="283" width="314" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select column to sort and/or filter..." id="LrF-C3-FlD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="abortbutton" destination="ht9-Q0-cvW" id="o98-ty-L8r"/>
                         <outlet property="executeButton" destination="76g-Cg-bZj" id="rWi-6D-X9C"/>
                         <outlet property="mainTableView" destination="tT2-b2-nCb" id="nCb-82-sE5"/>
+                        <outlet property="search" destination="DUL-OQ-Ma6" id="Cni-QD-8US"/>
                         <outlet property="working" destination="bjp-hB-7Ep" id="5Nh-uZ-r8N"/>
                     </connections>
                 </viewController>
