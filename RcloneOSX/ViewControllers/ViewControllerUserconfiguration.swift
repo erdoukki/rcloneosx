@@ -59,6 +59,7 @@ class ViewControllerUserconfiguration: NSViewController, NewRsync, SetDismisser,
         } else if (self.presenting as? ViewControllerNewConfigurations) != nil {
             self.dismissview(viewcontroller: self, vcontroller: .vctabmain)
         }
+        _ = RcloneVersionString()
     }
 
     @IBAction func toggleOperation(_ sender: NSButton) {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E91E8BED1FC4B0AE00D23EFD /* Fileerrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E8BEC1FC4B0AE00D23EFD /* Fileerrors.swift */; };
 		E931186C1FC2BCC1007D1C1B /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931186B1FC2BCC1007D1C1B /* Logging.swift */; };
+		E954F7D51FF411A6003DF6C0 /* RcloneVersionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E954F7D41FF411A6003DF6C0 /* RcloneVersionString.swift */; };
 		E960CB041FB091DE0008D12E /* OutputProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAB61FB091D30008D12E /* OutputProcess.swift */; };
 		E960CB051FB091DE0008D12E /* RsyncScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAB71FB091D30008D12E /* RsyncScheduled.swift */; };
 		E960CB061FB091DE0008D12E /* Rsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CAB81FB091D30008D12E /* Rsync.swift */; };
@@ -85,6 +86,7 @@
 /* Begin PBXFileReference section */
 		E91E8BEC1FC4B0AE00D23EFD /* Fileerrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Fileerrors.swift; path = RcloneOSX/Model/Logging/Fileerrors.swift; sourceTree = SOURCE_ROOT; };
 		E931186B1FC2BCC1007D1C1B /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = RcloneOSX/Model/Logging/Logging.swift; sourceTree = SOURCE_ROOT; };
+		E954F7D41FF411A6003DF6C0 /* RcloneVersionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RcloneVersionString.swift; sourceTree = "<group>"; };
 		E960CAB51FB091D20008D12E /* rcloneosx-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rcloneosx-Bridging-Header.h"; sourceTree = "<group>"; };
 		E960CAB61FB091D30008D12E /* OutputProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputProcess.swift; sourceTree = "<group>"; };
 		E960CAB71FB091D30008D12E /* RsyncScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncScheduled.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				E960CAB81FB091D30008D12E /* Rsync.swift */,
 				E960CACB1FB091D50008D12E /* ProcessCmd.swift */,
 				E9D1F19E1FB49C3B0099D25C /* CloudServices.swift */,
+				E954F7D41FF411A6003DF6C0 /* RcloneVersionString.swift */,
 			);
 			path = Process;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				E960CB051FB091DE0008D12E /* RsyncScheduled.swift in Sources */,
 				E960CB271FB091DE0008D12E /* ExecuteTaskTimer.swift in Sources */,
 				E960CB111FB091DE0008D12E /* Configuration.swift in Sources */,
+				E954F7D51FF411A6003DF6C0 /* RcloneVersionString.swift in Sources */,
 				E960CB381FB091DE0008D12E /* PersistentStorageConfiguration.swift in Sources */,
 				E960CB4A1FB091DE0008D12E /* ViewControllerBatch.swift in Sources */,
 				E960CB411FB091DE0008D12E /* ConfigurationSchedule.swift in Sources */,
