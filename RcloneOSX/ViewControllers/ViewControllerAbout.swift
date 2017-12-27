@@ -14,6 +14,7 @@ class ViewControllerAbout: NSViewController, SetDismisser {
     @IBOutlet weak var version: NSTextField!
     @IBOutlet weak var downloadbutton: NSButton!
     @IBOutlet weak var thereisanewversion: NSTextField!
+    @IBOutlet weak var rcloneversionstring: NSTextField!
 
     var checkfornewversion: Checkfornewversion?
     // External resources as documents, download
@@ -60,6 +61,7 @@ class ViewControllerAbout: NSViewController, SetDismisser {
             self.version.stringValue = "RcloneOSX ver: " + version
         }
         self.thereisanewversion.stringValue = "No new version: "
+        self.rcloneversionstring.stringValue = ViewControllerReference.shared.rcloneversionstring ?? ""
     }
 
     override func viewDidDisappear() {

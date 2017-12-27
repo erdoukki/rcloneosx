@@ -68,5 +68,6 @@ final class Userconfiguration {
         self.rsyncchangedDelegate?.rsyncchanged()
         // Check for rsync
         Tools().verifyrsyncpath()
+        _ = RcloneVersionString()
     }
 }
