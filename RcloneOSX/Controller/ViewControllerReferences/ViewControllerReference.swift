@@ -65,6 +65,8 @@ class ViewControllerReference {
     var marknumberofdayssince: Double = 5
     // Rclone version string
     var rcloneversionstring: String?
+    // Rclone version short
+    var rcloneversionshort: String?
 
     // Reference to main View
     private var viewControllertabMain: NSViewController?
