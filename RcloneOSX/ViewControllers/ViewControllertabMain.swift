@@ -71,6 +71,7 @@ class ViewControllertabMain: NSViewController, ReloadTable, Deselect, Coloractiv
     @IBOutlet weak var selecttask: NSTextField!
     @IBOutlet weak var norsync: NSTextField!
     @IBOutlet weak var possibleerroroutput: NSTextField!
+    @IBOutlet weak var rcloneversionshort: NSTextField!
 
     // Reference to Process task
     private var process: Process?
@@ -635,6 +636,8 @@ extension ViewControllertabMain: RsyncChanged {
         // Update rsync command in display
         self.setRsyncCommandDisplay()
         self.verifyrsync()
+        // Setting shortstring
+        self.rcloneversionshort.stringValue = ViewControllerReference.shared.rcloneversionshort ?? ""
     }
 }
 
