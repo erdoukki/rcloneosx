@@ -16,6 +16,7 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
     var column: Int?
     var filterby: Filterlogs?
     var quickbackuplist: QuickBackup?
+    var executing: Bool = false
 
     @IBOutlet weak var mainTableView: NSTableView!
     @IBOutlet weak var working: NSProgressIndicator!
@@ -32,21 +33,20 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
 
     // Execute batch
     @IBAction func execute(_ sender: NSButton) {
-        self.working.startAnimation(nil)
+        self.executing = true
         self.executeButton.isEnabled = false
+        self.working.startAnimation(nil)
         self.quickbackuplist?.prepareandstartexecutetasks()
     }
 
     private func loadtasks() {
         self.quickbackuplist = QuickBackup()
-        self.executeButton.isEnabled = true
         self.working.stopAnimation(nil)
     }
 
     // Initial functions viewDidLoad and viewDidAppear
     override func viewDidLoad() {
         super.viewDidLoad()
-        ViewControllerReference.shared.setvcref(viewcontroller: .vcquickbatch, nsviewcontroller: self)
         // Do view setup here.
         // Setting delegates and datasource
         self.mainTableView.delegate = self
@@ -57,10 +57,12 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.executeButton.isEnabled = true
+        ViewControllerReference.shared.setvcref(viewcontroller: .vcquickbatch, nsviewcontroller: self)
+        self.executeButton.isEnabled = false
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
+        self.enableexecutebutton()
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {
@@ -88,6 +90,21 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
         self.reloadtabledata()
     }
 
+    private func enableexecutebutton() {
+        let backup = self.quickbackuplist?.sortedlist!.filter({$0.value(forKey: "selectCellID") as? Int == 1})
+        guard backup != nil else {
+            return
+        }
+        guard self.executing == false else {
+            return
+        }
+        if backup!.count > 0 {
+            self.executeButton.isEnabled = true
+        } else {
+            self.executeButton.isEnabled = false
+        }
+    }
+
 }
 
 extension ViewControllerQuickBackup: NSTableViewDataSource {
@@ -97,7 +114,7 @@ extension ViewControllerQuickBackup: NSTableViewDataSource {
     }
 }
 
-extension ViewControllerQuickBackup: NSTableViewDelegate, Attributtedestring {
+extension ViewControllerQuickBackup: NSTableViewDelegate, Attributedestring {
     // TableView delegates
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard self.quickbackuplist?.sortedlist != nil else { return nil }
@@ -106,7 +123,7 @@ extension ViewControllerQuickBackup: NSTableViewDelegate, Attributtedestring {
         if tableColumn!.identifier.rawValue == "daysID" {
             if object.value(forKey: "markdays") as? Bool == true {
                 let celltext = object[tableColumn!.identifier] as? String
-                return self.attributtedstring(str: celltext!, color: NSColor.red, align: .right)
+                return self.attributedstring(str: celltext!, color: NSColor.red, align: .right)
             }
         }
         if tableColumn!.identifier.rawValue == "selectCellID" {
@@ -128,6 +145,7 @@ extension ViewControllerQuickBackup: NSTableViewDelegate, Attributtedestring {
             if select == 0 { select = 1 } else if select == 1 { select = 0 }
             self.quickbackuplist?.sortedlist![row].setValue(select, forKey: "selectCellID")
         }
+        self.enableexecutebutton()
     }
 }
 
@@ -135,6 +153,7 @@ extension ViewControllerQuickBackup: Reloadandrefresh {
 
     // Updates tableview according to progress of batch
     func reloadtabledata() {
+        self.enableexecutebutton()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -153,13 +172,9 @@ extension ViewControllerQuickBackup: UpdateProgress {
     func processTermination() {
         self.quickbackuplist?.setcompleted()
         self.reloadtabledata()
-        guard self.quickbackuplist?.stackoftasktobeexecuted != nil else {
-            self.working.stopAnimation(nil)
-            return
-        }
         self.quickbackuplist?.processTermination()
     }
-
+    
     func fileHandler() {
         // nothing
     }
@@ -172,6 +187,7 @@ extension ViewControllerQuickBackup: StartStopProgressIndicator {
 
     func stop() {
         self.working.stopAnimation(nil)
+        self.executeButton.isEnabled = false
     }
 
     func complete() {
