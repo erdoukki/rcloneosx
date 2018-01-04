@@ -465,7 +465,7 @@ extension ViewControllertabMain: NSTableViewDataSource {
     }
 }
 
-extension ViewControllertabMain: NSTableViewDelegate, Attributtedestring {
+extension ViewControllertabMain: NSTableViewDelegate, Attributedestring {
 
     // TableView delegates
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
@@ -479,7 +479,7 @@ extension ViewControllertabMain: NSTableViewDelegate, Attributtedestring {
             return object[tableColumn!.identifier] as? Int!
         }
         if markdays == true && tableColumn!.identifier.rawValue == "daysID" {
-            return self.attributtedstring(str: celltext!, color: NSColor.red, align: .right)
+            return self.attributedstring(str: celltext!, color: NSColor.red, align: .right)
         }
         if tableColumn!.identifier.rawValue == "offsiteServerCellID", ((object[tableColumn!.identifier] as? String)?.isEmpty)! {
             celltext =  "localhost"
