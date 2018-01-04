@@ -13,7 +13,7 @@ final class RcloneVersionString: ProcessCmd {
 
     init () {
         super.init(command: nil, arguments: ["--version"])
-        var outputprocess = OutputProcess()
+        let outputprocess = OutputProcess()
         if ViewControllerReference.shared.norsync == false {
             self.updateDelegate = nil
             self.executeProcess(outputprocess: outputprocess)

@@ -43,14 +43,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         })
     }
 
-    @IBAction func copyLocalCatalog(_ sender: NSButton) {
-         _ = FileDialog(requester: .addLocalCatalog)
-    }
-
-    @IBAction func copyRemoteCatalog(_ sender: NSButton) {
-        _ = FileDialog(requester: .addRemoteCatalog)
-    }
-
     @IBOutlet weak var copyradio: NSButton!
     @IBOutlet weak var syncradio: NSButton!
     @IBOutlet weak var moveradio: NSButton!
