@@ -174,7 +174,7 @@ extension ViewControllerQuickBackup: UpdateProgress {
         self.reloadtabledata()
         self.quickbackuplist?.processTermination()
     }
-    
+
     func fileHandler() {
         // nothing
     }
