@@ -57,21 +57,16 @@ final class PersistentStorageConfiguration: Readwritefiles, SetConfigurations {
     // Add new configuration in memory to permanent storage
     // NB : Function does NOT store Configurations to persistent store
     func newConfigurations (_ dict: NSMutableDictionary) {
-        let localCatalog = dict.value(forKey: "localCatalog") as? String
-        let offsiteCatalog = dict.value(forKey: "offsiteCatalog") as? String
-        // If localCatalog == offsiteCataog do NOT append
-        if localCatalog != offsiteCatalog {
-            var array = Array<NSDictionary>()
-            // Get existing configurations from memory
-            let configs: [Configuration] = self.configurations!.getConfigurations()
-            // copy existing backups before adding
-            for i in 0 ..< configs.count {
-                array.append(self.dictionaryFromconfig(index: i))
-            }
-            dict.setObject(self.maxhiddenID + 1, forKey: "hiddenID" as NSCopying)
-            array.append(dict)
-            self.configurations!.appendconfigurationstomemory(dict: array[array.count - 1])
+        var array = Array<NSDictionary>()
+        // Get existing configurations from memory
+        let configs: [Configuration] = self.configurations!.getConfigurations()
+        // copy existing backups before adding
+        for i in 0 ..< configs.count {
+            array.append(self.dictionaryFromconfig(index: i))
         }
+        dict.setObject(self.maxhiddenID + 1, forKey: "hiddenID" as NSCopying)
+        array.append(dict)
+        self.configurations!.appendconfigurationstomemory(dict: array[array.count - 1])
     }
 
     // Function for returning a NSMutabledictionary from a configuration record
