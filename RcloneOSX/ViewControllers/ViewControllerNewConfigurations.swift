@@ -28,7 +28,6 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
     @IBOutlet weak var localCatalog: NSTextField!
     @IBOutlet weak var offsiteCatalog: NSTextField!
     @IBOutlet weak var backupID: NSTextField!
-    @IBOutlet weak var equal: NSTextField!
     @IBOutlet weak var empty: NSTextField!
     @IBOutlet weak var profilInfo: NSTextField!
     @IBOutlet weak var newTableView: NSTableView!
@@ -109,16 +108,11 @@ class ViewControllerNewConfigurations: NSViewController, SetConfigurations, VcSc
         self.offsiteCatalog.stringValue = ""
         self.cloudService.stringValue = ""
         self.backupID.stringValue = ""
-        self.equal.isHidden = true
         self.empty.isHidden = true
         self.syncradio.state = .on
     }
 
     @IBAction func addConfig(_ sender: NSButton) {
-        guard self.offsiteCatalog.stringValue != self.localCatalog.stringValue else {
-            self.equal.isHidden = false
-            return
-        }
         guard self.cloudService.stringValue.isEmpty == false else {
             self.empty.isHidden = false
             return
