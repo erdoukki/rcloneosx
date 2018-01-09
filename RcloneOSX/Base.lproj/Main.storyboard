@@ -248,14 +248,14 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="857FDA01-5835-43D9-B0AB-59AF28E7E625" label="info" paletteLabel="info" image="info" id="eR1-s0-hoj">
+                                <toolbarItem implicitItemIdentifier="857FDA01-5835-43D9-B0AB-59AF28E7E625" label="info" paletteLabel="info" image="report" id="eR1-s0-hoj">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="36" height="25"/>
                                     <size key="maxSize" width="40" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="YIc-dx-nla">
                                         <rect key="frame" x="0.0" y="14" width="40" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="info" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xg9-Wi-I6C">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="report" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xg9-Wi-I6C">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -4569,7 +4569,7 @@ DQ
                                 <rect key="frame" x="446" y="269" width="314" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Select column to sort and/or filter..." id="LrF-C3-FlD">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -4596,6 +4596,6 @@ DQ
         <image name="complete" width="48" height="48"/>
         <image name="config" width="48" height="48"/>
         <image name="fastforward" width="48" height="48"/>
-        <image name="info" width="48" height="48"/>
+        <image name="report" width="48" height="48"/>
     </resources>
 </document>
