@@ -13,7 +13,6 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
 
     var seconds: Int?
     var row: Int?
-    var column: Int?
     var filterby: Filterlogs?
     var quickbackuplist: QuickBackup?
     var executing: Bool = false
@@ -69,23 +68,19 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
         let myTableViewFromNotification = (notification.object as? NSTableView)!
         let column = myTableViewFromNotification.selectedColumn
         if column == 3 {
-            self.column = 3
             self.filterby = .localCatalog
             self.quickbackuplist?.sortbystrings(sort: .localCatalog)
         } else if column == 4 {
-            self.column = 4
             self.filterby = .remoteCatalog
             self.quickbackuplist?.sortbystrings(sort: .offsiteCatalog)
         } else if column == 5 {
-            self.column = 5
             self.filterby = .remoteServer
             self.quickbackuplist?.sortbystrings(sort: .offsiteServer)
         } else if column == 6 {
-            self.column = 6
             self.filterby = .numberofdays
             self.quickbackuplist?.sortbydays()
         } else {
-            self.column = nil
+            return
         }
         self.reloadtabledata()
     }
@@ -199,9 +194,6 @@ extension ViewControllerQuickBackup: NSSearchFieldDelegate {
 
     override func controlTextDidChange(_ obj: Notification) {
         self.delayWithSeconds(0.25) {
-            guard self.column != nil else {
-                return
-            }
             let filterstring = self.search.stringValue
             if filterstring.isEmpty {
                 globalMainQueue.async(execute: { () -> Void in
