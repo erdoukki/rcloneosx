@@ -114,7 +114,6 @@ class QuickBackup: SetConfigurations {
         }
         self.index = self.sortedlist!.index(of: dict[0])
         self.sortedlist![self.index!].setValue(true, forKey: "completeCellID")
-        self.reloadtableDelegate?.reloadtabledata()
     }
 
     func processTermination() {
@@ -124,6 +123,7 @@ class QuickBackup: SetConfigurations {
             localProgressIndicatorDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vcquickbackup) as? ViewControllerQuickBackup
             localProgressIndicatorDelegate?.stop()
             self.stackoftasktobeexecuted = nil
+             self.reloadtableDelegate?.reloadtabledata()
             return
         }
         self.hiddenID = self.stackoftasktobeexecuted![0].0
