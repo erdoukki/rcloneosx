@@ -27,6 +27,7 @@ class QuickBackup: SetConfigurations {
     var stackoftasktobeexecuted: [Row]?
     var index: Int?
     var hiddenID: Int?
+    weak var reloadtableDelegate: Reloadandrefresh?
 
     func sortbydays() {
         guard self.backuplist != nil else {
@@ -43,6 +44,7 @@ class QuickBackup: SetConfigurations {
             }
         }
         self.sortedlist = sorted
+        self.reloadtableDelegate?.reloadtabledata()
     }
 
     func sortbystrings(sort: Sort) {
@@ -64,8 +66,11 @@ class QuickBackup: SetConfigurations {
         let sorted = self.backuplist!.sorted {return ($0.value(forKey: sortby!) as? String)!.localizedStandardCompare(($1.value(forKey: sortby!) as? String)!) == .orderedAscending}
         self.sortedlist = sorted
         // set new index after sort
-        let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
-        self.index = self.sortedlist!.index(of: dict[0])
+        if self.hiddenID != nil {
+            let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
+            self.index = self.sortedlist!.index(of: dict[0])
+        }
+        self.reloadtableDelegate?.reloadtabledata()
     }
 
     private func executetasknow(hiddenID: Int) {
@@ -109,13 +114,14 @@ class QuickBackup: SetConfigurations {
         }
         self.index = self.sortedlist!.index(of: dict[0])
         self.sortedlist![self.index!].setValue(true, forKey: "completeCellID")
+        self.reloadtableDelegate?.reloadtabledata()
     }
 
     func processTermination() {
         guard self.stackoftasktobeexecuted != nil else { return }
         guard self.stackoftasktobeexecuted!.count > 0  else {
             let localProgressIndicatorDelegate: StartStopProgressIndicator?
-            localProgressIndicatorDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vcquickbatch) as? ViewControllerQuickBackup
+            localProgressIndicatorDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vcquickbackup) as? ViewControllerQuickBackup
             localProgressIndicatorDelegate?.stop()
             self.stackoftasktobeexecuted = nil
             return
@@ -124,6 +130,7 @@ class QuickBackup: SetConfigurations {
         self.index = self.stackoftasktobeexecuted![0].1
         self.stackoftasktobeexecuted?.remove(at: 0)
         self.executetasknow(hiddenID: self.hiddenID!)
+        self.reloadtableDelegate?.reloadtabledata()
     }
 
     // Function for filter
@@ -153,8 +160,11 @@ class QuickBackup: SetConfigurations {
             }
             self.sortedlist = filtereddata.filtereddata
             // set new index after sort
-            let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
-            self.index = self.sortedlist!.index(of: dict[0])
+            if self.hiddenID != nil {
+                let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
+                self.index = self.sortedlist!.index(of: dict[0])
+            }
+            self.reloadtableDelegate?.reloadtabledata()
         })
     }
 
@@ -162,5 +172,6 @@ class QuickBackup: SetConfigurations {
         self.backuplist = self.configurations!.getConfigurationsDataSourcecountBackupOnly()
         self.sortbydays()
         self.hiddenID = nil
+        self.reloadtableDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vcquickbackup) as? ViewControllerQuickBackup
     }
 }
