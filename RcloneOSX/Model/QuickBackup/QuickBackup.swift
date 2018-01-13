@@ -63,6 +63,9 @@ class QuickBackup: SetConfigurations {
         }
         let sorted = self.backuplist!.sorted {return ($0.value(forKey: sortby!) as? String)!.localizedStandardCompare(($1.value(forKey: sortby!) as? String)!) == .orderedAscending}
         self.sortedlist = sorted
+        // set new index after sort
+        let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
+        self.index = self.sortedlist!.index(of: dict[0])
     }
 
     private func executetasknow(hiddenID: Int) {
@@ -149,12 +152,15 @@ class QuickBackup: SetConfigurations {
                 })
             }
             self.sortedlist = filtereddata.filtereddata
+            // set new index after sort
+            let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
+            self.index = self.sortedlist!.index(of: dict[0])
         })
     }
 
     init() {
         self.backuplist = self.configurations!.getConfigurationsDataSourcecountBackupOnly()
         self.sortbydays()
-        self.hiddenID = nil 
+        self.hiddenID = nil
     }
 }
