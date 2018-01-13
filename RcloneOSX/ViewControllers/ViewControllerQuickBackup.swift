@@ -57,11 +57,9 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        ViewControllerReference.shared.setvcref(viewcontroller: .vcquickbatch, nsviewcontroller: self)
+        ViewControllerReference.shared.setvcref(viewcontroller: .vcquickbackup, nsviewcontroller: self)
         self.executeButton.isEnabled = false
-        globalMainQueue.async(execute: { () -> Void in
-            self.mainTableView.reloadData()
-        })
+        self.reloadtabledata()
         self.enableexecutebutton()
     }
 
@@ -83,7 +81,6 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
         } else {
             return
         }
-        self.reloadtabledata()
     }
 
     private func enableexecutebutton() {
@@ -169,7 +166,6 @@ extension ViewControllerQuickBackup: CloseViewError {
 extension ViewControllerQuickBackup: UpdateProgress {
     func processTermination() {
         self.quickbackuplist?.setcompleted()
-        self.reloadtabledata()
         self.quickbackuplist?.processTermination()
     }
 
@@ -201,12 +197,10 @@ extension ViewControllerQuickBackup: NSSearchFieldDelegate {
             if filterstring.isEmpty {
                 globalMainQueue.async(execute: { () -> Void in
                     self.quickbackuplist?.sortbydays()
-                    self.reloadtabledata()
                 })
             } else {
                 globalMainQueue.async(execute: { () -> Void in
                     self.quickbackuplist?.filter(search: filterstring, what: self.filterby)
-                    self.reloadtabledata()
                 })
             }
         }
