@@ -78,8 +78,8 @@ class QuickBackup: SetConfigurations {
             self.stackoftasktobeexecuted = nil
             self.stackoftasktobeexecuted = [Row]()
             for i in 0 ..< list.count {
-                list[i].setObject(false, forKey: "completeCellID" as NSCopying)
-                list[i].setObject(false, forKey: "inprogressCellID" as NSCopying)
+                self.sortedlist![i].setObject(false, forKey: "completeCellID" as NSCopying)
+                self.sortedlist![i].setObject(false, forKey: "inprogressCellID" as NSCopying)
                 if list[i].value(forKey: "selectCellID") as? Int == 1 {
                     self.stackoftasktobeexecuted?.append(((list[i].value(forKey: "hiddenID") as? Int)!, i))
                 }
@@ -117,6 +117,7 @@ class QuickBackup: SetConfigurations {
         self.hiddenID = self.stackoftasktobeexecuted![0].0
         self.index = self.stackoftasktobeexecuted![0].1
         self.stackoftasktobeexecuted?.remove(at: 0)
+        self.sortedlist![self.index!].setValue(true, forKey: "inprogressCellID")
         self.executetasknow(hiddenID: self.hiddenID!)
         self.reloadtableDelegate?.reloadtabledata()
     }
