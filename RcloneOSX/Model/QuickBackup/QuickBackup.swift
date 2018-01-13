@@ -21,7 +21,6 @@ struct Filtereddata2 {
 }
 
 class QuickBackup: SetConfigurations {
-    var backuplist: [NSMutableDictionary]?
     var sortedlist: [NSMutableDictionary]?
     typealias Row = (Int, Int)
     var stackoftasktobeexecuted: [Row]?
@@ -30,11 +29,8 @@ class QuickBackup: SetConfigurations {
     weak var reloadtableDelegate: Reloadandrefresh?
 
     func sortbydays() {
-        guard self.backuplist != nil else {
-            self.sortedlist = nil
-            return
-        }
-        let sorted = self.backuplist!.sorted {(di1, di2) -> Bool in
+        guard self.sortedlist != nil else { return }
+        let sorted = self.sortedlist!.sorted {(di1, di2) -> Bool in
             let di1 = (di1.value(forKey: "daysID") as? NSString)!.doubleValue
             let di2 = (di2.value(forKey: "daysID") as? NSString)!.doubleValue
             if di1 > di2 {
@@ -49,10 +45,7 @@ class QuickBackup: SetConfigurations {
 
     func sortbystrings(sort: Sort) {
         var sortby: String?
-        guard self.backuplist != nil else {
-            self.sortedlist = nil
-            return
-        }
+        guard self.sortedlist != nil else { return }
         switch sort {
         case .localCatalog:
             sortby = "localCatalogCellID"
@@ -63,13 +56,8 @@ class QuickBackup: SetConfigurations {
         case .offsiteServer:
             sortby = "offsiteServerCellID"
         }
-        let sorted = self.backuplist!.sorted {return ($0.value(forKey: sortby!) as? String)!.localizedStandardCompare(($1.value(forKey: sortby!) as? String)!) == .orderedAscending}
+        let sorted = self.sortedlist!.sorted {return ($0.value(forKey: sortby!) as? String)!.localizedStandardCompare(($1.value(forKey: sortby!) as? String)!) == .orderedAscending}
         self.sortedlist = sorted
-        // set new index after sort
-        if self.hiddenID != nil {
-            let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
-            self.index = self.sortedlist!.index(of: dict[0])
-        }
         self.reloadtableDelegate?.reloadtabledata()
     }
 
@@ -91,6 +79,7 @@ class QuickBackup: SetConfigurations {
             self.stackoftasktobeexecuted = [Row]()
             for i in 0 ..< list.count {
                 list[i].setObject(false, forKey: "completeCellID" as NSCopying)
+                list[i].setObject(false, forKey: "inprogressCellID" as NSCopying)
                 if list[i].value(forKey: "selectCellID") as? Int == 1 {
                     self.stackoftasktobeexecuted?.append(((list[i].value(forKey: "hiddenID") as? Int)!, i))
                 }
@@ -99,6 +88,7 @@ class QuickBackup: SetConfigurations {
             // Kick off first task
             self.hiddenID = self.stackoftasktobeexecuted![0].0
             self.index = self.stackoftasktobeexecuted![0].1
+            self.sortedlist![self.index!].setValue(true, forKey: "inprogressCellID")
             self.stackoftasktobeexecuted?.remove(at: 0)
             self.executetasknow(hiddenID: self.hiddenID!)
         }
@@ -108,12 +98,10 @@ class QuickBackup: SetConfigurations {
     func setcompleted() {
         // If list is sorted during execution we have to find new index
         let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
-        guard dict.count == 1 else {
-            self.sortedlist![self.index!].setValue(true, forKey: "completeCellID")
-            return
-        }
+        guard dict.count == 1 else { return }
         self.index = self.sortedlist!.index(of: dict[0])
         self.sortedlist![self.index!].setValue(true, forKey: "completeCellID")
+        self.sortedlist![self.index!].setValue(false, forKey: "inprogressCellID")
     }
 
     func processTermination() {
@@ -159,17 +147,12 @@ class QuickBackup: SetConfigurations {
                 })
             }
             self.sortedlist = filtereddata.filtereddata
-            // set new index after sort
-            if self.hiddenID != nil {
-                let dict = self.sortedlist!.filter({($0.value(forKey: "hiddenID") as? Int) == self.hiddenID!})
-                self.index = self.sortedlist!.index(of: dict[0])
-            }
             self.reloadtableDelegate?.reloadtabledata()
         })
     }
 
     init() {
-        self.backuplist = self.configurations!.getConfigurationsDataSourcecountBackupOnly()
+        self.sortedlist = self.configurations!.getConfigurationsDataSourcecountBackupOnly()
         self.sortbydays()
         self.hiddenID = nil
         self.reloadtableDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vcquickbackup) as? ViewControllerQuickBackup
