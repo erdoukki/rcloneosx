@@ -36,6 +36,7 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
         self.executeButton.isEnabled = false
         self.working.startAnimation(nil)
         self.quickbackuplist?.prepareandstartexecutetasks()
+        self.reloadtabledata()
     }
 
     private func loadtasks() {
@@ -127,6 +128,8 @@ extension ViewControllerQuickBackup: NSTableViewDelegate, Attributedestring {
         if tableColumn!.identifier.rawValue == "completeCellID" {
             if object.value(forKey: "completeCellID") as? Bool == true {
                 return #imageLiteral(resourceName: "complete")
+            } else if row == self.quickbackuplist!.index {
+                return #imageLiteral(resourceName: "leftarrow")
             }
         }
         return object[tableColumn!.identifier] as? String
