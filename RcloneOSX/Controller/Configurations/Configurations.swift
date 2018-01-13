@@ -118,6 +118,8 @@ class Configurations: ReloadTable {
     private var configurationsDataSource: Array<NSMutableDictionary>?
     // Object for batchQueue data and operations
     private var batchQueue: BatchTaskWorkQueu?
+    // backup list from remote info view
+    var quickbackuplist: Array<Int>?
 
     /// Function for getting the profile
     func getProfile() -> String? {
@@ -205,6 +207,12 @@ class Configurations: ReloadTable {
                 "markdays": configurations[i].markdays,
                 "selectCellID": 0
             ]
+            if self.quickbackuplist != nil {
+                let quickbackup = self.quickbackuplist!.filter({$0 == configurations[i].hiddenID})
+                if quickbackup.count > 0 {
+                    row.setValue(1, forKey: "selectCellID")
+                }
+            }
             data.append(row)
         }
         return data
