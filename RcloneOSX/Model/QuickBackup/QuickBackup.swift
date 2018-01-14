@@ -16,10 +16,6 @@ enum Sort {
     case backupId
 }
 
-struct Filtereddata2 {
-    var filtereddata: [NSMutableDictionary]?
-}
-
 class QuickBackup: SetConfigurations {
     var sortedlist: [NSMutableDictionary]?
     typealias Row = (Int, Int)
@@ -126,7 +122,7 @@ class QuickBackup: SetConfigurations {
     func filter(search: String?, what: Filterlogs?) {
         guard search != nil || self.sortedlist != nil else { return }
         globalDefaultQueue.async(execute: {() -> Void in
-            var filtereddata = Filtereddata2()
+            var filtereddata = Filtereddata()
             switch what! {
             case .executeDate:
                 return
