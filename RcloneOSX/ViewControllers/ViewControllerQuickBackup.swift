@@ -64,6 +64,7 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {
+        guard self.executing == false else { return }
         let myTableViewFromNotification = (notification.object as? NSTableView)!
         let column = myTableViewFromNotification.selectedColumn
         if column == 3 {
@@ -85,12 +86,8 @@ class ViewControllerQuickBackup: NSViewController, SetDismisser, AbortTask, Dela
 
     private func enableexecutebutton() {
         let backup = self.quickbackuplist?.sortedlist!.filter({$0.value(forKey: "selectCellID") as? Int == 1})
-        guard backup != nil else {
-            return
-        }
-        guard self.executing == false else {
-            return
-        }
+        guard backup != nil else { return }
+        guard self.executing == false else { return }
         if backup!.count > 0 {
             self.executeButton.isEnabled = true
         } else {
@@ -193,6 +190,7 @@ extension ViewControllerQuickBackup: StartStopProgressIndicator {
 extension ViewControllerQuickBackup: NSSearchFieldDelegate {
 
     override func controlTextDidChange(_ obj: Notification) {
+        guard self.executing == false else { return }
         self.delayWithSeconds(0.25) {
             let filterstring = self.search.stringValue
             if filterstring.isEmpty {
@@ -208,6 +206,7 @@ extension ViewControllerQuickBackup: NSSearchFieldDelegate {
     }
 
     func searchFieldDidEndSearching(_ sender: NSSearchField) {
+        guard self.executing == false else { return }
         globalMainQueue.async(execute: { () -> Void in
             self.loadtasks()
         })
